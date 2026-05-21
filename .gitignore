@@ -15,8 +15,9 @@
 /test-results
 /playwright-report
 
-# AI tooling (personal config — not shared via repo)
-/.claude
+# AI tooling — agents son source-of-truth compartido del repo;
+# .DS_Store y otros artefactos personales SÍ se ignoran.
+.claude/.DS_Store
 .cursor/
 .aider*
 

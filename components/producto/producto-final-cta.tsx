@@ -17,7 +17,7 @@ export function ProductoFinalCta() {
                 <Button
                     size="lg"
                     className="w-full md:w-auto h-14 px-10 text-lg"
-                    href="/auth/register"
+                    href="/precios"
                     onClick={() => analytics.ctaProductoFinalClick()}
                 >
                     Empieza tu Prueba Gratis <ArrowRight className="ml-2 w-5 h-5" />

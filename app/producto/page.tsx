@@ -36,7 +36,7 @@ export default function ProductPage() {
                 title="Tres problemas. Una solución."
                 subtitle="LABDEN resuelve los 3 dolores operativos más comunes de los laboratorios dentales."
                 ctaText="Empieza tu Prueba Gratis"
-                ctaHref="/auth/register"
+                ctaHref="/precios"
             />
 
             {/* Transformation Section - H2 */}
