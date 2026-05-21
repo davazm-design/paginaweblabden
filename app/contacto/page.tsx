@@ -7,7 +7,7 @@ import { Mail, MessageSquare, Clock, MapPin } from "lucide-react";
 export const metadata: Metadata = {
     title: "Contacto | LABDEN",
     description:
-        "Habla con el equipo de LABDEN. Soporte para laboratorios dentales en Latinoamérica, horarios CDMX y canales directos.",
+        "Habla con el equipo de LABDEN. Soporte para laboratorios dentales en México (atendemos también el resto de LATAM), horarios CDMX y canales directos.",
     alternates: { canonical: "/contacto" },
     openGraph: {
         title: "Contacto | LABDEN",
@@ -41,7 +41,7 @@ export default function ContactoPage() {
                         Hablemos
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                        Atendemos a laboratorios dentales en toda Latinoamérica. Elige el canal que prefieras y te respondemos en horas hábiles.
+                        Atendemos a laboratorios dentales en México y el resto de LATAM. Elige el canal que prefieras y te respondemos en horas hábiles.
                     </p>
                 </div>
             </section>
@@ -105,7 +105,7 @@ export default function ContactoPage() {
                             <div>
                                 <h3 className="text-sm font-bold text-foreground mb-1">Cobertura</h3>
                                 <p className="text-sm text-muted leading-relaxed">
-                                    Operamos remoto desde México. Atendemos laboratorios en toda Latinoamérica.
+                                    Operamos desde México. Si tu lab está en otro país de LATAM, escríbenos y vemos.
                                 </p>
                             </div>
                         </div>

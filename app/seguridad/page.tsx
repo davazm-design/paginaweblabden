@@ -8,7 +8,7 @@ import { Lock, ShieldCheck, Database, KeyRound, FileCheck2, AlertCircle } from "
 export const metadata: Metadata = {
     title: "Seguridad y privacidad | LABDEN",
     description:
-        "Cómo LABDEN protege los datos clínicos y comerciales de tu laboratorio dental: cifrado, respaldos, control de acceso y cumplimiento LFPDPPP México.",
+        "Cómo LABDEN protege la información de tu laboratorio dental: cifrado, respaldos, control de acceso y cumplimiento LFPDPPP México.",
     alternates: { canonical: "/seguridad" },
     openGraph: {
         title: "Seguridad y privacidad | LABDEN",
@@ -64,7 +64,7 @@ export default function SeguridadPage() {
                         Seguridad y privacidad
                     </div>
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
-                        Tus datos clínicos y comerciales, bajo control
+                        Las órdenes, doctores y cobros de tu lab, bajo control
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
                         Diseñamos LABDEN sobre prácticas estándar de seguridad para SaaS. Esto es lo que ya hacemos hoy y a qué nos comprometemos.
