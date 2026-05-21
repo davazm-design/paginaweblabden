@@ -1,16 +1,54 @@
-
 import { cache } from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
 
 // Server-only: el endpoint del CMS no debe entrar al bundle del cliente.
 const endpoint = process.env.WORDPRESS_API_URL || '';
 
-// Check if endpoint is defined
 if (!endpoint) {
   console.error("ERROR: WORDPRESS_API_URL is not defined in environment");
 }
 
 const graphQLClient = new GraphQLClient(endpoint);
+
+// --- Types: respuesta cruda de WPGraphQL para blog posts ---
+
+export interface BlogPostFAQ {
+  pregunta: string;
+  respuesta: string;
+}
+
+export interface BlogPostFeaturedImage {
+  sourceUrl: string;
+  altText: string;
+}
+
+export interface BlogPostFields {
+  blogTitle?: string;
+  blogExcerpt: string;
+  blogCategory: string;
+  blogContent: string;
+  blogReadTime: string;
+  featuredImage?: BlogPostFeaturedImage | null;
+  citableQuotes?: string;
+  faq?: BlogPostFAQ[];
+}
+
+export interface BlogPost {
+  slug: string;
+  title: string;
+  date: string;
+  blogFields: BlogPostFields;
+}
+
+interface GetBlogPostResponse {
+  post: BlogPost | null;
+}
+
+interface GetBlogPostsResponse {
+  posts: {
+    nodes: { slug: string }[];
+  };
+}
 
 const GET_BLOG_POST_BY_SLUG = gql`
   query GetBlogPostBySlug($slug: ID!) {
@@ -38,11 +76,11 @@ const GET_BLOG_POST_BY_SLUG = gql`
   }
 `;
 
-export const getBlogPost = cache(async (slug: string) => {
+export const getBlogPost = cache(async (slug: string): Promise<BlogPost | null> => {
   if (!endpoint) return null;
   try {
-    const data: any = await graphQLClient.request(GET_BLOG_POST_BY_SLUG, { slug });
-    return data.post;
+    const data = await graphQLClient.request<GetBlogPostResponse>(GET_BLOG_POST_BY_SLUG, { slug });
+    return data.post ?? null;
   } catch (error) {
     console.error(`Error fetching blog post ${slug}:`, error);
     return null;
@@ -59,11 +97,11 @@ const GET_BLOG_POSTS = gql`
   }
 `;
 
-export const getBlogPosts = cache(async () => {
+export const getBlogPosts = cache(async (): Promise<{ slug: string }[]> => {
   if (!endpoint) return [];
   try {
-    const data: any = await graphQLClient.request(GET_BLOG_POSTS);
-    return data.posts.nodes || [];
+    const data = await graphQLClient.request<GetBlogPostsResponse>(GET_BLOG_POSTS);
+    return data.posts?.nodes ?? [];
   } catch (error) {
     console.error("Error fetching blog posts slugs:", error);
     return [];

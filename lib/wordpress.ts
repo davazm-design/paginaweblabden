@@ -15,11 +15,11 @@ export const graphQLClient = new GraphQLClient(endpoint);
 
 // --- Interfaces para el Blog ---
 export interface WPPost {
-  slug: string;
+  slug?: string;
   title: string;
   excerpt: string;
   date: string;
-  content: string;
+  content?: string;
   featuredImage?: {
     node: {
       sourceUrl: string;
@@ -28,6 +28,75 @@ export interface WPPost {
   categories: {
     nodes: Array<{ name: string }>;
   };
+}
+
+// --- Responses crudos de WPGraphQL ---
+
+interface GetAllPostsResponse {
+  posts: { nodes: WPPost[] };
+}
+
+interface GetPostBySlugResponse {
+  post: WPPost | null;
+}
+
+// HomeFields refleja los campos ACF individuales del custom post "home".
+// Todos opcionales: ACF puede no tenerlos definidos sin romper la query.
+interface HomeFieldsRaw {
+  heroBadgeText?: string;
+  heroTitle?: string;
+  heroSubtitle?: string;
+  heroCtaText?: string;
+  heroSecondaryButtonText?: string;
+  heroFooterText?: string;
+
+  problemTitle?: string;
+  problemDescription?: string;
+  problemCard1Title?: string;
+  problemCard1Description?: string;
+  problemCard2Title?: string;
+  problemCard2Description?: string;
+  problemCard3Title?: string;
+  problemCard3Description?: string;
+
+  solutionTitle?: string;
+  solutionSubtitle?: string;
+  solutionCard1Title?: string;
+  solutionCard1Description?: string;
+  solutionCard2Title?: string;
+  solutionCard2Description?: string;
+  solutionCard3Title?: string;
+  solutionCard3Description?: string;
+
+  howItWorksTitle?: string;
+  howItWorksStep1Title?: string;
+  howItWorksStep1Description?: string;
+  howItWorksStep2Title?: string;
+  howItWorksStep2Description?: string;
+  howItWorksStep3Title?: string;
+  howItWorksStep3Description?: string;
+
+  dashboardPreviewTitle?: string;
+  dashboardPreviewDescription?: string;
+
+  securityTitle?: string;
+  securityFeature1Title?: string;
+  securityFeature1Description?: string;
+  securityFeature2Title?: string;
+  securityFeature2Description?: string;
+  securityFeature3Title?: string;
+  securityFeature3Description?: string;
+
+  finalCtaTitle?: string;
+  finalCtaDescription?: string;
+  finalCtaButtonText?: string;
+  finalCtaDisclaimer?: string;
+
+  footerTagline?: string;
+}
+
+interface GetHomeFieldsResponse {
+  pageBy: { homeFields: HomeFieldsRaw } | null;
 }
 
 // --- Interfaces para el Copy de la Web (ACF) ---
@@ -160,13 +229,13 @@ export const GET_HOME_FIELDS = gql`
 // --- Helper Functions ---
 
 export async function getAllPosts(): Promise<WPPost[]> {
-  const data: any = await graphQLClient.request(GET_ALL_POSTS);
+  const data = await graphQLClient.request<GetAllPostsResponse>(GET_ALL_POSTS);
   return data.posts.nodes;
 }
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
   try {
-    const data: any = await graphQLClient.request(GET_POST_BY_SLUG, { slug });
+    const data = await graphQLClient.request<GetPostBySlugResponse>(GET_POST_BY_SLUG, { slug });
     return data.post;
   } catch (error) {
     console.error("Error fetching post by slug:", error);
@@ -176,7 +245,7 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
 
 export async function getHomeFields() {
   try {
-    const data: any = await graphQLClient.request(GET_HOME_FIELDS);
+    const data = await graphQLClient.request<GetHomeFieldsResponse>(GET_HOME_FIELDS);
     const raw = data.pageBy?.homeFields;
 
     if (!raw) return null;
@@ -284,55 +353,67 @@ export async function getHomeFields() {
 
 export async function getHomeDataStruct(): Promise<HomePageDomain | null> {
   try {
-    const data: any = await graphQLClient.request(GET_HOME_FIELDS);
+    const data = await graphQLClient.request<GetHomeFieldsResponse>(GET_HOME_FIELDS);
     const raw = data.pageBy?.homeFields;
 
-    if (!raw) return null;
+    // Sin raw o sin el copy crítico del hero el sitio queda mudo: activamos error.tsx.
+    if (!raw || !raw.heroTitle || !raw.heroCtaText) return null;
+
+    const pushIfTitled = <T extends { title?: string }>(
+      list: { title: string; description: string }[],
+      item: T,
+      description?: string
+    ) => {
+      if (item.title) list.push({ title: item.title, description: description ?? "" });
+    };
+
+    const problemCards: { title: string; description: string }[] = [];
+    pushIfTitled(problemCards, { title: raw.problemCard1Title }, raw.problemCard1Description);
+    pushIfTitled(problemCards, { title: raw.problemCard2Title }, raw.problemCard2Description);
+    pushIfTitled(problemCards, { title: raw.problemCard3Title }, raw.problemCard3Description);
+
+    const solutionCards: { title: string; description: string }[] = [];
+    pushIfTitled(solutionCards, { title: raw.solutionCard1Title }, raw.solutionCard1Description);
+    pushIfTitled(solutionCards, { title: raw.solutionCard2Title }, raw.solutionCard2Description);
+    pushIfTitled(solutionCards, { title: raw.solutionCard3Title }, raw.solutionCard3Description);
+
+    const steps: { number: string; title: string; description: string }[] = [];
+    if (raw.howItWorksStep1Title) steps.push({ number: "01", title: raw.howItWorksStep1Title, description: raw.howItWorksStep1Description ?? "" });
+    if (raw.howItWorksStep2Title) steps.push({ number: "02", title: raw.howItWorksStep2Title, description: raw.howItWorksStep2Description ?? "" });
+    if (raw.howItWorksStep3Title) steps.push({ number: "03", title: raw.howItWorksStep3Title, description: raw.howItWorksStep3Description ?? "" });
 
     return {
       hero: {
-        badge: raw.heroBadgeText,
+        badge: raw.heroBadgeText ?? "",
         title: raw.heroTitle,
-        subtitle: raw.heroSubtitle,
+        subtitle: raw.heroSubtitle ?? "",
         ctaPrimary: raw.heroCtaText,
-        ctaSecondary: raw.heroSecondaryButtonText,
-        footerText: raw.heroFooterText
+        ctaSecondary: raw.heroSecondaryButtonText ?? "",
+        footerText: raw.heroFooterText ?? ""
       },
       problem: {
-        title: raw.problemTitle,
-        description: raw.problemDescription,
-        cards: [
-          { title: raw.problemCard1Title, description: raw.problemCard1Description },
-          { title: raw.problemCard2Title, description: raw.problemCard2Description },
-          { title: raw.problemCard3Title, description: raw.problemCard3Description }
-        ].filter(c => c.title)
+        title: raw.problemTitle ?? "",
+        description: raw.problemDescription ?? "",
+        cards: problemCards
       },
       solution: {
-        title: raw.solutionTitle,
-        subtitle: raw.solutionSubtitle,
-        cards: [
-          { title: raw.solutionCard1Title, description: raw.solutionCard1Description },
-          { title: raw.solutionCard2Title, description: raw.solutionCard2Description },
-          { title: raw.solutionCard3Title, description: raw.solutionCard3Description }
-        ].filter(c => c.title)
+        title: raw.solutionTitle ?? "",
+        subtitle: raw.solutionSubtitle ?? "",
+        cards: solutionCards
       },
       howItWorks: {
-        title: raw.howItWorksTitle,
-        steps: [
-          { number: "01", title: raw.howItWorksStep1Title, description: raw.howItWorksStep1Description },
-          { number: "02", title: raw.howItWorksStep2Title, description: raw.howItWorksStep2Description },
-          { number: "03", title: raw.howItWorksStep3Title, description: raw.howItWorksStep3Description }
-        ].filter(s => s.title),
+        title: raw.howItWorksTitle ?? "",
+        steps,
         dashboardPreview: {
-          title: raw.dashboardPreviewTitle,
-          description: raw.dashboardPreviewDescription
+          title: raw.dashboardPreviewTitle ?? "",
+          description: raw.dashboardPreviewDescription ?? ""
         }
       },
       // Security: cuando ACF tenga securityFeature*Title/Description y finalCta*,
       // añadirlos a GET_HOME_FIELDS y mapearlos aquí. Hoy SecuritySection usa sus defaults internos.
       security: undefined,
       footer: {
-        tagline: raw.footerTagline
+        tagline: raw.footerTagline ?? ""
       }
     };
   } catch (error) {

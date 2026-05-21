@@ -1,7 +1,6 @@
 "use client";
 
 import { Button } from "@/components/ui/button";
-import { useEffect, useState } from "react";
 import {
     Facebook,
     Twitter,
@@ -15,18 +14,13 @@ interface ShareBoxProps {
     slug: string;
 }
 
-export function ShareBox({ title, slug }: ShareBoxProps) {
-    const [url, setUrl] = useState("");
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com";
 
-    useEffect(() => {
-        if (typeof window !== "undefined") {
-            setUrl(window.location.href);
-        }
-    }, []);
+export function ShareBox({ title, slug }: ShareBoxProps) {
+    // URL canónica construida sin window.location (evita hydration mismatch + setState-in-effect).
+    const url = `${SITE_URL}/blog/${slug}`;
 
     const handleShare = (platform: string) => {
-        if (!url) return;
-
         let shareUrl = "";
         const text = encodeURIComponent(title);
         const encodedUrl = encodeURIComponent(url);

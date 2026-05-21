@@ -92,7 +92,7 @@ export default function CompanyPage() {
                             </div>
                             <h3 className="text-xl font-bold text-[#0F172A] mb-3">Seguridad Primero</h3>
                             <p className="text-[#475569] text-sm leading-relaxed">
-                                Sabemos que manejas datos sensibles de pacientes. Por eso, la seguridad no es una "característica", es la base de todo lo que construimos.
+                                Sabemos que manejas datos sensibles de pacientes. Por eso, la seguridad no es una &laquo;característica&raquo;, es la base de todo lo que construimos.
                             </p>
                         </div>
                     </div>

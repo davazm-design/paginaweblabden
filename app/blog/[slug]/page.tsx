@@ -38,8 +38,8 @@ function decodeHTML(html: string) {
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
     const { slug } = await params;
 
-    // Fetch data (reusing same logic, Next.js naturally dedupes request if cached or same rendering cycle)
-    let wpPost = await getBlogPost(slug);
+    // getBlogPost está envuelto en React.cache(): generateMetadata y el componente comparten resultado.
+    const wpPost = await getBlogPost(slug);
     const localPost = blogPosts.find((p) => p.slug === slug);
 
     if (!wpPost && !localPost) return {};
@@ -82,11 +82,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 // 2. Static Params (SSG)
 // -----------------------------------------------------------------------------
 export async function generateStaticParams() {
-    const localParams = blogPosts.map((post: any) => ({ slug: post.slug }));
+    const localSlugs = blogPosts.map((post) => post.slug);
     const wpPosts = await getBlogPosts();
-    const wpParams = wpPosts.map((post: any) => ({ slug: post.slug }));
-    const allSlugs = new Set([...localParams.map((p: { slug: string }) => p.slug), ...wpParams.map((p: { slug: string }) => p.slug)]);
-    return Array.from(allSlugs).map(slug => ({ slug }));
+    const wpSlugs = wpPosts.map((post) => post.slug);
+    const allSlugs = new Set<string>([...localSlugs, ...wpSlugs]);
+    return Array.from(allSlugs).map((slug) => ({ slug }));
 }
 
 // -----------------------------------------------------------------------------
@@ -95,8 +95,7 @@ export async function generateStaticParams() {
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params;
 
-    // Fetch Data
-    let wpPost = await getBlogPost(slug);
+    const wpPost = await getBlogPost(slug);
     const localPost = blogPosts.find((p) => p.slug === slug);
 
     if (!wpPost && !localPost) notFound();
@@ -135,7 +134,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
     return (
         <main className="min-h-screen bg-background text-foreground font-sans selection:bg-sky-500/30 transition-colors duration-300">
-            <FAQSchema faqs={post.faq} />
+            <FAQSchema faqs={post.faq ?? []} />
             <Navbar />
 
             <article className="pt-32 pb-20">
