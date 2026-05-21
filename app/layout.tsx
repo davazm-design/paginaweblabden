@@ -32,11 +32,8 @@ export const metadata: Metadata = {
     creator: "LABDEN",
     publisher: "LABDEN",
     icons: {
-        icon: [
-            { url: "/icon.svg", type: "image/svg+xml" },
-            { url: "/app-icon-blue.png?v=3", type: "image/png" },
-        ],
-        apple: "/app-icon-blue.png?v=3",
+        icon: { url: "/icon.svg", type: "image/svg+xml" },
+        // TODO: añadir apple-icon.png (180×180, optimizado) cuando el equipo de diseño lo provea.
     },
     alternates: { canonical: "/" },
     openGraph: {

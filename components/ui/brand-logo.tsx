@@ -10,13 +10,12 @@ interface BrandLogoProps {
 export function BrandLogo({ className = "", textClassName = "", imageClassName = "w-12 h-12", showText = true }: BrandLogoProps) {
     return (
         <div className={`inline-flex items-center gap-1.5 ${className}`}>
-            {/* RASTER ICON: User's selected "Final" Image */}
             <div className={`relative shrink-0 ${imageClassName}`}>
                 <Image
-                    src="/app-icon-blue.png"
-                    alt="Labden Icon"
+                    src="/icon.svg"
+                    alt="LABDEN"
                     fill
-                    className="object-contain" // Using new Blue Square design
+                    className="object-contain"
                     priority
                 />
             </div>
