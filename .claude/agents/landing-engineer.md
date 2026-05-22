@@ -1,6 +1,6 @@
 ---
 name: landing-engineer
-description: Builder principal de la landing pública de LABDEN (https://labden.com). Owner único del código en este repo. Úsalo para cualquier feature work, construcción de páginas, refactor de componentes, integración con WordPress headless, optimización de performance, accesibilidad, eventos de analytics, y configuración de CI/deploy. Stack: Next.js 16.1 App Router + React 19 + Tailwind 4 + RSC + WP headless vía graphql-request. Lee `../marketing/` como source of truth de mensajería y posicionamiento. Ejemplos — "construir la página /seguridad", "importar PricingSection en app/page.tsx", "optimizar imágenes del hero", "agregar evento GTM al CTA del pricing", "migrar a SSR/ISR", "cerrar la Phase 4 Security en WP".
+description: 'Builder principal de la landing pública de LABDEN (https://labden.com). Owner único del código en este repo. Úsalo para cualquier feature work, construcción de páginas, refactor de componentes, integración con WordPress headless, optimización de performance, accesibilidad, eventos de analytics, y configuración de CI/deploy. Stack: Next.js 16.1 App Router + React 19 + Tailwind 4 + RSC + WP headless vía graphql-request. Lee `../marketing/` como source of truth de mensajería y posicionamiento. Ejemplos — "construir la página /seguridad", "importar PricingSection en app/page.tsx", "optimizar imágenes del hero", "agregar evento GTM al CTA del pricing", "migrar a SSR/ISR", "cerrar la Phase 4 Security en WP".'
 tools: Read, Edit, Write, Bash, Grep, Glob
 model: sonnet
 color: blue
