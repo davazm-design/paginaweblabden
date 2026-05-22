@@ -30,23 +30,20 @@ Este archivo se carga automáticamente en cada sesión que abra Claude Code aqu�
 | Iconos | Lucide React |
 | Markdown | react-markdown + rehype + remark |
 | Analytics | Google Tag Manager + dataLayer custom |
-| Testing | Playwright (E2E) |
-| Modo de build actual | `output: "export"` *(bajo revisión — ver decisión arquitectónica)* |
+| Testing | Playwright (E2E) + Lighthouse CI |
+| CI | GitHub Actions (`.github/workflows/ci.yml`) — lint, typecheck, smoke, Lighthouse |
+| Modo de build | **SSR/ISR en Vercel** (migrado mayo 2026 — `revalidate: 300` en home y blog) |
 
 ---
 
-## Decisión arquitectónica recomendada (pendiente de OK humano)
+## Arquitectura editorial (decidida y vigente)
 
-**Recomendación**: migrar de `output: "export"` a **SSR/ISR en Vercel**.
-
-**Por qué**:
-1. CSP por `middleware.ts` es imposible con static export — un bloqueador de seguridad.
-2. Next Image optimization (AVIF/WebP, srcset responsive) está desactivado por `images.unoptimized: true`. Recuperarlo da +20-30 puntos de Lighthouse móvil.
-3. `revalidate: 300` permite que Marketing edite WP y vea cambios en 5 min sin rebuild manual.
-4. Server-only env vars (endpoint WP fuera del bundle del cliente).
-5. El "ahorro" de hostear estático (~$20/mo) es ruido vs. la fricción operativa de no tener ISR.
-
-**Estado**: NO migrar sin OK explícito del humano. Por ahora, todo el código asume `output: "export"`.
+- `output: "export"` **fue eliminado** en mayo 2026. El sitio requiere host con Node (Vercel/Netlify/Cloud Run).
+- `middleware.ts` aplica CSP estricta + HSTS + X-Frame-Options + Permissions-Policy.
+- `app/api/revalidate/route.ts` recibe webhook de WP (`x-revalidate-secret`) y dispara `revalidatePath` on-demand. Sin webhook, ISR de 300 s.
+- WP queries pasan por `React.cache()` para dedupe entre `generateMetadata` y el componente.
+- `WORDPRESS_API_URL` es **server-only** (sin prefijo `NEXT_PUBLIC_`). El endpoint del CMS no entra al bundle del cliente.
+- HTML de WP renderizado vía `dangerouslySetInnerHTML` pasa siempre por `isomorphic-dompurify`.
 
 ---
 
@@ -102,41 +99,33 @@ marketing/
 
 ---
 
-## Hallazgos críticos vigentes (auditoría mayo 2026)
+## Estado actual (mayo 2026)
 
-Estos son los gaps activos identificados. Pueden estar arreglándose en sesiones paralelas — **antes de tocar uno, verificar estado actual con `git status` y `git log --oneline -20`**.
+Auditoría inicial detectó 24 gaps críticos. La mayoría se cerraron en un refactor de 8 sprints — ver `git log --oneline` para los commits. **Antes de tocar algo, verifica `git status` y `git log --oneline -20`** por si otra sesión ya lo movió.
 
-### Bloqueadores de seguridad
-1. **XSS vivo** en `app/blog/[slug]/page.tsx:149,193` — `dangerouslySetInnerHTML` con output crudo de WP. Sanitizar con `isomorphic-dompurify`.
-2. **Endpoint WP filtrado** — `test-wp-connection.js` en root con URL Hostinger hardcoded. Mover a `scripts/` con `process.env.WORDPRESS_API_URL` o borrar.
-3. **`NEXT_PUBLIC_WORDPRESS_API_URL`** mete el endpoint en el bundle del cliente. Renombrar a `WORDPRESS_API_URL` (server-only).
-4. **Sin CSP, sin middleware** — limitado por `output: "export"`. Cierra después de la decisión arquitectónica.
-5. **GraphQL introspection** probablemente abierta en el endpoint WP — verificar y cerrar en producción.
+### ✅ Cerrado en el refactor de mayo 2026
 
-### Bloqueadores de conversión
-6. **`PricingSection` huérfana** — componente completo (180 LoC en `components/home/pricing-section.tsx`) NO importado en ningún sitio. Prioridad #1 de funnel: importar en `app/precios/page.tsx`.
-7. **Páginas placeholder** que el navbar enlaza: `/contacto`, `/seguridad`, `/empresa` están como stubs de 14 líneas.
-8. **`/login` y `/auth/login` duplicadas** — unificar con `redirect()`.
-9. **CTAs apuntan a `/auth/register`** que no existe — funnel roto.
+- **Seguridad**: XSS sanitizado con DOMPurify (blog title/content + FAQ). Endpoint WP filtrado eliminado (`test-wp-connection.js`). `WORDPRESS_API_URL` server-only. CSP + HSTS + X-Frame-Options + Permissions-Policy vía `middleware.ts`.
+- **Funnel**: `PricingSection` importada en home + `/precios` real con planes Base $550 / Pro $850 / Enterprise. `/contacto` y `/seguridad` reales (no placeholders). `/login` → redirect a `/auth/login`. Todos los CTAs `/auth/register` redirigidos a `/precios`.
+- **SEO**: `app/sitemap.ts`, `app/robots.ts`, `app/opengraph-image.tsx`, `metadataBase`, JSON-LD Organization global, `generateMetadata` por ruta.
+- **Higiene**: `/debug-logos` eliminado. Versiones huérfanas de logo eliminadas. HTML inválido corregido. Doble `<FAQSchema>` deduplicado. `console.log` debug fuera. `framer-motion` removido. `axios`/`cheerio` a `devDependencies`. `.DS_Store` purgados. `GTM_ID` → `NEXT_PUBLIC_GTM_ID`.
+- **Performance**: `/public` 3.6 MB → 804 KB (logo PNG 660 KB → SVG 1.7 KB, huérfanos eliminados). Next Image optimization activa.
+- **DX**: README real (235 líneas), `.env.example`, `app/apple-icon.tsx`, CI con lint + typecheck + Playwright smoke + Lighthouse.
+- **Calidad**: 0 `any` types, 0 lint errors, `tsc --noEmit` limpio.
 
-### Higiene
-10. **`/debug-logos` accesible públicamente** — borrar.
-11. **5 versiones huérfanas de logo** en `public/` (`brand-icon-final-v2/v3/v4.png`, etc.) — borrar las no usadas.
-12. **HTML inválido** — `<p>` dentro de `<ul>` en `components/home/pricing-section.tsx:106`.
-13. **Doble `<FAQSchema>`** en `app/blog/[slug]/page.tsx` (líneas 132 y 241).
-14. **`console.log`** en `app/blog/page.tsx:28-30`.
-15. **`framer-motion` en `dependencies`** posiblemente sin uso — verificar y eliminar.
-16. **`axios` y `cheerio`** en `dependencies` cuando solo `qa-seo/` los usa — mover a `devDependencies`.
-17. **`.DS_Store`** commiteados — `git rm --cached`.
-18. **GTM ID hardcoded** en `components/google-tag-manager.tsx:3` — mover a `NEXT_PUBLIC_GTM_ID`.
+### ⚠️ Abierto — requiere acción humana o WP
 
-### Deuda funcional
-19. **"Phase 4 Security" hardcoded** en `lib/wordpress.ts:331-340` — migrar a ACF.
-20. **Sin `app/sitemap.ts`, `app/robots.ts`, `metadataBase`, JSON-LD Organization, opengraph-image** — dominio del `landing-seo-specialist`.
-21. **3.6 MB en `public/`** — target <600 KB. Imágenes a WebP/AVIF.
-22. **Sin CI/CD** — no hay `.github/workflows/`.
-23. **Sin Lighthouse CI, sin axe-core, sin contract test de WP**.
-24. **`README.md`** es el boilerplate de create-next-app — reescribir.
+- **Introspección GraphQL** del endpoint WP de producción: cerrarla en Hostinger/proveedor (fuera del código).
+- **Campos ACF de Security en WP**: opcional. Hoy `SecuritySection` usa defaults internos sensatos. Si Marketing quiere editar esa sección sin tocar código, añadir `securityFeature{1-3}{Title,Description}` y `finalCta{Title,Description,ButtonText,Disclaimer}` en ACF + actualizar `GET_HOME_FIELDS` y `getHomeDataStruct` en `lib/wordpress.ts`.
+- **24 posts en `lib/blog-data.ts`**: pendientes de migrar a WP. Cuando estén en WP, eliminar `blog-data.ts` y simplificar `app/blog/[slug]/page.tsx` (rama `isWP ? wpPost : localPost`).
+- **`marketing/03_MESSAGING_PILLARS.md`** está vacío (5 pilares "Pendiente"). Cuando se complete, vale otra pasada de validación de copy global.
+- **Deploy**: el repo ya no es `output: "export"`. Si todavía no se migró el hosting a Vercel/Netlify/Cloud Run, hacerlo. Configurar en el host: `WORDPRESS_API_URL`, `NEXT_PUBLIC_SITE_URL`, `REVALIDATE_SECRET`, `NEXT_PUBLIC_GTM_ID`.
+- **Webhook PHP en WP**: añadir el snippet del README (`save_post` + `acf/save_post`) para que cambios en WP propaguen a prod en <10 s sin esperar el ISR de 5 min.
+
+### 💤 Deuda aceptada (no urgente)
+
+- CSP usa `'unsafe-inline'` en `script-src` por GTM. Refactor a nonce-based queda como deuda futura (no recomendado hasta que un cliente B2B exija SOC2/PCI strict).
+- 2 imágenes residuales en `/public` (`dashboard-preview.png` 107 KB, `premium-plans-icon.png` 2.3 KB) — `next/image` las sirve en AVIF/WebP, OK.
 
 ---
 
@@ -168,7 +157,6 @@ Si añadiste imagen nueva en `public/`:
 - **No escribir** en `../marketing/*` — solo lectura.
 - **No escribir secretos** en ningún archivo del repo. `.env*` está en `.gitignore`; si necesitas un env var nuevo, documentarlo en `.env.example` y avisar al humano.
 - **No inventar copy** que no esté en `marketing/` sin OK explícito.
-- **No migrar export → SSR/ISR** sin OK explícito del humano (es decisión arquitectónica).
 - **No mergear** sin pasar `landing-security-auditor` cuando el cambio caiga en su lista de triggers.
 - **No expandir scope** — si la tarea es "importar PricingSection", no aprovechar para refactorizar el Hero.
 - **No introducir dependencias nuevas** sin justificación clara y OK del humano.
