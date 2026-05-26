@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
+import { ContactForm } from "@/components/contact/contact-form";
 import { Mail, MessageSquare, Clock, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
@@ -21,13 +22,6 @@ const SUPPORT_EMAIL = "soporte@labden.com.mx";
 const SALES_EMAIL = "ventas@labden.com.mx";
 
 export default function ContactoPage() {
-    const mailtoSupport = `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent(
-        "Soporte LABDEN"
-    )}`;
-    const mailtoSales = `mailto:${SALES_EMAIL}?subject=${encodeURIComponent(
-        "Consulta comercial LABDEN"
-    )}`;
-
     return (
         <main className="min-h-screen bg-background text-foreground flex flex-col">
             <Navbar />
@@ -41,72 +35,84 @@ export default function ContactoPage() {
                         Hablemos
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                        Atendemos a laboratorios dentales en México y el resto de LATAM. Elige el canal que prefieras y te respondemos en horas hábiles.
+                        Atendemos a laboratorios dentales en México y el resto de LATAM. Escríbenos y te respondemos en menos de 24 horas hábiles.
                     </p>
                 </div>
             </section>
 
             <section className="py-20 bg-background">
                 <div className="container mx-auto px-4 max-w-5xl">
-                    <div className="grid md:grid-cols-2 gap-6">
-                        <a
-                            href={mailtoSales}
-                            className="group flex flex-col p-8 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
-                        >
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                    <MessageSquare className="w-5 h-5" />
-                                </span>
-                                <h2 className="text-xl font-bold text-foreground">Ventas</h2>
-                            </div>
-                            <p className="text-muted mb-6 leading-relaxed">
-                                ¿Quieres conocer LABDEN, ver una demo o pedir condiciones para varios usuarios?
-                            </p>
-                            <span className="mt-auto text-accent font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                                {SALES_EMAIL}
-                            </span>
-                        </a>
-
-                        <a
-                            href={mailtoSupport}
-                            className="group flex flex-col p-8 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
-                        >
-                            <div className="flex items-center gap-3 mb-4">
-                                <span className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
-                                    <Mail className="w-5 h-5" />
-                                </span>
-                                <h2 className="text-xl font-bold text-foreground">Soporte</h2>
-                            </div>
-                            <p className="text-muted mb-6 leading-relaxed">
-                                ¿Ya eres cliente y necesitas ayuda con tu cuenta, órdenes o facturación?
-                            </p>
-                            <span className="mt-auto text-accent font-semibold inline-flex items-center gap-2 group-hover:gap-3 transition-all">
-                                {SUPPORT_EMAIL}
-                            </span>
-                        </a>
-                    </div>
-
-                    <div className="mt-12 grid sm:grid-cols-2 gap-6">
-                        <div className="flex items-start gap-4 p-6 rounded-xl bg-surface border border-border">
-                            <span className="w-10 h-10 rounded-lg bg-surface-elevated text-muted flex items-center justify-center flex-shrink-0">
-                                <Clock className="w-5 h-5" />
-                            </span>
-                            <div>
-                                <h3 className="text-sm font-bold text-foreground mb-1">Horario de atención</h3>
-                                <p className="text-sm text-muted leading-relaxed">
-                                    Lunes a viernes, 9:00–18:00 (CDMX). Respondemos correos en menos de 24 h hábiles.
-                                </p>
-                            </div>
+                    <div className="grid lg:grid-cols-5 gap-12">
+                        <div className="lg:col-span-3">
+                            <h2 className="text-2xl font-bold text-foreground mb-6">
+                                Envíanos un mensaje
+                            </h2>
+                            <ContactForm />
                         </div>
-                        <div className="flex items-start gap-4 p-6 rounded-xl bg-surface border border-border">
-                            <span className="w-10 h-10 rounded-lg bg-surface-elevated text-muted flex items-center justify-center flex-shrink-0">
-                                <MapPin className="w-5 h-5" />
-                            </span>
-                            <div>
-                                <h3 className="text-sm font-bold text-foreground mb-1">Cobertura</h3>
-                                <p className="text-sm text-muted leading-relaxed">
-                                    Operamos desde México. Si tu lab está en otro país de LATAM, escríbenos y vemos.
+
+                        <div className="lg:col-span-2 space-y-6">
+                            <h2 className="text-2xl font-bold text-foreground mb-6">
+                                También puedes escribirnos directo
+                            </h2>
+
+                            <a
+                                href={`mailto:${SALES_EMAIL}?subject=${encodeURIComponent("Consulta comercial LABDEN")}`}
+                                className="group flex flex-col p-6 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
+                            >
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                        <MessageSquare className="w-4 h-4" />
+                                    </span>
+                                    <h3 className="text-lg font-bold text-foreground">Ventas</h3>
+                                </div>
+                                <p className="text-sm text-muted mb-4 leading-relaxed">
+                                    Demos, planes y condiciones para varios usuarios.
                                 </p>
+                                <span className="text-sm text-accent font-semibold">
+                                    {SALES_EMAIL}
+                                </span>
+                            </a>
+
+                            <a
+                                href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Soporte LABDEN")}`}
+                                className="group flex flex-col p-6 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
+                            >
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                        <Mail className="w-4 h-4" />
+                                    </span>
+                                    <h3 className="text-lg font-bold text-foreground">Soporte</h3>
+                                </div>
+                                <p className="text-sm text-muted mb-4 leading-relaxed">
+                                    Ayuda con tu cuenta, órdenes o facturación.
+                                </p>
+                                <span className="text-sm text-accent font-semibold">
+                                    {SUPPORT_EMAIL}
+                                </span>
+                            </a>
+
+                            <div className="flex items-start gap-4 p-6 rounded-xl bg-surface border border-border">
+                                <span className="w-9 h-9 rounded-lg bg-surface-elevated text-muted flex items-center justify-center flex-shrink-0">
+                                    <Clock className="w-4 h-4" />
+                                </span>
+                                <div>
+                                    <h3 className="text-sm font-bold text-foreground mb-1">Horario de atención</h3>
+                                    <p className="text-sm text-muted leading-relaxed">
+                                        Lunes a viernes, 9:00–18:00 (CDMX).
+                                    </p>
+                                </div>
+                            </div>
+
+                            <div className="flex items-start gap-4 p-6 rounded-xl bg-surface border border-border">
+                                <span className="w-9 h-9 rounded-lg bg-surface-elevated text-muted flex items-center justify-center flex-shrink-0">
+                                    <MapPin className="w-4 h-4" />
+                                </span>
+                                <div>
+                                    <h3 className="text-sm font-bold text-foreground mb-1">Cobertura</h3>
+                                    <p className="text-sm text-muted leading-relaxed">
+                                        México y LATAM.
+                                    </p>
+                                </div>
                             </div>
                         </div>
                     </div>

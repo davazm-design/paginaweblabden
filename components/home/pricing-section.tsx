@@ -22,9 +22,12 @@ export function PricingSection() {
                             Planes LABDEN
                         </h2>
                     </div>
-                    <p className="text-lg text-muted">
+                    <p className="text-lg text-muted mb-4">
                         Planes claros para crecer contigo.
                     </p>
+                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-semibold">
+                        Pago anual: 3 meses gratis
+                    </div>
                 </div>
 
                 {/* Pricing Cards Grid */}
@@ -43,8 +46,11 @@ export function PricingSection() {
                                 <span className="text-3xl font-bold text-foreground">Desde $550</span>
                                 <span className="text-muted font-medium">MXN / mes</span>
                             </div>
+                            <p className="text-xs text-muted mt-1 mb-2">
+                                Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$4,950/año</span> <span className="line-through">$6,600</span>
+                            </p>
                             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                                🧪 Prueba gratuita 14 días
+                                Prueba gratuita 14 días
                             </div>
                         </div>
 
@@ -97,7 +103,9 @@ export function PricingSection() {
                                 <span className="text-4xl font-bold text-foreground">$850</span>
                                 <span className="text-muted font-medium">MXN / mes</span>
                             </div>
-                            <span className="text-xs text-muted">Ahorra en retrabajos y tiempo</span>
+                            <p className="text-xs text-muted mt-1">
+                                Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$7,650/año</span> <span className="line-through">$10,200</span>
+                            </p>
                         </div>
 
                         <p className="text-xs font-bold text-foreground/60 uppercase tracking-widest mb-4">Todo lo del plan Base, más:</p>
