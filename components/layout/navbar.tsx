@@ -62,10 +62,10 @@ export function Navbar() {
                 {/* CTA */}
                 <div className="hidden md:flex items-center gap-4">
                     <ModeToggle />
-                    <Link href="/auth/login" className="text-sm font-medium text-muted hover:text-foreground transition-colors">
+                    <Link href="https://app.labden.com.mx" className="text-sm font-medium text-muted hover:text-foreground transition-colors">
                         Entrar
                     </Link>
-                    <Button variant="primary" size="sm" href="/precios" className="h-10 px-6">
+                    <Button variant="primary" size="sm" href="https://app.labden.com.mx/auth/register" className="h-10 px-6">
                         Prueba 14 días
                     </Button>
                 </div>
@@ -103,13 +103,13 @@ export function Navbar() {
                     ))}
                     <div className="h-px bg-border my-4" />
                     <Link
-                        href="/auth/login"
+                        href="https://app.labden.com.mx"
                         onClick={() => setIsOpen(false)}
                         className="block text-center py-4 text-foreground font-medium active:bg-accent/5 rounded-xl transition-colors"
                     >
                         Entrar
                     </Link>
-                    <Button variant="primary" size="lg" className="w-full active:scale-[0.98]" href="/precios" onClick={() => setIsOpen(false)}>
+                    <Button variant="primary" size="lg" className="w-full active:scale-[0.98]" href="https://app.labden.com.mx/auth/register" onClick={() => setIsOpen(false)}>
                         Comenzar ahora
                     </Button>
                 </div>
