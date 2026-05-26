@@ -36,7 +36,7 @@ Variables de entorno usadas por la app. Sin las marcadas como **requeridas**, el
 | Variable | Tipo | Requerida | Propósito |
 |----------|------|-----------|-----------|
 | `WORDPRESS_API_URL` | server-only | **sí** | Endpoint GraphQL de WP (no exponer en cliente — sin prefijo `NEXT_PUBLIC_`). |
-| `NEXT_PUBLIC_SITE_URL` | public | recomendada | Dominio canónico. Default `https://labden.com`. Útil para staging. |
+| `NEXT_PUBLIC_SITE_URL` | public | recomendada | Dominio canónico. Default `https://labden.com.mx`. Útil para staging. |
 | `REVALIDATE_SECRET` | server-only | sí en prod | Token para que WP llame al endpoint `/api/revalidate`. Generar con `openssl rand -base64 32`. |
 | `NEXT_PUBLIC_GTM_ID` | public | opcional | Container ID de Google Tag Manager. Si vacío, no se inyecta GTM (ideal para dev/staging). |
 | `BLOG_TEST_SLUG` | CI-only | opcional | Override del slug de blog que usa `playwright-seo.spec.ts`. |
@@ -125,7 +125,7 @@ Añade este snippet a `functions.php` o un mu-plugin:
 add_action('save_post', function ($post_id) {
     if (wp_is_post_revision($post_id) || wp_is_post_autosave($post_id)) return;
     $slug = get_post_field('post_name', $post_id);
-    $site = 'https://labden.com';
+    $site = 'https://labden.com.mx';
     wp_remote_post("{$site}/api/revalidate", [
         'headers' => [
             'Content-Type' => 'application/json',
@@ -140,7 +140,7 @@ add_action('save_post', function ($post_id) {
 // Cambios en ACF de la página "home"
 add_action('acf/save_post', function ($post_id) {
     if (get_post_field('post_name', $post_id) !== 'home') return;
-    $site = 'https://labden.com';
+    $site = 'https://labden.com.mx';
     wp_remote_post("{$site}/api/revalidate", [
         'headers' => [
             'Content-Type' => 'application/json',

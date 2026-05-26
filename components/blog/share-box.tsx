@@ -14,7 +14,7 @@ interface ShareBoxProps {
     slug: string;
 }
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
 
 export function ShareBox({ title, slug }: ShareBoxProps) {
     // URL canónica construida sin window.location (evita hydration mismatch + setState-in-effect).

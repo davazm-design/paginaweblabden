@@ -15,7 +15,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             "@type": "ListItem",
             "position": index + 1,
             "name": item.label,
-            "item": `${process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com"}${item.href}`
+            "item": `${process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx"}${item.href}`
         }))
     };
 

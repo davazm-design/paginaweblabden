@@ -2,13 +2,13 @@ import { cache } from 'react';
 import { GraphQLClient, gql } from 'graphql-request';
 
 // Server-only: el endpoint del CMS no debe entrar al bundle del cliente.
-const endpoint = process.env.WORDPRESS_API_URL || '';
+const endpoint = process.env.WORDPRESS_API_URL;
 
 if (!endpoint) {
-  console.error("ERROR: WORDPRESS_API_URL is not defined in environment");
+  console.warn("[wordpress-blog] WORDPRESS_API_URL no está configurada. Blog WP deshabilitado.");
 }
 
-const graphQLClient = new GraphQLClient(endpoint);
+const graphQLClient = endpoint ? new GraphQLClient(endpoint) : null;
 
 // --- Types: respuesta cruda de WPGraphQL para blog posts ---
 
@@ -79,7 +79,7 @@ const GET_BLOG_POST_BY_SLUG = gql`
 export const getBlogPost = cache(async (slug: string): Promise<BlogPost | null> => {
   if (!endpoint) return null;
   try {
-    const data = await graphQLClient.request<GetBlogPostResponse>(GET_BLOG_POST_BY_SLUG, { slug });
+    const data = await graphQLClient!.request<GetBlogPostResponse>(GET_BLOG_POST_BY_SLUG, { slug });
     return data.post ?? null;
   } catch (error) {
     console.error(`Error fetching blog post ${slug}:`, error);
@@ -100,7 +100,7 @@ const GET_BLOG_POSTS = gql`
 export const getBlogPosts = cache(async (): Promise<{ slug: string }[]> => {
   if (!endpoint) return [];
   try {
-    const data = await graphQLClient.request<GetBlogPostsResponse>(GET_BLOG_POSTS);
+    const data = await graphQLClient!.request<GetBlogPostsResponse>(GET_BLOG_POSTS);
     return data.posts?.nodes ?? [];
   } catch (error) {
     console.error("Error fetching blog posts slugs:", error);

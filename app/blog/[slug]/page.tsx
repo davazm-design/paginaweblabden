@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
     const excerpt = isWP ? wpPost.blogFields.blogExcerpt : localPost!.excerpt;
     const featuredImage = isWP && wpPost.blogFields.featuredImage?.sourceUrl
         ? wpPost.blogFields.featuredImage.sourceUrl
-        : '/og-default.png'; // Fallback image
+        : '/opengraph-image'; // Fallback: OG image global del sitio (app/opengraph-image.tsx)
 
     return {
         title: `${title} | Blog LABDEN`,

@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-data";
 import { getBlogPosts } from "@/lib/wordpress-blog";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
 
 const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
@@ -28,7 +28,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
     const localBlogEntries: MetadataRoute.Sitemap = blogPosts.map((p) => ({
         url: `${SITE_URL}/blog/${p.slug}`,
-        lastModified: p.date ? new Date(p.date) : now,
+        lastModified: now,
         changeFrequency: "monthly",
         priority: 0.6,
     }));

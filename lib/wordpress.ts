@@ -5,13 +5,17 @@ import type { HomePageDomain } from './types';
 const endpoint = process.env.WORDPRESS_API_URL;
 
 if (!endpoint) {
-  throw new Error(
-    'WORDPRESS_API_URL no está configurada. ' +
-    'Agrega esta variable a tu archivo .env.local (sin prefijo NEXT_PUBLIC_).'
+  // Advertencia en lugar de throw: permite que el build produzca la home con fallback.
+  // En producción la var debe estar configurada; si no, las queries devuelven null.
+  console.warn(
+    '[wordpress] WORDPRESS_API_URL no está configurada. ' +
+    'El sitio usará contenido de fallback hasta que se configure la variable.'
   );
 }
 
-export const graphQLClient = new GraphQLClient(endpoint);
+export const graphQLClient = endpoint
+  ? new GraphQLClient(endpoint)
+  : null;
 
 // --- Interfaces para el Blog ---
 export interface WPPost {
@@ -229,11 +233,13 @@ export const GET_HOME_FIELDS = gql`
 // --- Helper Functions ---
 
 export async function getAllPosts(): Promise<WPPost[]> {
+  if (!graphQLClient) return [];
   const data = await graphQLClient.request<GetAllPostsResponse>(GET_ALL_POSTS);
   return data.posts.nodes;
 }
 
 export async function getPostBySlug(slug: string): Promise<WPPost | null> {
+  if (!graphQLClient) return null;
   try {
     const data = await graphQLClient.request<GetPostBySlugResponse>(GET_POST_BY_SLUG, { slug });
     return data.post;
@@ -244,6 +250,7 @@ export async function getPostBySlug(slug: string): Promise<WPPost | null> {
 }
 
 export async function getHomeFields() {
+  if (!graphQLClient) return null;
   try {
     const data = await graphQLClient.request<GetHomeFieldsResponse>(GET_HOME_FIELDS);
     const raw = data.pageBy?.homeFields;
@@ -352,6 +359,7 @@ export async function getHomeFields() {
 }
 
 export async function getHomeDataStruct(): Promise<HomePageDomain | null> {
+  if (!graphQLClient) return null;
   try {
     const data = await graphQLClient.request<GetHomeFieldsResponse>(GET_HOME_FIELDS);
     const raw = data.pageBy?.homeFields;

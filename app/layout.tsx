@@ -8,7 +8,7 @@ import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/google-
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com";
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),

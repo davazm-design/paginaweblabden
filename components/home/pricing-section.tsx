@@ -75,7 +75,7 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <Button variant="primary" size="lg" className="w-full h-12" href="/precios">
+                        <Button variant="primary" size="lg" className="w-full h-12" href="/auth/login">
                             Probar gratis 14 días
                         </Button>
                     </div>
@@ -124,7 +124,7 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <Button variant="primary" size="lg" className="w-full h-14 text-lg" href="/precios">
+                        <Button variant="primary" size="lg" className="w-full h-14 text-lg" href="/auth/login">
                             Probar gratis 14 días
                         </Button>
                     </div>

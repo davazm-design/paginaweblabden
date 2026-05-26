@@ -11,7 +11,7 @@ export const dynamic = "force-dynamic";
  * Requiere REVALIDATE_SECRET configurado en el entorno.
  *
  * Uso desde WP:
- *   POST https://labden.com/api/revalidate
+ *   POST https://labden.com.mx/api/revalidate
  *   Header: x-revalidate-secret: <secret>
  *   Body: { "paths": ["/", "/blog/mi-slug"] }
  */
