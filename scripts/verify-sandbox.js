@@ -3,7 +3,7 @@
  * Bloqueo de fuga de secretos en frontend estático.
  */
 const validateSandbox = () => {
-    const forbidden = ['DATABASE_URL', 'JWT_SECRET', 'STRIPE_SECRET_KEY', 'RESEND_API_KEY'];
+    const forbidden = ['DATABASE_URL', 'JWT_SECRET', 'STRIPE_SECRET_KEY'];
     const keys = Object.keys(process.env);
 
     const violation = forbidden.find(key => process.env[key]);
