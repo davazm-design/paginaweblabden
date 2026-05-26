@@ -29,6 +29,7 @@ export function Navbar() {
         { name: "Planes", href: "/precios" },
         { name: "Empresa", href: "/empresa" },
         { name: "Blog", href: "/blog" },
+        { name: "Contacto", href: "/contacto" },
     ]
 
     return (
