@@ -1,29 +1,19 @@
 "use client"
 
-import { Check, Zap, Headset, Users } from "lucide-react"
+import { Check, Zap, Headset } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 
 export function PricingSection() {
     return (
         <section className="py-24 bg-background overflow-hidden">
             <div className="container mx-auto px-4">
                 {/* Header */}
-                <div className="text-center max-w-3xl mx-auto mb-16">
-                    <div className="flex items-center justify-center gap-4 mb-4">
-                        <Image 
-                            src="/premium-plans-icon.png" 
-                            alt="Premium Plans Icon" 
-                            width={56} 
-                            height={56}
-                            className="drop-shadow-lg"
-                        />
-                        <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                            Planes LabDen
-                        </h2>
-                    </div>
-                    <p className="text-lg text-muted mb-4">
-                        Planes claros para crecer contigo.
+                <div className="text-center max-w-3xl mx-auto mb-10">
+                    <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground mb-4">
+                        Planes LabDen
+                    </h2>
+                    <p className="text-lg text-muted">
+                        Planes claros para crecer contigo. Sin contratos largos, sin sorpresas.
                     </p>
                 </div>
 
@@ -76,7 +66,7 @@ export function PricingSection() {
                     <div className="flex flex-col p-8 rounded-2xl bg-surface border border-border transition-all hover:shadow-lg">
                         <div className="mb-6">
                             <h3 className="text-xl font-bold text-foreground mb-1">PLAN BASE</h3>
-                            <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">Digitalización Operativa</p>
+                            <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">Organiza tu operación</p>
                             <p className="text-sm text-muted">Para laboratorios que quieren dejar el papel y el WhatsApp sin fricción.</p>
                         </div>
 
@@ -100,7 +90,7 @@ export function PricingSection() {
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Órdenes digitales con odontograma</span>
+                                <span>Órdenes digitales claras</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -108,7 +98,7 @@ export function PricingSection() {
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Control básico de estatus</span>
+                                <span>Seguimiento por estatus</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -128,13 +118,13 @@ export function PricingSection() {
                     {/* PLAN PRO */}
                     <div className="flex flex-col p-8 rounded-2xl bg-surface-elevated border-2 border-accent relative shadow-xl transform md:scale-105 z-10">
                         <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-accent text-accent-foreground text-xs font-bold rounded-full shadow-lg">
-                            ⭐ El más elegido
+                            El más elegido
                         </div>
 
                         <div className="mb-6">
                             <h3 className="text-xl font-bold text-foreground mb-1">PLAN PRO</h3>
-                            <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">Control y Crecimiento</p>
-                            <p className="text-sm text-muted">Para laboratorios que necesitan visibilidad financiera y escala.</p>
+                            <p className="text-sm font-semibold text-accent uppercase tracking-wider mb-2">Control y crecimiento</p>
+                            <p className="text-sm text-muted">Para laboratorios que necesitan visibilidad financiera y quieren crecer.</p>
                         </div>
 
                         <div className="mb-8">
@@ -155,15 +145,15 @@ export function PricingSection() {
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Dashboard financiero</span>
+                                <span>Control de cobros e ingresos</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Cuentas por cobrar</span>
+                                <span>Cuentas por cobrar por clínica</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Métricas de productividad</span>
+                                <span>Reportes de actividad y productividad</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
@@ -180,18 +170,18 @@ export function PricingSection() {
                     <div className="flex flex-col p-8 rounded-2xl bg-surface/50 border border-border opacity-80 grayscale-[0.5] transition-all hover:grayscale-0 hover:opacity-100">
                         <div className="mb-6">
                             <div className="inline-flex items-center px-2 py-0.5 rounded bg-muted/20 text-muted text-[10px] font-bold uppercase tracking-widest mb-4">
-                                💬 Próximamente
+                                Próximamente
                             </div>
                             <h3 className="text-xl font-bold text-foreground mb-1">PLAN ENTERPRISE</h3>
-                            <p className="text-sm font-semibold text-muted uppercase tracking-wider mb-2">Transformación Digital</p>
+                            <p className="text-sm font-semibold text-muted uppercase tracking-wider mb-2">Para alto volumen</p>
                             <p className="text-sm text-muted">Para centros de producción y laboratorios de alto volumen.</p>
                         </div>
 
                         <div className="mb-8">
                             <div className="flex items-baseline gap-1">
-                                <span className="text-2xl font-bold text-muted">Custom</span>
+                                <span className="text-2xl font-bold text-muted">A medida</span>
                             </div>
-                            <span className="text-xs text-muted">Contacta con un asesor</span>
+                            <span className="text-xs text-muted">Hablemos de lo que necesitas</span>
                         </div>
 
                         <ul className="space-y-4 mb-8 flex-1">

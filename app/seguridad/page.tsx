@@ -67,7 +67,7 @@ export default function SeguridadPage() {
                         Las órdenes, doctores y cobros de tu lab, bajo control
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                        Diseñamos LabDen sobre prácticas estándar de seguridad para SaaS. Esto es lo que ya hacemos hoy y a qué nos comprometemos.
+                        Protegemos la información de tu laboratorio con las mejores prácticas de seguridad. Esto es lo que ya hacemos hoy y a qué nos comprometemos.
                     </p>
                 </div>
             </section>
