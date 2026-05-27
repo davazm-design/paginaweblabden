@@ -119,7 +119,7 @@ export default function SeguridadPage() {
                 </div>
             </section>
 
-            <Footer tagline="Tu seguridad y privacidad son prioridad." />
+            <Footer />
         </main>
     );
 }

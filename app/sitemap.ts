@@ -6,8 +6,11 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
 
 const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
-    { path: "/producto", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/plataforma", priority: 0.9, changeFrequency: "monthly" },
     { path: "/precios", priority: 0.9, changeFrequency: "monthly" },
+    { path: "/academy", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/talks", priority: 0.7, changeFrequency: "monthly" },
+    { path: "/aliados", priority: 0.6, changeFrequency: "monthly" },
     { path: "/empresa", priority: 0.6, changeFrequency: "monthly" },
     { path: "/seguridad", priority: 0.7, changeFrequency: "monthly" },
     { path: "/contacto", priority: 0.6, changeFrequency: "yearly" },

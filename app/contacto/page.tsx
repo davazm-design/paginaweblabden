@@ -133,7 +133,7 @@ export default function ContactoPage() {
                 </div>
             </section>
 
-            <Footer tagline="Atención cercana para laboratorios dentales." />
+            <Footer />
         </main>
     );
 }

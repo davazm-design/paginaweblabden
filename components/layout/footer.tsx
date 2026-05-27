@@ -1,55 +1,106 @@
 import { BrandLogo } from "@/components/ui/brand-logo"
 import Link from "next/link"
+import { Facebook, Instagram } from "lucide-react"
 
-interface FooterProps {
-    tagline: string;
-}
+const SOCIAL_LINKS = [
+    { name: "Facebook", href: "https://www.facebook.com/profile.php?id=61588445277715", icon: Facebook },
+    { name: "Instagram", href: "https://www.instagram.com/labden.mx/", icon: Instagram },
+];
 
-export function Footer({ tagline }: FooterProps) {
+const WHATSAPP_NUMBER = "5664015780";
+
+const FOOTER_COLUMNS = [
+    {
+        title: "Plataforma",
+        links: [
+            { name: "Funciones", href: "/plataforma" },
+            { name: "Precios", href: "/precios" },
+            { name: "Seguridad", href: "/seguridad" },
+        ],
+    },
+    {
+        title: "Academy",
+        links: [
+            { name: "Cursos", href: "/academy" },
+            { name: "LabDen Talks", href: "/talks" },
+        ],
+    },
+    {
+        title: "Recursos",
+        links: [
+            { name: "Blog", href: "/blog" },
+            { name: "Contacto", href: "/contacto" },
+            { name: "Aliados", href: "/aliados" },
+        ],
+    },
+    {
+        title: "Empresa",
+        links: [
+            { name: "Nosotros", href: "/empresa" },
+            { name: "Términos y condiciones", href: "/terminos" },
+            { name: "Aviso de privacidad", href: "/privacidad" },
+        ],
+    },
+];
+
+export function Footer() {
     return (
-        <footer role="contentinfo" className="bg-surface border-t border-border py-12">
+        <footer role="contentinfo" className="bg-[#0f1729] text-white/80 pt-16 pb-8">
             <div className="container mx-auto px-4">
-                <div className="grid md:grid-cols-4 gap-8 mb-8">
-                    <div className="col-span-1 md:col-span-1">
+                <div className="grid md:grid-cols-6 gap-10 mb-12">
+                    <div className="md:col-span-2">
                         <div className="mb-4">
-                            <BrandLogo />
+                            <BrandLogo showText={true} />
                         </div>
-                        <p className="text-muted text-sm leading-relaxed">
-                            {tagline}
+                        <p className="text-sm leading-relaxed text-white/60 max-w-xs mb-6">
+                            Organiza la comunicación entre dentistas y laboratorios para evitar errores, retrabajos y pérdidas.
                         </p>
+                        <div className="flex items-center gap-3">
+                            {SOCIAL_LINKS.map((social) => (
+                                <a
+                                    key={social.name}
+                                    href={social.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    aria-label={social.name}
+                                    className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                                >
+                                    <social.icon className="w-4 h-4" />
+                                </a>
+                            ))}
+                            <a
+                                href={`https://wa.me/52${WHATSAPP_NUMBER}`}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                aria-label="WhatsApp"
+                                className="w-9 h-9 rounded-lg bg-white/10 hover:bg-white/20 flex items-center justify-center transition-colors"
+                            >
+                                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.625.846 5.059 2.284 7.034L.789 23.492a.5.5 0 00.611.611l4.458-1.495A11.943 11.943 0 0012 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22c-2.353 0-4.563-.64-6.461-1.756l-.451-.27-2.648.888.888-2.648-.27-.451A9.96 9.96 0 012 12C2 6.486 6.486 2 12 2s10 4.486 10 10-4.486 10-10 10z"/></svg>
+                            </a>
+                        </div>
                     </div>
 
-                    <nav aria-label="Producto">
-                        <h4 className="font-semibold mb-4 text-foreground">Producto</h4>
-                        <ul className="space-y-1 md:space-y-2 text-sm text-muted">
-                            <li><Link href="/producto" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Características</Link></li>
-                            <li><Link href="/precios" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Planes</Link></li>
-                            <li><Link href="/seguridad" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Seguridad</Link></li>
-                        </ul>
-                    </nav>
-
-                    <nav aria-label="Empresa">
-                        <h4 className="font-semibold mb-4 text-foreground">Empresa</h4>
-                        <ul className="space-y-1 md:space-y-2 text-sm text-muted">
-                            <li><Link href="/empresa" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Sobre nosotros</Link></li>
-                            <li><Link href="/contacto" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Contacto</Link></li>
-                            <li><Link href="/blog" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Blog</Link></li>
-                        </ul>
-                    </nav>
-
-                    <nav aria-label="Legal">
-                        <h4 className="font-semibold mb-4 text-foreground">Legal</h4>
-                        <ul className="space-y-1 md:space-y-2 text-sm text-muted">
-                            <li><Link href="/privacidad" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Privacidad</Link></li>
-                            <li><Link href="/terminos" className="inline-block py-2 hover:text-foreground active:opacity-70 transition-all">Términos</Link></li>
-                        </ul>
-                    </nav>
+                    {FOOTER_COLUMNS.map((column) => (
+                        <nav key={column.title} aria-label={column.title}>
+                            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">{column.title}</h4>
+                            <ul className="space-y-2.5">
+                                {column.links.map((link) => (
+                                    <li key={link.name}>
+                                        <Link href={link.href} className="text-sm text-white/50 hover:text-white transition-colors">
+                                            {link.name}
+                                        </Link>
+                                    </li>
+                                ))}
+                            </ul>
+                        </nav>
+                    ))}
                 </div>
 
-                <div className="border-t border-border pt-8 text-center text-sm text-muted">
-                    LABDEN — Software para laboratorios dentales<br className="md:hidden" />
-                    <span className="hidden md:inline"> · </span>
-                    Hecho en México · &copy; {new Date().getFullYear()}
+                <div className="border-t border-white/10 pt-8">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
+                        <p>&copy; {new Date().getFullYear()} LabDen. Todos los derechos reservados.</p>
+                        <p className="italic">La calidad no falla. La información sí.</p>
+                    </div>
                 </div>
             </div>
         </footer>

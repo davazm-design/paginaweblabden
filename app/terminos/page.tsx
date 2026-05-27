@@ -156,7 +156,7 @@ export default function TerminosPage() {
                 </div>
             </article>
 
-            <Footer tagline="Transparencia en cada paso." />
+            <Footer />
         </main>
     );
 }

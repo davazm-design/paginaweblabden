@@ -180,7 +180,7 @@ export default function CompanyPage() {
                 </div>
             </section>
 
-            <Footer tagline="Impulsando la transformación digital en odontología." />
+            <Footer />
         </main>
     );
 }

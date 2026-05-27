@@ -44,7 +44,7 @@ export default function NotFound() {
                 </div>
             </section>
 
-            <Footer tagline="Cuando algo no funciona, te ayudamos a encontrar el camino." />
+            <Footer />
         </main>
     );
 }

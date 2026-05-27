@@ -142,7 +142,7 @@ export default async function Home() {
             </section>
             <PricingSection />
             <SecuritySection {...(data.security ?? {})} />
-            <Footer tagline={data.footer.tagline} />
+            <Footer />
         </main>
     );
 }

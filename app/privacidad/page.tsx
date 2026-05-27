@@ -135,7 +135,7 @@ export default function PrivacidadPage() {
                 </div>
             </article>
 
-            <Footer tagline="Protegemos tu información." />
+            <Footer />
         </main>
     );
 }

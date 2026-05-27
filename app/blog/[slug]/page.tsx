@@ -246,7 +246,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 </div>
             </article>
 
-            <Footer tagline="El sistema operativo para laboratorios dentales." />
+            <Footer />
         </main>
     );
 }

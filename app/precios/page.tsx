@@ -55,16 +55,16 @@ export default function PreciosPage() {
                             <ArrowRight className="ml-2 h-4 w-4" />
                         </Button>
                         <Link
-                            href="/producto"
+                            href="/plataforma"
                             className="inline-flex items-center justify-center h-14 px-8 text-base font-medium text-muted hover:text-foreground transition-colors"
                         >
-                            Ver tour del producto
+                            Conoce la plataforma
                         </Link>
                     </div>
                 </div>
             </section>
 
-            <Footer tagline="Planes transparentes para laboratorios que crecen." />
+            <Footer />
         </main>
     );
 }

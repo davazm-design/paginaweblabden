@@ -24,11 +24,13 @@ export function Navbar() {
     }, [isOpen])
 
     const navLinks = [
-        { name: "Producto", href: "/producto" },
-        { name: "Soluciones", href: "/#como-funciona" },
-        { name: "Planes", href: "/precios" },
-        { name: "Empresa", href: "/empresa" },
+        { name: "Plataforma", href: "/plataforma" },
+        { name: "Academy", href: "/academy" },
+        { name: "Talks", href: "/talks" },
         { name: "Blog", href: "/blog" },
+        { name: "Aliados", href: "/aliados" },
+        { name: "Precios", href: "/precios" },
+        { name: "Empresa", href: "/empresa" },
         { name: "Contacto", href: "/contacto" },
     ]
 
@@ -67,7 +69,7 @@ export function Navbar() {
                         Entrar
                     </Link>
                     <Button variant="primary" size="sm" href="https://app.labden.com.mx/auth/register" className="h-10 px-6">
-                        Prueba 14 días
+                        Prueba gratis 14 días
                     </Button>
                 </div>
 

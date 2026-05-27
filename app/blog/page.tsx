@@ -140,14 +140,14 @@ export default function BlogPage() {
                         Conoce cómo LABDEN ayuda a laboratorios como el tuyo a recuperar el control.
                     </p>
                     <div className="flex justify-center">
-                        <Button variant="secondary" size="lg" className="h-12 px-8" href="/producto">
-                            Ver Tour de Producto
+                        <Button variant="secondary" size="lg" className="h-12 px-8" href="/plataforma">
+                            Conoce la plataforma
                         </Button>
                     </div>
                 </div>
             </section>
 
-            <Footer tagline="Consejos y estrategias para el laboratorio moderno." />
+            <Footer />
         </main>
     );
 }
