@@ -5,6 +5,7 @@ import { clsx } from "clsx";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/google-tag-manager";
+import { AssistantWidget } from "@/components/chat/assistant-widget";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
@@ -32,7 +33,10 @@ export const metadata: Metadata = {
     creator: "LabDen",
     publisher: "LabDen",
     icons: {
-        icon: { url: "/icon.svg", type: "image/svg+xml" },
+        icon: [
+            { url: "/icon.svg", type: "image/svg+xml" },
+            { url: "/labden-icon.png", type: "image/png", sizes: "512x512" },
+        ],
         // TODO: añadir apple-icon.png (180×180, optimizado) cuando el equipo de diseño lo provea.
     },
     alternates: { canonical: "/" },
@@ -107,6 +111,7 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     {children}
+                    <AssistantWidget />
                 </ThemeProvider>
             </body>
         </html>
