@@ -1,6 +1,6 @@
 "use client"
 
-import { Check } from "lucide-react"
+import { Check, Zap, Headset, Users } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import Image from "next/image"
 
@@ -25,8 +25,47 @@ export function PricingSection() {
                     <p className="text-lg text-muted mb-4">
                         Planes claros para crecer contigo.
                     </p>
-                    <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-600 dark:text-emerald-400 text-sm font-semibold">
-                        Pago anual: 3 meses gratis
+                </div>
+
+                {/* Primera Generación 2.0 */}
+                <div className="max-w-3xl mx-auto mb-16 p-6 md:p-8 rounded-2xl border-2 border-accent/30 bg-gradient-to-br from-accent/5 via-surface-elevated to-emerald-500/5 relative overflow-hidden">
+                    <div className="absolute top-0 right-0 w-32 h-32 bg-accent/5 rounded-full -translate-y-1/2 translate-x-1/2 blur-2xl" />
+                    <div className="relative">
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider">
+                                <Zap className="w-3.5 h-3.5" />
+                                Programa de lanzamiento
+                            </span>
+                            <span className="inline-flex items-center px-2.5 py-0.5 rounded-full bg-amber-500/10 text-amber-600 dark:text-amber-400 text-xs font-bold">
+                                20 lugares
+                            </span>
+                        </div>
+                        <h3 className="text-xl md:text-2xl font-bold text-foreground mb-2">
+                            Primera Generación 2.0
+                        </h3>
+                        <p className="text-sm text-muted mb-5 max-w-xl">
+                            Los primeros 20 laboratorios que se sumen reciben beneficios exclusivos de fundador.
+                        </p>
+                        <div className="grid sm:grid-cols-2 gap-3">
+                            <div className="flex items-start gap-3 p-3 rounded-xl bg-background/60 border border-border/50">
+                                <span className="w-8 h-8 rounded-lg bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center flex-shrink-0">
+                                    <Check className="w-4 h-4" />
+                                </span>
+                                <div>
+                                    <p className="text-sm font-semibold text-foreground">3 meses gratis</p>
+                                    <p className="text-xs text-muted">En pago anual — ahorras 25%</p>
+                                </div>
+                            </div>
+                            <div className="flex items-start gap-3 p-3 rounded-xl bg-background/60 border border-border/50">
+                                <span className="w-8 h-8 rounded-lg bg-accent/10 text-accent flex items-center justify-center flex-shrink-0">
+                                    <Headset className="w-4 h-4" />
+                                </span>
+                                <div>
+                                    <p className="text-sm font-semibold text-foreground">Soporte prioritario</p>
+                                    <p className="text-xs text-muted">Línea directa con el equipo fundador</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
 
@@ -81,7 +120,7 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <Button variant="primary" size="lg" className="w-full h-12" href="/auth/login">
+                        <Button variant="primary" size="lg" className="w-full h-12" href="https://app.labden.com.mx/auth/register">
                             Probar gratis 14 días
                         </Button>
                     </div>
@@ -132,7 +171,7 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <Button variant="primary" size="lg" className="w-full h-14 text-lg" href="/auth/login">
+                        <Button variant="primary" size="lg" className="w-full h-14 text-lg" href="https://app.labden.com.mx/auth/register">
                             Probar gratis 14 días
                         </Button>
                     </div>
@@ -174,9 +213,9 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <div className="mt-auto h-12 flex items-center justify-center rounded-lg border border-border bg-transparent text-muted text-sm font-medium">
+                        <a href="/contacto" className="mt-auto h-12 flex items-center justify-center rounded-lg border border-border bg-transparent text-muted hover:text-foreground hover:border-accent/30 text-sm font-medium transition-colors">
                             Contáctanos
-                        </div>
+                        </a>
                     </div>
 
                 </div>
