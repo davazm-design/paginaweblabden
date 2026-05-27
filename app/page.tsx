@@ -7,9 +7,9 @@ import { HowItWorks } from "@/components/home/how-it-works";
 import { FinancialSection } from "@/components/home/financial-section";
 import { CommunicationSection } from "@/components/home/communication-section";
 import { PricingSection } from "@/components/home/pricing-section";
-import { SecuritySection } from "@/components/home/security-section";
-
-export const revalidate = 300;
+import { AcademyTeaser } from "@/components/home/academy-teaser";
+import { EmotionalBlock } from "@/components/home/emotional-block";
+import { FinalCta } from "@/components/home/final-cta";
 
 export default function Home() {
     return (
@@ -22,7 +22,9 @@ export default function Home() {
             <FinancialSection />
             <CommunicationSection />
             <PricingSection />
-            <SecuritySection />
+            <AcademyTeaser />
+            <EmotionalBlock />
+            <FinalCta />
             <Footer />
         </main>
     );

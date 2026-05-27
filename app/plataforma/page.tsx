@@ -1,13 +1,16 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
-import { ProductHero } from "@/components/producto/product-hero";
-import { TransformationCard } from "@/components/producto/transformation-card";
-import { ProductShowcase } from "@/components/home/product-showcase";
-import { ProductoFinalCta } from "@/components/producto/producto-final-cta";
+import { Button } from "@/components/ui/button";
 import {
-    ClipboardCheck,
-    Globe,
-    CreditCard,
+    ClipboardList,
+    BarChart3,
+    History,
+    MessageCircle,
+    Wallet,
+    ShieldCheck,
+    Smartphone,
+    Puzzle,
+    ArrowRight,
 } from "lucide-react";
 
 import type { Metadata } from "next";
@@ -26,80 +29,117 @@ export const metadata: Metadata = {
     },
 };
 
+const FEATURES = [
+    {
+        icon: ClipboardList,
+        title: "Gestión de órdenes",
+        description: "Recibe órdenes digitales claras con fotos, indicaciones y materiales. Todo organizado desde el inicio.",
+    },
+    {
+        icon: BarChart3,
+        title: "Seguimiento por estatus",
+        description: "Visualiza en qué etapa está cada trabajo: nuevo, en proceso, terminado o entregado.",
+    },
+    {
+        icon: History,
+        title: "Historial completo",
+        description: "Consulta el historial de cada caso, cambios registrados y comunicación con el dentista.",
+    },
+    {
+        icon: MessageCircle,
+        title: "Comunicación organizada",
+        description: "Toda la conversación relacionada con cada caso conectada directamente a la orden de trabajo.",
+    },
+    {
+        icon: Wallet,
+        title: "Control de cobros e ingresos",
+        description: "Visualiza lo que te deben, lo que has cobrado y la actividad de cada dentista. Sin Excel.",
+    },
+    {
+        icon: ShieldCheck,
+        title: "Accesos y seguridad",
+        description: "Tú decides quién accede y qué puede hacer. Datos protegidos con encriptación y respaldos diarios.",
+    },
+    {
+        icon: Smartphone,
+        title: "Desde cualquier lugar",
+        description: "En computadora, tablet o celular. Tu laboratorio contigo siempre.",
+    },
+    {
+        icon: Puzzle,
+        title: "Integraciones futuras",
+        description: "Un ecosistema abierto que sigue creciendo. Conexión con más herramientas y nuevas funcionalidades.",
+    },
+];
+
 export default function PlataformaPage() {
     return (
-        <main className="min-h-screen bg-background text-foreground flex flex-col font-sans">
+        <main className="min-h-screen bg-background text-foreground flex flex-col">
             <Navbar />
 
-            <ProductHero
-                title="Tres problemas. Una solución."
-                subtitle="LabDen resuelve los 3 dolores operativos más comunes de los laboratorios dentales."
-                ctaText="Prueba gratis 14 días"
-                ctaHref="https://app.labden.com.mx/auth/register"
-            />
-
-            <section className="py-24 bg-[#F8FAFC] overflow-hidden">
-                <div className="container mx-auto px-4">
-                    <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-                        Transforma tu Operación
-                    </h2>
-
-                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                        <TransformationCard
-                            area="Gestión de Órdenes"
-                            icon={ClipboardCheck}
-                            beforeTitle="Caos en el seguimiento"
-                            beforeText="¿Pierdes tiempo buscando notas o descifrando estatus?"
-                            afterTitle="Todo en orden"
-                            afterText="Visualiza cada trabajo desde que entra hasta que sale."
-                            features={[
-                                "Tablero en tiempo real",
-                                "Etapas personalizables",
-                                "Historial completo"
-                            ]}
-                        />
-
-                        <TransformationCard
-                            area="Comunicación con Dentistas"
-                            icon={Globe}
-                            beforeTitle="Mensajes dispersos"
-                            beforeText="Los dentistas envían trabajos por WhatsApp causando confusión."
-                            afterTitle="Comunicación organizada"
-                            afterText="Cada dentista con su portal y toda la información en un solo lugar."
-                            features={[
-                                "Portal para dentistas",
-                                "Órdenes digitales claras",
-                                "Notificaciones automáticas"
-                            ]}
-                        />
-
-                        <TransformationCard
-                            area="Control de Cobros"
-                            icon={CreditCard}
-                            beforeTitle="Incertidumbre financiera"
-                            beforeText="Pagos olvidados y cuentas por cobrar sin visibilidad."
-                            afterTitle="Control financiero al día"
-                            afterText="Visualiza pendientes, ingresos y cuentas por cobrar por clínica."
-                            features={[
-                                "Cuentas por cobrar",
-                                "Ingresos por dentista",
-                                "Menos pérdidas"
-                            ]}
-                        />
+            {/* Hero */}
+            <section className="pt-32 pb-16 md:pt-40 md:pb-20 px-4 bg-surface border-b border-border">
+                <div className="container mx-auto max-w-3xl text-center">
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-accent/5 text-xs font-semibold text-accent uppercase tracking-wider mb-6">
+                        La plataforma
+                    </div>
+                    <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
+                        ¿Qué es LabDen?
+                    </h1>
+                    <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed mb-8">
+                        Una plataforma diseñada para organizar la comunicación entre dentistas y laboratorios dentales. Centraliza órdenes, seguimiento, estatus e información en un solo lugar.
+                    </p>
+                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                        <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
+                            Prueba gratis 14 días
+                        </Button>
+                        <Button variant="outline" size="lg" href="#funciones">
+                            Ver funciones
+                        </Button>
                     </div>
                 </div>
             </section>
 
-            <section className="py-24 bg-white">
-                <div className="container mx-auto px-4">
-                    <ProductShowcase
-                        title="Todo claro, desde el primer clic"
-                        description="Visualiza órdenes, cobros y comunicación en un solo lugar."
-                    />
+            {/* Features */}
+            <section id="funciones" className="py-20 md:py-28 bg-background">
+                <div className="container mx-auto px-4 max-w-6xl">
+                    <div className="text-center mb-14">
+                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-3">
+                            Funciones principales
+                        </h2>
+                        <p className="text-muted max-w-lg mx-auto">
+                            Todo lo que tu laboratorio necesita para trabajar con más claridad y menos desgaste.
+                        </p>
+                    </div>
+
+                    <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                        {FEATURES.map((f) => (
+                            <div key={f.title} className="flex flex-col p-6 rounded-2xl bg-surface border border-border hover:border-accent/20 hover:shadow-md transition-all">
+                                <span className="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4">
+                                    <f.icon className="w-5 h-5" />
+                                </span>
+                                <h3 className="text-sm font-bold text-foreground mb-2">{f.title}</h3>
+                                <p className="text-xs text-muted leading-relaxed flex-1">{f.description}</p>
+                            </div>
+                        ))}
+                    </div>
                 </div>
             </section>
 
-            <ProductoFinalCta />
+            {/* CTA */}
+            <section className="py-16 md:py-20 bg-surface border-t border-border text-center">
+                <div className="container mx-auto px-4 max-w-2xl">
+                    <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-4">
+                        ¿Listo para recuperar el control?
+                    </h2>
+                    <p className="text-muted mb-8">
+                        Prueba LabDen sin compromiso. Configura tu laboratorio en minutos.
+                    </p>
+                    <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
+                        Prueba gratis 14 días <ArrowRight className="ml-2 w-4 h-4" />
+                    </Button>
+                </div>
+            </section>
 
             <Footer />
         </main>
