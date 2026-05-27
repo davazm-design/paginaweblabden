@@ -61,17 +61,12 @@ export function HeroSection() {
 
                 <div className="relative h-[350px] md:h-[500px] w-full flex items-center justify-center">
                     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80%] h-[80%] -z-20 opacity-15 pointer-events-none blur-[100px] bg-accent rounded-full" />
-                    <div className="relative w-full h-full flex items-center justify-center"
-                        style={{
-                            maskImage: 'radial-gradient(circle at center, black 50%, transparent 90%)',
-                            WebkitMaskImage: 'radial-gradient(circle at center, black 50%, transparent 90%)'
-                        }}
-                    >
+                    <div className="relative w-full h-full flex items-center justify-center">
                         <Image
-                            src="/images/hero-3d.png"
-                            alt="Panel de control LabDen"
+                            src="/images/hero-platform.png"
+                            alt="Plataforma LabDen — órdenes, seguimiento, finanzas"
                             fill
-                            className="object-contain drop-shadow-xl"
+                            className="object-contain"
                             priority
                         />
                     </div>
