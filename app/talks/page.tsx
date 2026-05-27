@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Video, Lightbulb, TrendingUp, Trophy, Play } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Talks | LABDEN",
+    title: "Talks | LabDen",
     description:
         "Contenido en video para laboratorios dentales: lives, tips, tendencias del sector, casos de éxito y entrevistas con expertos.",
     alternates: { canonical: "/talks" },

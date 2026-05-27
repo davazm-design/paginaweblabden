@@ -7,25 +7,25 @@ interface BrandLogoProps {
     showText?: boolean;
 }
 
-export function BrandLogo({ className = "", textClassName = "", imageClassName = "w-12 h-12", showText = true }: BrandLogoProps) {
+export function BrandLogo({ className = "", textClassName = "", imageClassName = "w-10 h-10", showText = true }: BrandLogoProps) {
     return (
-        <div className={`inline-flex items-center gap-1.5 ${className}`}>
+        <div className={`inline-flex items-center gap-2 ${className}`}>
             <div className={`relative shrink-0 ${imageClassName}`}>
                 <Image
-                    src="/icon.svg"
-                    alt="LABDEN"
+                    src="/labden-icon.png"
+                    alt="LabDen"
                     fill
-                    className="object-contain"
+                    className="object-contain rounded-lg"
                     priority
                 />
             </div>
 
-            {/* HTML Text */}
             {showText && (
                 <span
-                    className={`font-semibold text-2xl tracking-[0.02em] text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600 ${textClassName}`}
+                    className={`font-bold text-xl tracking-tight ${textClassName}`}
                 >
-                    LABDEN
+                    <span className="text-foreground">Lab</span>
+                    <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-600">Den</span>
                 </span>
             )}
         </div>

@@ -13,12 +13,12 @@ import {
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Plataforma | LABDEN",
+    title: "Plataforma | LabDen",
     description:
         "Conoce cómo LabDen organiza órdenes, comunicación y cobros de tu laboratorio dental en un solo lugar.",
     alternates: { canonical: "/plataforma" },
     openGraph: {
-        title: "Plataforma | LABDEN",
+        title: "Plataforma | LabDen",
         description:
             "Gestión de órdenes, comunicación con dentistas y control financiero. Todo en una plataforma.",
         type: "website",
@@ -33,7 +33,7 @@ export default function PlataformaPage() {
 
             <ProductHero
                 title="Tres problemas. Una solución."
-                subtitle="LABDEN resuelve los 3 dolores operativos más comunes de los laboratorios dentales."
+                subtitle="LabDen resuelve los 3 dolores operativos más comunes de los laboratorios dentales."
                 ctaText="Prueba gratis 14 días"
                 ctaHref="https://app.labden.com.mx/auth/register"
             />

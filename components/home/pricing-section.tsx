@@ -19,7 +19,7 @@ export function PricingSection() {
                             className="drop-shadow-lg"
                         />
                         <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-foreground">
-                            Planes LABDEN
+                            Planes LabDen
                         </h2>
                     </div>
                     <p className="text-lg text-muted mb-4">

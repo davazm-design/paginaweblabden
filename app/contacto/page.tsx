@@ -6,13 +6,13 @@ import { ContactForm } from "@/components/contact/contact-form";
 import { Mail, MessageSquare, Clock, MapPin } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Contacto | LABDEN",
+    title: "Contacto | LabDen",
     description:
-        "Habla con el equipo de LABDEN. Soporte para laboratorios dentales en México (atendemos también el resto de LATAM), horarios CDMX y canales directos.",
+        "Habla con el equipo de LabDen. Soporte para laboratorios dentales en México (atendemos también el resto de LATAM), horarios CDMX y canales directos.",
     alternates: { canonical: "/contacto" },
     openGraph: {
-        title: "Contacto | LABDEN",
-        description: "Habla con el equipo de LABDEN.",
+        title: "Contacto | LabDen",
+        description: "Habla con el equipo de LabDen.",
         type: "website",
         url: "/contacto",
     },
@@ -56,7 +56,7 @@ export default function ContactoPage() {
                             </h2>
 
                             <a
-                                href={`mailto:${SALES_EMAIL}?subject=${encodeURIComponent("Consulta comercial LABDEN")}`}
+                                href={`mailto:${SALES_EMAIL}?subject=${encodeURIComponent("Consulta comercial LabDen")}`}
                                 className="group flex flex-col p-6 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
                             >
                                 <div className="flex items-center gap-3 mb-3">
@@ -74,7 +74,7 @@ export default function ContactoPage() {
                             </a>
 
                             <a
-                                href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Soporte LABDEN")}`}
+                                href={`mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent("Soporte LabDen")}`}
                                 className="group flex flex-col p-6 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
                             >
                                 <div className="flex items-center gap-3 mb-3">
@@ -122,7 +122,7 @@ export default function ContactoPage() {
             <section className="py-16 bg-surface border-t border-border">
                 <div className="container mx-auto px-4 max-w-3xl text-center">
                     <h2 className="text-2xl font-bold text-foreground mb-4">
-                        ¿Listo para probar LABDEN?
+                        ¿Listo para probar LabDen?
                     </h2>
                     <p className="text-muted mb-8">
                         Empieza tu prueba gratuita de 14 días, sin tarjeta de crédito.

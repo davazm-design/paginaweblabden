@@ -6,7 +6,7 @@ export const metadata: Metadata = {
         "Guías prácticas sobre operación, control y crecimiento para laboratorios dentales. Sin rodeos, directo a lo que importa para tu negocio.",
     alternates: { canonical: "/blog" },
     openGraph: {
-        title: "Blog | LABDEN",
+        title: "Blog | LabDen",
         description:
             "Guías prácticas sobre operación, control y crecimiento para laboratorios dentales modernos.",
         type: "website",

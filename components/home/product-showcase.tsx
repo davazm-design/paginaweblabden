@@ -43,7 +43,7 @@ export function ProductShowcase({ title, description }: ProductShowcaseProps) {
                     >
                         <Image
                             src={DASHBOARD_IMG}
-                            alt="Dashboard LABDEN — Vista de órdenes"
+                            alt="Dashboard LabDen — Vista de órdenes"
                             width={DASHBOARD_W}
                             height={DASHBOARD_H}
                             sizes="(max-width: 768px) 100vw, 640px"
@@ -57,7 +57,7 @@ export function ProductShowcase({ title, description }: ProductShowcaseProps) {
                 <div
                     role="dialog"
                     aria-modal="true"
-                    aria-label="Dashboard LABDEN ampliado"
+                    aria-label="Dashboard LabDen ampliado"
                     className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 cursor-zoom-out"
                     onClick={() => setIsLightboxOpen(false)}
                 >
@@ -72,7 +72,7 @@ export function ProductShowcase({ title, description }: ProductShowcaseProps) {
                         </button>
                         <Image
                             src={DASHBOARD_IMG}
-                            alt="Dashboard LABDEN — Vista completa"
+                            alt="Dashboard LabDen — Vista completa"
                             width={DASHBOARD_W}
                             height={DASHBOARD_H}
                             sizes="100vw"

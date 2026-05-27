@@ -6,12 +6,12 @@ import { Button } from "@/components/ui/button";
 import { Lock, ShieldCheck, Database, KeyRound, FileCheck2, AlertCircle } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Seguridad y privacidad | LABDEN",
+    title: "Seguridad y privacidad | LabDen",
     description:
-        "Cómo LABDEN protege la información de tu laboratorio dental: cifrado, respaldos, control de acceso y cumplimiento LFPDPPP México.",
+        "Cómo LabDen protege la información de tu laboratorio dental: cifrado, respaldos, control de acceso y cumplimiento LFPDPPP México.",
     alternates: { canonical: "/seguridad" },
     openGraph: {
-        title: "Seguridad y privacidad | LABDEN",
+        title: "Seguridad y privacidad | LabDen",
         description:
             "Cifrado, respaldos, control de acceso y cumplimiento LFPDPPP México.",
         type: "website",
@@ -23,7 +23,7 @@ const PILLARS = [
     {
         icon: Lock,
         title: "Cifrado en tránsito y en reposo",
-        body: "Toda la comunicación con LABDEN viaja por HTTPS (TLS 1.2+). Los datos se almacenan en infraestructura cifrada a nivel de disco, en proveedores con certificaciones reconocidas.",
+        body: "Toda la comunicación con LabDen viaja por HTTPS (TLS 1.2+). Los datos se almacenan en infraestructura cifrada a nivel de disco, en proveedores con certificaciones reconocidas.",
     },
     {
         icon: Database,
@@ -67,7 +67,7 @@ export default function SeguridadPage() {
                         Las órdenes, doctores y cobros de tu lab, bajo control
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                        Diseñamos LABDEN sobre prácticas estándar de seguridad para SaaS. Esto es lo que ya hacemos hoy y a qué nos comprometemos.
+                        Diseñamos LabDen sobre prácticas estándar de seguridad para SaaS. Esto es lo que ya hacemos hoy y a qué nos comprometemos.
                     </p>
                 </div>
             </section>

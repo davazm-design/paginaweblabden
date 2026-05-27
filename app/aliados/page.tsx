@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Handshake, Building2, CalendarDays, Gift, Users } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Aliados | LABDEN",
+    title: "Aliados | LabDen",
     description:
         "Conectamos laboratorios dentales con marcas, congresos y beneficios exclusivos para impulsar tu crecimiento.",
     alternates: { canonical: "/aliados" },

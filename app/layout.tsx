@@ -13,24 +13,24 @@ const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
     title: {
-        default: "LABDEN | Gestión para Laboratorios Dentales Modernos",
-        template: "%s | LABDEN",
+        default: "LabDen | Gestión para Laboratorios Dentales Modernos",
+        template: "%s | LabDen",
     },
     description:
         "La plataforma todo-en-uno para controlar tu producción, finanzas y crecimiento. Diseñado para laboratorios dentales en Latinoamérica.",
-    applicationName: "LABDEN",
+    applicationName: "LabDen",
     keywords: [
         "laboratorio dental",
         "software laboratorio dental",
         "gestión de órdenes",
         "SaaS dental",
-        "LABDEN",
+        "LabDen",
         "México",
         "Latinoamérica",
     ],
-    authors: [{ name: "LABDEN" }],
-    creator: "LABDEN",
-    publisher: "LABDEN",
+    authors: [{ name: "LabDen" }],
+    creator: "LabDen",
+    publisher: "LabDen",
     icons: {
         icon: { url: "/icon.svg", type: "image/svg+xml" },
         // TODO: añadir apple-icon.png (180×180, optimizado) cuando el equipo de diseño lo provea.
@@ -38,16 +38,16 @@ export const metadata: Metadata = {
     alternates: { canonical: "/" },
     openGraph: {
         type: "website",
-        siteName: "LABDEN",
+        siteName: "LabDen",
         locale: "es_MX",
         url: "/",
-        title: "LABDEN | Gestión para Laboratorios Dentales Modernos",
+        title: "LabDen | Gestión para Laboratorios Dentales Modernos",
         description:
             "La plataforma todo-en-uno para controlar tu producción, finanzas y crecimiento.",
     },
     twitter: {
         card: "summary_large_image",
-        title: "LABDEN | Gestión para Laboratorios Dentales Modernos",
+        title: "LabDen | Gestión para Laboratorios Dentales Modernos",
         description:
             "La plataforma todo-en-uno para controlar tu producción, finanzas y crecimiento.",
     },
@@ -70,7 +70,7 @@ export const viewport: Viewport = {
 const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
-    name: "LABDEN",
+    name: "LabDen",
     url: SITE_URL,
     logo: `${SITE_URL}/logo.svg`,
     description:

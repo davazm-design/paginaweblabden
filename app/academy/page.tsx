@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { GraduationCap, BookOpen, Users, Lightbulb, RefreshCw } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Academy | LABDEN",
+    title: "Academy | LabDen",
     description:
         "Educación especializada para laboratorios dentales. Cursos, expertos del sector y mejores prácticas para profesionalizar tu operación.",
     alternates: { canonical: "/academy" },

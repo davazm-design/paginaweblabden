@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Términos y Condiciones | LABDEN",
-    description: "Conoce los términos y condiciones de uso del sitio web de LABDEN.",
+    title: "Términos y Condiciones | LabDen",
+    description: "Conoce los términos y condiciones de uso del sitio web de LabDen.",
 };
 
 export default function TerminosPage() {
@@ -27,7 +27,7 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">1. Objeto del Sitio</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                El presente sitio web es operado por LABDEN y tiene como finalidad proporcionar información general sobre la plataforma, sus funcionalidades y permitir el registro de usuarios interesados en el servicio.
+                                El presente sitio web es operado por LabDen y tiene como finalidad proporcionar información general sobre la plataforma, sus funcionalidades y permitir el registro de usuarios interesados en el servicio.
                             </p>
                             <p className="text-muted leading-relaxed">
                                 El uso de este sitio implica la aceptación de los presentes Términos y Condiciones.
@@ -47,7 +47,7 @@ export default function TerminosPage() {
                                 </p>
                             </div>
                             <p className="text-muted leading-relaxed">
-                                LABDEN se reserva el derecho de modificar, habilitar o deshabilitar funcionalidades sin previo aviso.
+                                LabDen se reserva el derecho de modificar, habilitar o deshabilitar funcionalidades sin previo aviso.
                             </p>
                         </section>
 
@@ -77,7 +77,7 @@ export default function TerminosPage() {
                                 <li>Mantener la confidencialidad de sus credenciales de acceso.</li>
                             </ul>
                             <p className="text-muted leading-relaxed mt-4">
-                                LABDEN no será responsable por el uso indebido de las credenciales por parte del usuario o terceros.
+                                LabDen no será responsable por el uso indebido de las credenciales por parte del usuario o terceros.
                             </p>
                         </section>
 
@@ -85,7 +85,7 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">5. Propiedad Intelectual</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                Todos los contenidos del sitio, incluyendo textos, diseños, logotipos, gráficos y software, son propiedad de LABDEN o se utilizan bajo licencia.
+                                Todos los contenidos del sitio, incluyendo textos, diseños, logotipos, gráficos y software, son propiedad de LabDen o se utilizan bajo licencia.
                             </p>
                             <p className="text-muted leading-relaxed">
                                 Queda prohibida su reproducción, distribución o uso sin autorización previa y expresa.
@@ -96,14 +96,14 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">6. Disponibilidad del Sitio</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                LABDEN no garantiza que el sitio esté disponible de forma continua o libre de errores.
+                                LabDen no garantiza que el sitio esté disponible de forma continua o libre de errores.
                             </p>
                             <p className="text-muted leading-relaxed mb-2">El acceso puede ser suspendido temporalmente por:</p>
                             <ul className="list-disc list-inside text-muted space-y-2">
                                 <li>Mantenimiento</li>
                                 <li>Actualizaciones</li>
                                 <li>Fallas técnicas</li>
-                                <li>Causas ajenas a LABDEN</li>
+                                <li>Causas ajenas a LabDen</li>
                             </ul>
                         </section>
 
@@ -111,7 +111,7 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">7. Limitación de Responsabilidad</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                LABDEN no será responsable por daños directos o indirectos derivados del uso o imposibilidad de uso del sitio, incluyendo pérdida de información, interrupciones del servicio o errores técnicos.
+                                LabDen no será responsable por daños directos o indirectos derivados del uso o imposibilidad de uso del sitio, incluyendo pérdida de información, interrupciones del servicio o errores técnicos.
                             </p>
                             <p className="text-muted leading-relaxed">
                                 El uso del sitio se realiza bajo responsabilidad del usuario.
@@ -122,7 +122,7 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">8. Modificaciones a los Términos</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                LABDEN podrá modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán publicadas en esta página indicando la fecha de actualización.
+                                LabDen podrá modificar estos Términos y Condiciones en cualquier momento. Las modificaciones serán publicadas en esta página indicando la fecha de actualización.
                             </p>
                             <p className="text-muted leading-relaxed">
                                 El uso continuo del sitio implica la aceptación de dichos cambios.

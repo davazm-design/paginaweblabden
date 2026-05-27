@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { HeroSection } from "@/components/home/hero";
-import { ValueProposition } from "@/components/home/value-proposition";
+import { ProblemsSection } from "@/components/home/problems-section";
 import { FeaturesGrid } from "@/components/home/features-grid";
 import { ProductShowcase } from "@/components/home/product-showcase";
 import { PricingSection } from "@/components/home/pricing-section";
@@ -11,80 +11,83 @@ import type { HomePageDomain } from "@/lib/types";
 
 export const revalidate = 300;
 
-// Contenido de respaldo usado cuando WordPress no responde durante el build o en runtime.
-// Copy alineado con marketing/02_VALUE_PROPOSITION.md.
 const FALLBACK_HOME_DATA: HomePageDomain = {
     hero: {
-        badge: "Nuevo",
-        title: "El sistema operativo para laboratorios dentales",
-        subtitle: "Digitaliza tu operación sin cambiar tu forma de trabajar. Solo eliminas lo que te frena.",
-        ctaPrimary: "Probar gratis 14 días",
-        ctaSecondary: "Ver planes",
+        badge: "Hecho para laboratorios dentales",
+        title: "Recupera el control de tu laboratorio.",
+        subtitle: "Centraliza órdenes, seguimiento y comunicación en un solo lugar para trabajar con más claridad y menos desgaste.",
+        ctaPrimary: "Prueba gratis 14 días",
+        ctaSecondary: "Ver cómo funciona",
         footerText: "Sin tarjeta de crédito. Cancela cuando quieras."
     },
     problem: {
-        title: "Tu laboratorio hoy",
-        description: "El caos operativo que frena tu crecimiento",
+        title: "Así se pierde tiempo y dinero",
+        description: "Cuando la información no llega clara, todo el laboratorio paga las consecuencias.",
         cards: [
             {
-                title: "Órdenes perdidas en WhatsApp",
-                description: "Sin un sistema claro, los trabajos se pierden entre mensajes y el técnico estrella se vuelve indispensable."
+                title: "Órdenes incompletas o mal explicadas",
+                description: "La información llega por WhatsApp, papel o de palabra. Se pierde contexto y se generan errores."
             },
             {
-                title: "Excel que no aguanta el ritmo",
-                description: "Hojas desactualizadas, fórmulas rotas y cero visibilidad del estado real de cada orden."
+                title: "Información dispersa",
+                description: "Mensajes en WhatsApp, notas sueltas, Excel desactualizado. Nadie tiene la foto completa."
             },
             {
-                title: "Doctores que llaman para saber en qué va su trabajo",
-                description: "Sin notificaciones automáticas, cada llamada interrumpe tu producción y daña la relación."
+                title: "Retrabajos constantes",
+                description: "Cambios sin registrar, fotos poco claras y falta de seguimiento generan trabajo doble."
             }
         ]
     },
     solution: {
-        title: "Tu laboratorio con LABDEN",
-        subtitle: "Control total sin cambiar tu forma de trabajar",
+        title: "Con LabDen, todo está en orden",
+        subtitle: "La información llega clara desde el inicio",
         cards: [
             {
-                title: "Sabes en qué va cada orden",
-                description: "Órdenes digitales con odontograma, materiales y timeline. Nada se pierde."
+                title: "Órdenes digitales claras",
+                description: "Cada orden con fotos, indicaciones y materiales. Todo en un solo lugar."
             },
             {
-                title: "Tus doctores se informan solos",
-                description: "Notificaciones automáticas por email. Ellos saben el estado sin tener que llamarte."
+                title: "Comunicación organizada",
+                description: "Cada dentista con su historial. Sin mensajes perdidos ni malentendidos."
             },
             {
-                title: "Visibilidad financiera real",
-                description: "Dashboard de cobros, cuentas por cobrar y productividad. Sin fórmulas de Excel."
+                title: "Control y seguimiento real",
+                description: "Estatus visible, historial completo y cuentas por cobrar al día."
             }
         ]
     },
     howItWorks: {
-        title: "Cómo funciona",
+        title: "Así de fácil funciona LabDen",
         steps: [
             {
                 number: "01",
-                title: "Crea tu laboratorio",
-                description: "Regístrate y configura tu lab en minutos. Sin instalación, sin consultor."
+                title: "El dentista envía la orden completa",
+                description: "Con fotos, indicaciones y archivos en la plataforma."
             },
             {
                 number: "02",
-                title: "Invita a tu equipo y doctores",
-                description: "Cada quien ve solo lo suyo. Tu equipo en producción, tus doctores en su portal."
+                title: "Tú la recibes y organizas",
+                description: "En tu panel con toda la información clara."
             },
             {
                 number: "03",
-                title: "Opera desde el primer día",
-                description: "Captura órdenes, gestiona entregas y cobra sin salir del sistema."
+                title: "Elaboras el trabajo",
+                description: "Con procesos más precisos y sin retrabajos."
+            },
+            {
+                number: "04",
+                title: "Entregas y cierras el caso",
+                description: "El dentista y tú siempre informados."
             }
         ],
         dashboardPreview: {
             title: "Todo en un solo lugar",
-            description: "Panel de control diseñado para protésicos, no para vendedores. Habla el lenguaje de tu lab."
+            description: "Panel de control diseñado para el laboratorio dental. Habla tu lenguaje."
         }
     },
     security: undefined,
     footer: {
-        tagline: "El sistema operativo para laboratorios dentales."
+        tagline: "Organiza la comunicación entre dentistas y laboratorios."
     }
 };
 
@@ -102,26 +105,8 @@ export default async function Home() {
     return (
         <main className="min-h-screen bg-background text-foreground">
             <Navbar />
-            <HeroSection
-                badgeText={data.hero.badge}
-                title={data.hero.title}
-                subtitle={data.hero.subtitle}
-                ctaText={data.hero.ctaPrimary}
-                secondaryButtonText={data.hero.ctaSecondary}
-                footerText={data.hero.footerText}
-            />
-            <ValueProposition
-                sectionTitle="Tu laboratorio hoy vs. Tu laboratorio con LABDEN"
-                sectionSubtitle="Digitaliza tu operación sin cambiar tu forma de trabajar. Solo eliminas lo que te frena."
-                painPoints={data.problem.cards.map(c => ({
-                    title: c.title,
-                    description: c.description
-                }))}
-                gainPoints={data.solution.cards.map(c => ({
-                    title: c.title,
-                    description: c.description
-                }))}
-            />
+            <HeroSection />
+            <ProblemsSection />
             <section id="como-funciona" className="py-24 bg-surface/30 overflow-hidden">
                 <div className="container mx-auto px-4">
                     <div className="grid lg:grid-cols-2 gap-16 items-center">

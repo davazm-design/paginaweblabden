@@ -3,8 +3,8 @@ import { Footer } from "@/components/layout/footer";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "Política de Privacidad | LABDEN",
-    description: "Conoce cómo LABDEN protege y maneja tu información personal.",
+    title: "Política de Privacidad | LabDen",
+    description: "Conoce cómo LabDen protege y maneja tu información personal.",
 };
 
 export default function PrivacidadPage() {
@@ -27,7 +27,7 @@ export default function PrivacidadPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">1. Responsable del Tratamiento</h2>
                             <p className="text-muted leading-relaxed">
-                                LABDEN es el responsable del tratamiento de los datos personales que se recopilan a través de este sitio web. Nos comprometemos a proteger tu privacidad y a manejar tu información de manera responsable y conforme a la legislación aplicable en México.
+                                LabDen es el responsable del tratamiento de los datos personales que se recopilan a través de este sitio web. Nos comprometemos a proteger tu privacidad y a manejar tu información de manera responsable y conforme a la legislación aplicable en México.
                             </p>
                         </section>
 
@@ -76,7 +76,7 @@ export default function PrivacidadPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">5. Transferencia de Datos</h2>
                             <p className="text-muted leading-relaxed">
-                                LABDEN no comparte ni transfiere tus datos personales a terceros, salvo en los casos en que sea necesario para cumplir con obligaciones legales o requerimientos de autoridad competente.
+                                LabDen no comparte ni transfiere tus datos personales a terceros, salvo en los casos en que sea necesario para cumplir con obligaciones legales o requerimientos de autoridad competente.
                             </p>
                         </section>
 
@@ -107,7 +107,7 @@ export default function PrivacidadPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">8. Cambios a esta Política</h2>
                             <p className="text-muted leading-relaxed">
-                                LABDEN podrá actualizar esta Política de Privacidad en cualquier momento. Cualquier cambio será publicado en esta página, indicando la fecha de la última actualización.
+                                LabDen podrá actualizar esta Política de Privacidad en cualquier momento. Cualquier cambio será publicado en esta página, indicando la fecha de la última actualización.
                             </p>
                         </section>
 

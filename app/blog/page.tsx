@@ -33,7 +33,7 @@ export default function BlogPage() {
                 <div className="container mx-auto max-w-4xl text-center">
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-accent/20 bg-surface-elevated text-sm text-accent font-medium mb-6 shadow-sm">
                         <BookOpen size={16} />
-                        Blog LABDEN
+                        Blog LabDen
                     </div>
 
                     <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-foreground mb-6">
@@ -137,7 +137,7 @@ export default function BlogPage() {
                         ¿Quieres dejar atrás el Excel y los procesos manuales?
                     </h3>
                     <p className="text-muted mb-8">
-                        Conoce cómo LABDEN ayuda a laboratorios como el tuyo a recuperar el control.
+                        Conoce cómo LabDen ayuda a laboratorios como el tuyo a recuperar el control.
                     </p>
                     <div className="flex justify-center">
                         <Button variant="secondary" size="lg" className="h-12 px-8" href="/plataforma">

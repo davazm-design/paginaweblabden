@@ -50,7 +50,7 @@ export async function POST(request: NextRequest) {
         const { nombre, email, laboratorio, telefono, mensaje } = result;
 
         await getResend().emails.send({
-            from: "LABDEN Web <noreply@labden.com.mx>",
+            from: "LabDen Web <noreply@labden.com.mx>",
             to: TO_EMAIL,
             replyTo: email,
             subject: `Contacto web: ${nombre} — ${laboratorio}`,

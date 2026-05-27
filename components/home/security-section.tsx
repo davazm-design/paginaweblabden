@@ -13,12 +13,12 @@ const DEFAULT_FEATURES = [
     {
         title: "Encriptación de datos",
         description:
-            "LABDEN protege tu información con encriptación avanzada, respaldos diarios y acceso 24/7 desde cualquier dispositivo.",
+            "LabDen protege tu información con encriptación avanzada, respaldos diarios y acceso 24/7 desde cualquier dispositivo.",
     },
     {
         title: "Respaldos automáticos diarios",
         description:
-            "Tu información se guarda sin que tengas que hacer nada. Con LABDEN, los laboratorios no pierden información gracias a respaldos diarios automáticos.",
+            "Tu información se guarda sin que tengas que hacer nada. Con LabDen, los laboratorios no pierden información gracias a respaldos diarios automáticos.",
     },
     {
         title: "Disponibilidad 24/7",
@@ -28,11 +28,11 @@ const DEFAULT_FEATURES = [
 ];
 
 const DEFAULT_FINAL_CTA = {
-    title: "Prueba LABDEN gratis por 14 días",
+    title: "Prueba LabDen gratis por 14 días",
     description: "Sin tarjeta de crédito. Cancela cuando quieras.",
     buttonText: "Comenzar prueba gratuita",
     disclaimer:
-        "Laboratorios dentales ya digitalizan su operación con LABDEN.",
+        "Laboratorios dentales ya digitalizan su operación con LabDen.",
 };
 
 export function SecuritySection({ title, features, finalCta }: SecurityDomain = {}) {

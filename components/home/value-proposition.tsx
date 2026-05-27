@@ -33,7 +33,7 @@ export function ValueProposition({
                     <div className="p-6 md:p-8 rounded-2xl bg-red-500/5 dark:bg-red-500/10 border border-red-200 dark:border-red-500/20">
                         <div className="flex items-center gap-3 mb-6">
                             <XCircle className="w-6 h-6 text-red-400" />
-                            <h3 className="text-xl font-bold text-red-700 dark:text-red-400">Sin LABDEN</h3>
+                            <h3 className="text-xl font-bold text-red-700 dark:text-red-400">Sin LabDen</h3>
                         </div>
                         <ul className="space-y-6">
                             {painPoints.map((point, idx) => (
@@ -52,7 +52,7 @@ export function ValueProposition({
                     <div className="p-6 md:p-8 rounded-2xl bg-emerald-500/5 dark:bg-emerald-500/10 border border-emerald-200 dark:border-emerald-500/20">
                         <div className="flex items-center gap-3 mb-6">
                             <CheckCircle className="w-6 h-6 text-emerald-500" />
-                            <h3 className="text-xl font-bold text-emerald-700 dark:text-emerald-400">Con LABDEN</h3>
+                            <h3 className="text-xl font-bold text-emerald-700 dark:text-emerald-400">Con LabDen</h3>
                         </div>
                         <ul className="space-y-6">
                             {gainPoints.map((point, idx) => (

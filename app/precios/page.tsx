@@ -7,12 +7,12 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-    title: "Planes y precios | LABDEN",
+    title: "Planes y precios | LabDen",
     description:
         "Planes claros desde $550 MXN/mes. Digitaliza tu laboratorio dental con prueba gratis de 14 días, sin tarjeta de crédito.",
     alternates: { canonical: "/precios" },
     openGraph: {
-        title: "Planes y precios | LABDEN",
+        title: "Planes y precios | LabDen",
         description:
             "Planes claros desde $550 MXN/mes para laboratorios dentales. Prueba gratis 14 días.",
         type: "website",

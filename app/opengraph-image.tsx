@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "LABDEN — Gestión para Laboratorios Dentales Modernos";
+export const alt = "LabDen — Gestión para Laboratorios Dentales Modernos";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -40,7 +40,7 @@ export default async function OpengraphImage() {
                             background: "#38BDF8",
                         }}
                     />
-                    LABDEN
+                    LabDen
                 </div>
                 <div
                     style={{

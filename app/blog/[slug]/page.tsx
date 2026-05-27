@@ -52,7 +52,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
         : '/opengraph-image'; // Fallback: OG image global del sitio (app/opengraph-image.tsx)
 
     return {
-        title: `${title} | Blog LABDEN`,
+        title: `${title} | Blog LabDen`,
         description: excerpt,
         alternates: { canonical: `/blog/${slug}` },
         openGraph: {
@@ -241,7 +241,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                     </div>
 
                     {/* Functional Share Box */}
-                    <ShareBox title={typeof post.title === 'string' ? post.title : 'Articulo LABDEN'} slug={slug} />
+                    <ShareBox title={typeof post.title === 'string' ? post.title : 'Articulo LabDen'} slug={slug} />
 
                 </div>
             </article>

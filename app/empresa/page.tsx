@@ -34,7 +34,7 @@ export default function CompanyPage() {
                     </h1>
 
                     <p className="text-lg md:text-xl text-[#475569] dark:text-slate-400 max-w-2xl mx-auto leading-relaxed mb-10">
-                        En LABDEN, creemos que la tecnología no debe ser complicada. Nuestro objetivo es empoderar a los laboratorios dentales con herramientas simples, potentes y accesibles.
+                        En LabDen, creemos que la tecnología no debe ser complicada. Nuestro objetivo es empoderar a los laboratorios dentales con herramientas simples, potentes y accesibles.
                     </p>
                 </div>
             </section>
@@ -45,7 +45,7 @@ export default function CompanyPage() {
                     <div className="prose prose-lg prose-slate mx-auto">
                         <h2 className="text-3xl font-bold text-[#0F172A] mb-6 text-center">Nuestra Historia</h2>
                         <p className="text-[#475569] leading-relaxed mb-6">
-                            LABDEN nació al observar una realidad común: Laboratorios creando arte dental increíble, pero gestionando su negocio con papel, lápiz y estrés. Vimos técnicos perdiendo horas buscando órdenes y dentistas frustrados por la falta de comunicación.
+                            LabDen nació al observar una realidad común: Laboratorios creando arte dental increíble, pero gestionando su negocio con papel, lápiz y estrés. Vimos técnicos perdiendo horas buscando órdenes y dentistas frustrados por la falta de comunicación.
                         </p>
                         <p className="text-[#475569] leading-relaxed">
                             Decidimos cambiar eso. Combinamos nuestra pasión por el desarrollo de software con el conocimiento profundo del flujo de trabajo dental para crear un sistema operativo que trabaja por ti.
