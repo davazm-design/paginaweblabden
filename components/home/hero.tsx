@@ -65,8 +65,8 @@ export function HeroSection() {
                     <Image
                         src="/images/hero-platform.png"
                         alt="Plataforma LabDen — órdenes, seguimiento, finanzas"
-                        width={2048}
-                        height={2048}
+                        width={1672}
+                        height={941}
                         className="w-full h-auto"
                         priority
                     />
