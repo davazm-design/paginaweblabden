@@ -60,9 +60,8 @@ export function HeroSection() {
                     </p>
                 </div>
 
-                {/* Hero image — full width, overflows bottom */}
-                <div className="relative max-w-5xl mx-auto">
-                    <div className="absolute inset-0 -z-10 opacity-20 pointer-events-none blur-[80px] bg-accent rounded-full scale-75" />
+                {/* Hero image — full width */}
+                <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden bg-white shadow-xl border border-border">
                     <Image
                         src="/images/hero-platform.png"
                         alt="Plataforma LabDen — órdenes, seguimiento, finanzas"
