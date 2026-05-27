@@ -76,15 +76,38 @@ const organizationJsonLd = {
     "@type": "Organization",
     name: "LabDen",
     url: SITE_URL,
-    logo: `${SITE_URL}/logo.svg`,
+    logo: `${SITE_URL}/labden-icon.png`,
     description:
-        "Plataforma SaaS para gestión de órdenes, producción y finanzas de laboratorios dentales en Latinoamérica.",
+        "Plataforma para organizar la comunicación entre dentistas y laboratorios dentales en Latinoamérica.",
+    sameAs: [
+        "https://www.facebook.com/profile.php?id=61588445277715",
+        "https://www.instagram.com/labden.mx/",
+    ],
     contactPoint: {
         "@type": "ContactPoint",
         email: "soporte@labden.com.mx",
+        telephone: "+525664015780",
         contactType: "customer support",
         availableLanguage: ["es"],
         areaServed: "MX",
+    },
+};
+
+const softwareJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    name: "LabDen",
+    applicationCategory: "BusinessApplication",
+    operatingSystem: "Web",
+    url: SITE_URL,
+    description:
+        "Plataforma que centraliza órdenes, seguimiento y comunicación entre dentistas y laboratorios dentales.",
+    offers: {
+        "@type": "AggregateOffer",
+        priceCurrency: "MXN",
+        lowPrice: "550",
+        highPrice: "850",
+        offerCount: "2",
     },
 };
 
@@ -100,6 +123,10 @@ export default function RootLayout({
                 <script
                     type="application/ld+json"
                     dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+                />
+                <script
+                    type="application/ld+json"
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
                 />
             </head>
             <body className={clsx(inter.variable, "antialiased bg-background text-foreground font-sans min-h-screen flex flex-col")}>

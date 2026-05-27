@@ -20,8 +20,44 @@ export const metadata: Metadata = {
     },
 };
 
+const faqJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: [
+        {
+            "@type": "Question",
+            name: "¿Cuánto cuesta LabDen?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "LabDen tiene dos planes: Plan Base desde $550 MXN/mes (hasta 100 órdenes) y Plan Pro a $850 MXN/mes (órdenes ilimitadas + control financiero). Ambos incluyen 14 días de prueba gratis sin tarjeta de crédito.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "¿Puedo probar LabDen gratis?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Sí. Ofrecemos 14 días de prueba gratis sin tarjeta de crédito y sin compromiso. Puedes cancelar cuando quieras.",
+            },
+        },
+        {
+            "@type": "Question",
+            name: "¿Qué incluye el pago anual?",
+            acceptedAnswer: {
+                "@type": "Answer",
+                text: "Con el pago anual recibes 3 meses gratis, lo que representa un ahorro del 25% respecto al pago mensual.",
+            },
+        },
+    ],
+};
+
 export default function PreciosPage() {
     return (
+        <>
+        <script
+            type="application/ld+json"
+            dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }}
+        />
         <main className="min-h-screen bg-background text-foreground flex flex-col">
             <Navbar />
 
@@ -66,5 +102,6 @@ export default function PreciosPage() {
 
             <Footer />
         </main>
+        </>
     );
 }
