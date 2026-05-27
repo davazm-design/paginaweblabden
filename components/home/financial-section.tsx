@@ -27,8 +27,8 @@ export function FinancialSection() {
                                         <h.icon className="w-4 h-4" />
                                     </span>
                                     <div>
-                                        <p className="text-sm font-semibold text-foreground">{h.label}</p>
-                                        <p className="text-xs text-muted">{h.description}</p>
+                                        <p className="text-base font-semibold text-foreground">{h.label}</p>
+                                        <p className="text-sm text-muted">{h.description}</p>
                                     </div>
                                 </div>
                             ))}
@@ -45,15 +45,15 @@ export function FinancialSection() {
                             <h3 className="text-sm font-bold text-foreground mb-4">Cuentas por cobrar</h3>
                             <div className="grid grid-cols-3 gap-4 mb-6">
                                 <div className="p-3 rounded-xl bg-background border border-border text-center">
-                                    <p className="text-[10px] text-muted uppercase tracking-wider mb-1">Total</p>
+                                    <p className="text-xs text-muted uppercase tracking-wider mb-1">Total</p>
                                     <p className="text-base font-bold text-foreground">$245,850</p>
                                 </div>
                                 <div className="p-3 rounded-xl bg-red-50 dark:bg-red-950/20 border border-red-200/50 dark:border-red-900/30 text-center">
-                                    <p className="text-[10px] text-muted uppercase tracking-wider mb-1">Vencido</p>
+                                    <p className="text-xs text-muted uppercase tracking-wider mb-1">Vencido</p>
                                     <p className="text-base font-bold text-red-600 dark:text-red-400">$32,400</p>
                                 </div>
                                 <div className="p-3 rounded-xl bg-emerald-50 dark:bg-emerald-950/20 border border-emerald-200/50 dark:border-emerald-900/30 text-center">
-                                    <p className="text-[10px] text-muted uppercase tracking-wider mb-1">Por vencer</p>
+                                    <p className="text-xs text-muted uppercase tracking-wider mb-1">Por vencer</p>
                                     <p className="text-base font-bold text-emerald-600 dark:text-emerald-400">$213,450</p>
                                 </div>
                             </div>
@@ -73,7 +73,7 @@ export function FinancialSection() {
                                     </div>
                                 ))}
                             </div>
-                            <p className="mt-4 text-[10px] text-muted/50 text-center">Datos de ejemplo. Se reemplazarán con capturas reales.</p>
+                            <p className="mt-4 text-xs text-muted/50 text-center">Datos de ejemplo. Se reemplazarán con capturas reales.</p>
                         </div>
                     </div>
                 </div>

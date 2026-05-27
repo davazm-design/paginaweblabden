@@ -53,8 +53,8 @@ export function HowItWorks() {
                                     {step.number}
                                 </span>
                             </div>
-                            <h3 className="text-sm font-bold text-foreground mb-2">{step.title}</h3>
-                            <p className="text-xs text-muted leading-relaxed">{step.description}</p>
+                            <h3 className="text-base font-bold text-foreground mb-2">{step.title}</h3>
+                            <p className="text-sm text-muted leading-relaxed">{step.description}</p>
                             {idx < STEPS.length - 1 && (
                                 <div className="hidden lg:block absolute top-10 -right-3 text-border text-2xl">→</div>
                             )}
