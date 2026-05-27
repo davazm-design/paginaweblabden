@@ -63,7 +63,7 @@ export function HeroSection() {
                 {/* Hero image — full width */}
                 <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl dark:shadow-2xl dark:shadow-accent/5 border border-border/50">
                     <Image
-                        src="/images/hero-platform.png"
+                        src="/images/hero-dashboard.png"
                         alt="Plataforma LabDen — órdenes, seguimiento, finanzas"
                         width={1672}
                         height={941}
