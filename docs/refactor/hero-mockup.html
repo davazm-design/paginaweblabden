@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LabDen Hero Mockup — Referencia para IA</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: #f8fafc; padding: 40px; }
+  .canvas {
+    width: 1600px; height: 900px; background: #ffffff; border-radius: 24px;
+    display: grid; grid-template-columns: 1fr 1fr 1fr; grid-template-rows: auto 1fr;
+    gap: 20px; padding: 32px; overflow: hidden;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.08);
+  }
+
+  /* === PANEL PRINCIPAL: ÓRDENES (col 1, spans 1 row) === */
+  .orders-panel {
+    grid-column: 1; grid-row: 1 / 3;
+    background: #f8fafc; border-radius: 16px; padding: 24px;
+    border: 1px solid #e2e8f0;
+  }
+  .panel-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .panel-icon { width: 36px; height: 36px; border-radius: 10px; background: #dbeafe; display: flex; align-items: center; justify-content: center; color: #2563eb; font-size: 16px; }
+  .panel-title { font-size: 16px; font-weight: 700; color: #0f172a; }
+
+  .search-bar {
+    background: #fff; border: 1px solid #e2e8f0; border-radius: 10px; padding: 10px 14px;
+    font-size: 13px; color: #94a3b8; margin-bottom: 16px; display: flex; align-items: center; gap: 8px;
+  }
+
+  .table-header {
+    display: grid; grid-template-columns: 50px 1fr 90px 80px;
+    font-size: 10px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #94a3b8; padding: 0 4px 8px; border-bottom: 1px solid #e2e8f0; margin-bottom: 8px;
+  }
+
+  .order-row {
+    display: grid; grid-template-columns: 50px 1fr 90px 80px; align-items: center;
+    padding: 10px 4px; border-bottom: 1px solid #f1f5f9;
+  }
+  .order-id { font-size: 12px; font-weight: 700; color: #2563eb; }
+  .order-name { font-size: 13px; font-weight: 600; color: #0f172a; }
+  .order-doc { font-size: 11px; color: #94a3b8; }
+  .badge {
+    font-size: 10px; font-weight: 600; padding: 3px 8px; border-radius: 6px; text-align: center;
+  }
+  .badge-green { background: #dcfce7; color: #16a34a; }
+  .badge-blue { background: #dbeafe; color: #2563eb; }
+  .badge-yellow { background: #fef9c3; color: #ca8a04; }
+  .badge-purple { background: #f3e8ff; color: #9333ea; }
+  .badge-gray { background: #f1f5f9; color: #64748b; }
+
+  .progress-bar { height: 6px; border-radius: 3px; background: #e2e8f0; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; background: #2563eb; }
+
+  /* === RESUMEN DE ÓRDENES (col 2-3, row 1) === */
+  .summary-panel {
+    grid-column: 2 / 4; grid-row: 1;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 16px;
+  }
+
+  .summary-card {
+    background: #f8fafc; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0;
+  }
+
+  .stat-grid {
+    display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; margin-top: 12px;
+  }
+  .stat-box {
+    background: #fff; border-radius: 10px; padding: 12px; border: 1px solid #e2e8f0; text-align: center;
+  }
+  .stat-label { font-size: 10px; color: #94a3b8; text-transform: uppercase; letter-spacing: 0.05em; }
+  .stat-value { font-size: 22px; font-weight: 800; color: #0f172a; margin-top: 2px; }
+  .stat-highlight { border-color: #2563eb; }
+  .stat-highlight .stat-value { color: #2563eb; }
+
+  .new-btn {
+    background: #2563eb; color: #fff; border-radius: 12px; padding: 14px 20px;
+    font-size: 14px; font-weight: 700; display: flex; align-items: center; gap: 8px;
+    border: none; grid-column: 1; grid-row: 1;
+  }
+
+  /* Donut placeholder */
+  .donut-area { display: flex; align-items: center; gap: 16px; margin-top: 12px; }
+  .donut {
+    width: 100px; height: 100px; border-radius: 50%;
+    background: conic-gradient(#f59e0b 0deg 65deg, #a855f7 65deg 104deg, #2563eb 104deg 194deg, #06b6d4 194deg 220deg, #22c55e 220deg 360deg);
+    display: flex; align-items: center; justify-content: center; position: relative;
+  }
+  .donut-inner {
+    width: 60px; height: 60px; border-radius: 50%; background: #f8fafc;
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+  }
+  .donut-number { font-size: 20px; font-weight: 800; color: #0f172a; }
+  .donut-label { font-size: 8px; font-weight: 700; text-transform: uppercase; color: #64748b; letter-spacing: 0.05em; }
+
+  .legend { font-size: 11px; color: #64748b; }
+  .legend-item { display: flex; align-items: center; gap: 6px; margin-bottom: 4px; }
+  .legend-dot { width: 8px; height: 8px; border-radius: 50%; }
+
+  /* === DASHBOARD FINANCIERO (col 2, row 2) === */
+  .finance-panel {
+    grid-column: 2; grid-row: 2;
+    background: #f8fafc; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0;
+  }
+
+  .finance-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 16px 0; }
+  .finance-stat-value { font-size: 20px; font-weight: 800; color: #0f172a; }
+  .finance-stat-label { font-size: 10px; color: #94a3b8; }
+  .finance-stat-change { font-size: 11px; color: #22c55e; font-weight: 600; }
+
+  .chart-placeholder {
+    background: #fff; border-radius: 10px; border: 1px solid #e2e8f0;
+    height: 100px; padding: 12px; position: relative; overflow: hidden;
+  }
+  .chart-line {
+    position: absolute; bottom: 20px; left: 12px; right: 12px; height: 60px;
+    border-bottom: 1px solid #e2e8f0;
+  }
+
+  /* === CUENTAS POR COBRAR (col 3, row 2) === */
+  .receivables-panel {
+    grid-column: 3; grid-row: 2;
+    background: #f8fafc; border-radius: 16px; padding: 20px; border: 1px solid #e2e8f0;
+  }
+  .recv-header { display: flex; justify-content: space-between; align-items: start; margin-bottom: 16px; }
+  .recv-actions { display: flex; gap: 6px; }
+  .recv-btn { font-size: 10px; padding: 4px 10px; border-radius: 6px; border: 1px solid #e2e8f0; background: #fff; color: #64748b; font-weight: 600; }
+
+  .recv-table-header {
+    display: grid; grid-template-columns: 1fr 50px 60px 60px 60px;
+    font-size: 9px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em;
+    color: #94a3b8; padding-bottom: 8px; border-bottom: 1px solid #e2e8f0; margin-bottom: 6px;
+  }
+  .recv-row {
+    display: grid; grid-template-columns: 1fr 50px 60px 60px 60px; align-items: center;
+    padding: 8px 0; border-bottom: 1px solid #f1f5f9; font-size: 12px;
+  }
+  .recv-name { font-weight: 600; color: #0f172a; font-size: 12px; }
+  .recv-sub { font-size: 10px; color: #94a3b8; }
+  .recv-avatar {
+    width: 28px; height: 28px; border-radius: 8px; font-size: 10px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center; color: #fff; margin-right: 8px;
+  }
+</style>
+</head>
+<body>
+
+<div class="canvas">
+
+  <!-- PANEL 1: Seguimiento de órdenes -->
+  <div class="orders-panel">
+    <div class="panel-header">
+      <div class="panel-icon">📋</div>
+      <div class="panel-title">Seguimiento de órdenes</div>
+    </div>
+    <div class="search-bar">🔍 Buscar por paciente, dentista o #orden...</div>
+    <div class="table-header">
+      <span>Orden</span><span>Paciente / Dentista</span><span>Estado</span><span>Progreso</span>
+    </div>
+    <div class="order-row">
+      <span class="order-id">#523</span>
+      <div><div class="order-name">Alejandra Puente</div><div class="order-doc">RAMON GERMAN</div></div>
+      <span class="badge badge-green">Entregada</span>
+      <div><div class="progress-bar"><div class="progress-fill" style="width:100%"></div></div><div style="font-size:10px;color:#94a3b8;text-align:right">100%</div></div>
+    </div>
+    <div class="order-row">
+      <span class="order-id">#522</span>
+      <div><div class="order-name">Leticia Coronado</div><div class="order-doc">DR. RAMON GOMEZ</div></div>
+      <span class="badge badge-blue">En producción</span>
+      <div><div class="progress-bar"><div class="progress-fill" style="width:75%"></div></div><div style="font-size:10px;color:#94a3b8;text-align:right">75%</div></div>
+    </div>
+    <div class="order-row">
+      <span class="order-id">#521</span>
+      <div><div class="order-name">David Vázquez</div><div class="order-doc">GIOVANNI SILVA</div></div>
+      <span class="badge badge-yellow">En Proceso</span>
+      <div><div class="progress-bar"><div class="progress-fill" style="width:60%"></div></div><div style="font-size:10px;color:#94a3b8;text-align:right">60%</div></div>
+    </div>
+    <div class="order-row">
+      <span class="order-id">#520</span>
+      <div><div class="order-name">Joel Hdz</div><div class="order-doc">DRA. MARÍA GONZÁLEZ</div></div>
+      <span class="badge badge-purple">En Revisión</span>
+      <div><div class="progress-bar"><div class="progress-fill" style="width:30%"></div></div><div style="font-size:10px;color:#94a3b8;text-align:right">30%</div></div>
+    </div>
+    <div class="order-row">
+      <span class="order-id">#519</span>
+      <div><div class="order-name">Mariana Leal</div><div class="order-doc">RAMON GERMAN</div></div>
+      <span class="badge badge-gray">Pendiente</span>
+      <div><div class="progress-bar"><div class="progress-fill" style="width:15%"></div></div><div style="font-size:10px;color:#94a3b8;text-align:right">15%</div></div>
+    </div>
+  </div>
+
+  <!-- PANEL 2: Resumen + Distribución -->
+  <div class="summary-panel">
+    <div class="summary-card">
+      <div class="panel-header">
+        <div class="panel-icon">📊</div>
+        <div class="panel-title">Resumen de Órdenes</div>
+      </div>
+      <div style="display:grid;grid-template-columns:auto 1fr 1fr;gap:8px;margin-bottom:8px;">
+        <button class="new-btn" style="grid-row:1/3;">+ Nueva<br><span style="font-size:11px;font-weight:400">Registrar Orden</span></button>
+        <div class="stat-box"><div class="stat-label">Por iniciar</div><div class="stat-value">5</div></div>
+        <div class="stat-box"><div class="stat-label">En revisión</div><div class="stat-value">3</div></div>
+        <div class="stat-box"><div class="stat-label">En producción</div><div class="stat-value">7</div></div>
+        <div class="stat-box"><div class="stat-label">Terminada</div><div class="stat-value">2</div></div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;">
+        <div class="stat-box"><div class="stat-label">Enviadas</div><div class="stat-value">6</div></div>
+        <div class="stat-box stat-highlight"><div class="stat-label">Todas</div><div class="stat-value">23</div></div>
+        <div class="stat-box"><div class="stat-label">Por facturar</div><div class="stat-value" style="font-size:16px">$18,750</div></div>
+      </div>
+    </div>
+    <div class="summary-card">
+      <div class="panel-header">
+        <div class="panel-title">Distribución de órdenes</div>
+      </div>
+      <div class="donut-area">
+        <div class="donut"><div class="donut-inner"><div class="donut-number">23</div><div class="donut-label">Órdenes</div></div></div>
+        <div class="legend">
+          <div class="legend-item"><div class="legend-dot" style="background:#f59e0b"></div> Pendiente &nbsp; 5</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#a855f7"></div> Revisión &nbsp; 3</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#2563eb"></div> Proceso &nbsp; 7</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#06b6d4"></div> Terminada &nbsp; 2</div>
+          <div class="legend-item"><div class="legend-dot" style="background:#22c55e"></div> Entregada &nbsp; 6</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PANEL 3: Dashboard Financiero -->
+  <div class="finance-panel">
+    <div class="panel-header">
+      <div class="panel-icon">💰</div>
+      <div class="panel-title">Dashboard Financiero</div>
+    </div>
+    <div class="finance-stats">
+      <div>
+        <div class="finance-stat-label">Ingresos</div>
+        <div class="finance-stat-value">$36,850</div>
+        <div class="finance-stat-change">↑ 14.8%</div>
+      </div>
+      <div>
+        <div class="finance-stat-label">Por Cobrar</div>
+        <div class="finance-stat-value">$18,750</div>
+        <div class="finance-stat-change">↑ 9.3%</div>
+      </div>
+      <div>
+        <div class="finance-stat-label">Ticket Promedio</div>
+        <div class="finance-stat-value">$3,150</div>
+        <div class="finance-stat-change">↑ 6.2%</div>
+      </div>
+    </div>
+    <div style="font-size:12px;font-weight:600;color:#0f172a;margin-bottom:8px;">Tendencia de Ingresos <span style="color:#94a3b8;font-weight:400">12 meses</span></div>
+    <div class="chart-placeholder">
+      <svg width="100%" height="60" viewBox="0 0 300 60" fill="none">
+        <polyline points="10,50 30,45 55,48 80,40 105,42 130,35 155,38 180,25 205,20 230,22 255,15 280,10" stroke="#2563eb" stroke-width="2" fill="none"/>
+        <polyline points="10,50 30,45 55,48 80,40 105,42 130,35 155,38 180,25 205,20 230,22 255,15 280,10" stroke="none" fill="url(#grad)" opacity="0.15"/>
+        <defs><linearGradient id="grad" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#2563eb"/><stop offset="100%" stop-color="#2563eb" stop-opacity="0"/></linearGradient></defs>
+      </svg>
+    </div>
+  </div>
+
+  <!-- PANEL 4: Cuentas por Cobrar -->
+  <div class="receivables-panel">
+    <div class="recv-header">
+      <div>
+        <div class="panel-header" style="margin-bottom:4px;">
+          <div class="panel-icon">📑</div>
+          <div class="panel-title">Cuentas por Cobrar</div>
+        </div>
+        <div style="font-size:11px;color:#94a3b8;">Gestión de saldos pendientes</div>
+      </div>
+      <div class="recv-actions">
+        <button class="recv-btn">PDF</button>
+        <button class="recv-btn">Excel</button>
+      </div>
+    </div>
+    <div class="recv-table-header">
+      <span>Paciente / Dentista</span><span>N°</span><span>Total</span><span>Días</span><span>Estado</span>
+    </div>
+    <div class="recv-row">
+      <div style="display:flex;align-items:center"><div class="recv-avatar" style="background:#2563eb">AP</div><div><div class="recv-name">Alejandra Puente</div><div class="recv-sub">RAMON GERMAN</div></div></div>
+      <span>4</span><span style="font-weight:700">$6,200</span><span>15 días</span><span class="badge badge-yellow" style="font-size:10px">Por cobrar</span>
+    </div>
+    <div class="recv-row">
+      <div style="display:flex;align-items:center"><div class="recv-avatar" style="background:#a855f7">DV</div><div><div class="recv-name">David Vázquez</div><div class="recv-sub">GIOVANNI SILVA</div></div></div>
+      <span>3</span><span style="font-weight:700">$4,850</span><span>22 días</span><span class="badge badge-yellow" style="font-size:10px">Por cobrar</span>
+    </div>
+    <div class="recv-row">
+      <div style="display:flex;align-items:center"><div class="recv-avatar" style="background:#06b6d4">JH</div><div><div class="recv-name">Joel Hdz</div><div class="recv-sub">DRA. MARÍA GONZÁLEZ</div></div></div>
+      <span>2</span><span style="font-weight:700">$3,400</span><span>28 días</span><span class="badge badge-yellow" style="font-size:10px">Por cobrar</span>
+    </div>
+    <div class="recv-row">
+      <div style="display:flex;align-items:center"><div class="recv-avatar" style="background:#f59e0b">ML</div><div><div class="recv-name">Mariana Leal</div><div class="recv-sub">RAMON GERMAN</div></div></div>
+      <span>2</span><span style="font-weight:700">$2,850</span><span>40 días</span><span class="badge badge-yellow" style="font-size:10px">Por cobrar</span>
+    </div>
+    <div class="recv-row">
+      <div style="display:flex;align-items:center"><div class="recv-avatar" style="background:#ef4444">LC</div><div><div class="recv-name">Leticia Coronado</div><div class="recv-sub">DR. RAMON GOMEZ</div></div></div>
+      <span>1</span><span style="font-weight:700">$1,450</span><span>60 días</span><span class="badge" style="font-size:10px;background:#fee2e2;color:#ef4444">Vencido</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

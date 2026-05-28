@@ -1,31 +1,54 @@
-import {
-    ClipboardList,
-    BarChart3,
-    History,
-    MessageCircle,
-    Wallet,
-    LineChart,
-    ShieldCheck,
-    Smartphone,
-} from "lucide-react"
+import Image from "next/image"
 
 const GROUPS = [
     {
         label: "Organiza y da seguimiento",
         features: [
-            { icon: ClipboardList, title: "Órdenes claras", description: "Recibe toda la información que necesitas para trabajar sin errores." },
-            { icon: BarChart3, title: "Seguimiento por estatus", description: "Visualiza cada caso en tiempo real: nuevo, en proceso, terminado o entregado." },
-            { icon: History, title: "Historial completo", description: "Consulta el historial de cada trabajo, cambios y comunicación." },
-            { icon: MessageCircle, title: "Comunicación organizada", description: "Mensajes, archivos y acuerdos siempre ordenados." },
+            {
+                image: "/images/features/ordenes-claras.svg",
+                title: "Órdenes claras",
+                description: "Recibe toda la información que necesitas para trabajar sin errores.",
+            },
+            {
+                image: "/images/features/seguimiento-estatus.svg",
+                title: "Seguimiento por estatus",
+                description: "Visualiza cada caso en tiempo real: nuevo, en proceso, terminado o entregado.",
+            },
+            {
+                image: "/images/features/historial-completo.svg",
+                title: "Historial completo",
+                description: "Consulta el historial de cada trabajo, cambios y comunicación.",
+            },
+            {
+                image: "/images/features/comunicacion-organizada.svg",
+                title: "Comunicación organizada",
+                description: "Mensajes, archivos y acuerdos siempre ordenados.",
+            },
         ],
     },
     {
         label: "Controla y haz crecer tu laboratorio",
         features: [
-            { icon: Wallet, title: "Control de cobros e ingresos", description: "Consulta lo que te deben por clínica y toma mejores decisiones." },
-            { icon: LineChart, title: "Reportes y métricas", description: "Conoce tu productividad, casos por dentista e ingresos." },
-            { icon: ShieldCheck, title: "Accesos y seguridad", description: "Tú decides quién accede y qué puede hacer dentro del sistema." },
-            { icon: Smartphone, title: "Desde cualquier lugar", description: "En computadora, tablet o celular. Tu laboratorio contigo siempre." },
+            {
+                image: "/images/features/control-cobros.svg",
+                title: "Control de cobros e ingresos",
+                description: "Consulta lo que te deben por clínica y toma mejores decisiones.",
+            },
+            {
+                image: "/images/features/reportes-metricas.svg",
+                title: "Reportes y métricas",
+                description: "Conoce tu productividad, casos por dentista e ingresos.",
+            },
+            {
+                image: "/images/features/accesos-seguridad.svg",
+                title: "Accesos y seguridad",
+                description: "Tú decides quién accede y qué puede hacer dentro del sistema.",
+            },
+            {
+                image: "/images/features/desde-cualquier-lugar.svg",
+                title: "Desde cualquier lugar",
+                description: "En computadora, tablet o celular. Tu laboratorio contigo siempre.",
+            },
         ],
     },
 ];
@@ -52,9 +75,15 @@ export function FeaturesOverview() {
                                         key={f.title}
                                         className="flex flex-col items-center text-center p-6 rounded-2xl bg-surface border border-border hover:border-accent/20 hover:shadow-md transition-all"
                                     >
-                                        <span className="w-11 h-11 rounded-xl bg-accent/10 text-accent flex items-center justify-center mb-4">
-                                            <f.icon className="w-5 h-5" />
-                                        </span>
+                                        <div className="relative w-24 h-24 mb-4">
+                                            <Image
+                                                src={f.image}
+                                                alt={f.title}
+                                                fill
+                                                className="object-contain"
+                                                sizes="96px"
+                                            />
+                                        </div>
                                         <h3 className="text-base font-bold text-foreground mb-1.5">{f.title}</h3>
                                         <p className="text-sm text-muted leading-relaxed">{f.description}</p>
                                     </div>
