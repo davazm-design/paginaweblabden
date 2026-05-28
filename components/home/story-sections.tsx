@@ -53,7 +53,7 @@ const SECTIONS: StorySection[] = [
         description:
             "Toda la comunicación queda organizada dentro de cada orden de trabajo. Más claridad para el laboratorio y también para el dentista.",
         bullets: ["Comunicación organizada", "Historial completo", "Información siempre disponible"],
-        mockup: "/images/story/comunicacion.svg",
+        mockup: "/images/story/comunicacion.png",
         mockupAlt: "Vista de comunicación y archivos",
     },
 ];
@@ -72,13 +72,13 @@ export function StorySections() {
                                     }`}
                             >
                                 {/* Mockup */}
-                                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-emerald-500/5 border border-border/50 p-4 md:p-6 aspect-[4/3] flex items-center justify-center">
+                                <div className="relative rounded-2xl overflow-hidden bg-gradient-to-br from-blue-500/5 via-cyan-500/5 to-emerald-500/5 border border-border/50 aspect-[4/3]">
                                     <Image
                                         src={section.mockup}
                                         alt={section.mockupAlt}
                                         width={800}
                                         height={600}
-                                        className="w-full h-full object-contain"
+                                        className="w-full h-full object-cover"
                                     />
                                 </div>
 
