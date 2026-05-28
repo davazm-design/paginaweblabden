@@ -48,7 +48,7 @@ export function HeroSection() {
                             href="https://app.labden.com.mx/auth/register"
                             onClick={() => analytics.ctaHomeHeroClick()}
                         >
-                            Prueba gratis 14 días
+                            Prueba gratis 30 días
                         </Button>
                         <Button size="lg" variant="ghost" className="w-full sm:w-auto h-12 px-8 text-base text-muted hover:text-foreground" href="#como-funciona">
                             Ver cómo funciona

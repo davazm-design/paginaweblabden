@@ -9,12 +9,12 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
     title: "Planes y precios | LabDen",
     description:
-        "Planes claros desde $550 MXN/mes. Digitaliza tu laboratorio dental con prueba gratis de 14 días, sin tarjeta de crédito.",
+        "Planes claros desde $550 MXN/mes. Digitaliza tu laboratorio dental con prueba gratis de 30 días, sin tarjeta de crédito.",
     alternates: { canonical: "/precios" },
     openGraph: {
         title: "Planes y precios | LabDen",
         description:
-            "Planes claros desde $550 MXN/mes para laboratorios dentales. Prueba gratis 14 días.",
+            "Planes claros desde $550 MXN/mes para laboratorios dentales. Prueba gratis 30 días.",
         type: "website",
         url: "/precios",
     },
@@ -29,7 +29,7 @@ const faqJsonLd = {
             name: "¿Cuánto cuesta LabDen?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "LabDen tiene dos planes: Plan Base desde $550 MXN/mes (hasta 100 órdenes) y Plan Pro a $850 MXN/mes (órdenes ilimitadas + control financiero). Ambos incluyen 14 días de prueba gratis sin tarjeta de crédito.",
+                text: "LabDen tiene dos planes: Plan Base desde $550 MXN/mes (hasta 100 órdenes) y Plan Pro a $850 MXN/mes (órdenes ilimitadas + control financiero). Ambos incluyen 30 días de prueba gratis sin tarjeta de crédito.",
             },
         },
         {
@@ -37,7 +37,7 @@ const faqJsonLd = {
             name: "¿Puedo probar LabDen gratis?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Sí. Ofrecemos 14 días de prueba gratis sin tarjeta de crédito y sin compromiso. Puedes cancelar cuando quieras.",
+                text: "Sí. Ofrecemos 30 días de prueba gratis sin tarjeta de crédito y sin compromiso. Puedes cancelar cuando quieras.",
             },
         },
         {
@@ -70,7 +70,7 @@ export default function PreciosPage() {
                         Un plan para cada etapa de tu laboratorio
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                        Sin contratos largos, sin sorpresas. Empieza con 14 días gratis y paga solo si te aporta valor.
+                        Sin contratos largos, sin sorpresas. Empieza con 30 días gratis y paga solo si te aporta valor.
                     </p>
                 </div>
             </section>

@@ -39,13 +39,13 @@ const RESPONSES: Record<string, Message> = {
     price: {
         role: "assistant",
         content:
-            "Tenemos 2 planes activos:\n\n• Plan Base: desde $550 MXN/mes (hasta 100 órdenes)\n• Plan Pro: $850 MXN/mes (órdenes ilimitadas + control financiero)\n\nAmbos incluyen 14 días de prueba gratis, sin tarjeta de crédito. En pago anual te regalamos 3 meses.",
+            "Tenemos 2 planes activos:\n\n• Plan Base: desde $550 MXN/mes (hasta 100 órdenes)\n• Plan Pro: $850 MXN/mes (órdenes ilimitadas + control financiero)\n\nAmbos incluyen 30 días de prueba gratis, sin tarjeta de crédito. En pago anual te regalamos 3 meses.",
         links: [{ label: "Ver planes completos", href: "/precios" }],
     },
     try: {
         role: "assistant",
         content:
-            "Puedes empezar tu prueba gratis ahora mismo. Son 14 días sin tarjeta de crédito y sin compromiso. Configura tu laboratorio en minutos.",
+            "Puedes empezar tu prueba gratis ahora mismo. Son 30 días sin tarjeta de crédito y sin compromiso. Configura tu laboratorio en minutos.",
         links: [
             { label: "Registrarme gratis", href: "https://app.labden.com.mx/auth/register" },
         ],

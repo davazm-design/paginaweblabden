@@ -69,7 +69,7 @@ export function Navbar() {
                         Entrar
                     </Link>
                     <Button variant="primary" size="sm" href="https://app.labden.com.mx/auth/register" className="h-10 px-6">
-                        Prueba gratis 14 días
+                        Prueba gratis 30 días
                     </Button>
                 </div>
 

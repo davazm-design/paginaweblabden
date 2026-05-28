@@ -91,7 +91,7 @@ export default function PlataformaPage() {
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
-                            Prueba gratis 14 días
+                            Prueba gratis 30 días
                         </Button>
                         <Button variant="outline" size="lg" href="#funciones">
                             Ver funciones
@@ -136,7 +136,7 @@ export default function PlataformaPage() {
                         Prueba LabDen sin compromiso. Configura tu laboratorio en minutos.
                     </p>
                     <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
-                        Prueba gratis 14 días <ArrowRight className="ml-2 w-4 h-4" />
+                        Prueba gratis 30 días <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>
             </section>

@@ -28,7 +28,7 @@ const DEFAULT_FEATURES = [
 ];
 
 const DEFAULT_FINAL_CTA = {
-    title: "Prueba LabDen gratis por 14 días",
+    title: "Prueba LabDen gratis por 30 días",
     description: "Sin tarjeta de crédito. Cancela cuando quieras.",
     buttonText: "Comenzar prueba gratuita",
     disclaimer:

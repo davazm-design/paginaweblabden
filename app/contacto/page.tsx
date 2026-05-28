@@ -125,7 +125,7 @@ export default function ContactoPage() {
                         ¿Listo para probar LabDen?
                     </h2>
                     <p className="text-muted mb-8">
-                        Empieza tu prueba gratuita de 14 días, sin tarjeta de crédito.
+                        Empieza tu prueba gratuita de 30 días, sin tarjeta de crédito.
                     </p>
                     <Button variant="primary" size="lg" href="/precios">
                         Ver planes

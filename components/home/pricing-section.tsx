@@ -79,7 +79,7 @@ export function PricingSection() {
                                 Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$4,950/año</span> <span className="line-through">$6,600</span>
                             </p>
                             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                                Prueba gratuita 14 días
+                                Prueba gratuita 30 días
                             </div>
                         </div>
 
@@ -111,7 +111,7 @@ export function PricingSection() {
                         </ul>
 
                         <Button variant="primary" size="lg" className="w-full h-12" href="https://app.labden.com.mx/auth/register">
-                            Probar gratis 14 días
+                            Probar gratis 30 días
                         </Button>
                     </div>
 
@@ -162,7 +162,7 @@ export function PricingSection() {
                         </ul>
 
                         <Button variant="primary" size="lg" className="w-full h-14 text-lg" href="https://app.labden.com.mx/auth/register">
-                            Probar gratis 14 días
+                            Probar gratis 30 días
                         </Button>
                     </div>
 

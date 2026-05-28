@@ -19,7 +19,7 @@ export function FinalCta() {
                 </p>
 
                 <Button variant="primary" size="lg" className="h-14 px-10 text-base" href="https://app.labden.com.mx/auth/register">
-                    Prueba gratis 14 días
+                    Prueba gratis 30 días
                 </Button>
 
                 <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mt-6">
