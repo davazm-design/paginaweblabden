@@ -29,7 +29,7 @@ const STEPS = [
         number: "4",
         title: "Entregas con más control",
         description: "Todo queda registrado para el laboratorio y el dentista.",
-        mockup: "/images/story/paso-4-entrega.svg",
+        mockup: "/images/story/paso-4-entrega.png",
     },
 ];
 
