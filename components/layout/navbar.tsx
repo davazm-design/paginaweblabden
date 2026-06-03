@@ -43,7 +43,7 @@ export function Navbar() {
                 </Link>
 
                 {/* Desktop Nav */}
-                <div className="hidden md:flex items-center gap-10">
+                <div className="hidden lg:flex items-center gap-10">
                     {navLinks.map((link) => {
                         const isActive = pathname === link.href
                         return (
@@ -63,7 +63,7 @@ export function Navbar() {
                 </div>
 
                 {/* CTA */}
-                <div className="hidden md:flex items-center gap-4">
+                <div className="hidden lg:flex items-center gap-4">
                     <ModeToggle />
                     <Link href="https://app.labden.com.mx" className="text-sm font-medium text-muted hover:text-foreground transition-colors">
                         Entrar
@@ -73,9 +73,9 @@ export function Navbar() {
                     </Button>
                 </div>
 
-                {/* Mobile Menu Toggle */}
+                {/* Mobile/Tablet Menu Toggle */}
                 <button
-                    className="md:hidden w-12 h-12 flex items-center justify-center text-muted hover:text-foreground active:scale-90 transition-transform focus:outline-none"
+                    className="lg:hidden w-12 h-12 flex items-center justify-center text-muted hover:text-foreground active:scale-90 transition-transform focus:outline-none"
                     onClick={() => setIsOpen(!isOpen)}
                     aria-label={isOpen ? "Cerrar menú" : "Abrir menú"}
                 >
@@ -83,17 +83,17 @@ export function Navbar() {
                 </button>
             </div>
 
-            {/* Mobile Menu Overlay */}
+            {/* Mobile/Tablet Menu Overlay */}
             {isOpen && (
                 <div
-                    className="md:hidden fixed inset-0 top-20 bg-background/60 backdrop-blur-sm z-40 animate-in fade-in duration-200"
+                    className="lg:hidden fixed inset-0 top-20 bg-background/60 backdrop-blur-sm z-40 animate-in fade-in duration-200"
                     onClick={() => setIsOpen(false)}
                 />
             )}
 
-            {/* Mobile Menu Content */}
+            {/* Mobile/Tablet Menu Content */}
             {isOpen && (
-                <div className="md:hidden absolute top-20 left-0 w-full bg-surface border-b border-border p-6 flex flex-col gap-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-200">
+                <div className="lg:hidden absolute top-20 left-0 w-full bg-surface border-b border-border p-6 flex flex-col gap-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-200">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
