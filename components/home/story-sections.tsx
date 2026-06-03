@@ -35,8 +35,8 @@ const SECTIONS: StorySection[] = [
         description:
             "Visualiza exactamente en qué etapa se encuentra cada trabajo y mantén mejor control del laboratorio. Todo el equipo puede trabajar con más claridad y seguimiento.",
         bullets: ["Más control", "Mejor seguimiento", "Menos llamadas innecesarias"],
-        mockup: "/images/story/seguimiento-orden.svg",
-        mockupAlt: "Timeline de seguimiento de orden",
+        mockup: "/images/story/seguimiento-orden.png",
+        mockupAlt: "Lista de órdenes con estado de producción y barras de progreso en tiempo real",
     },
     {
         number: "4",
