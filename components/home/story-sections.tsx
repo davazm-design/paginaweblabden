@@ -44,8 +44,8 @@ const SECTIONS: StorySection[] = [
         description:
             "Consulta ingresos, trabajos pendientes y cuentas por cobrar desde un solo lugar. Sin depender de Excel o cuentas manuales.",
         bullets: ["Más claridad financiera", "Control de pagos", "Mejor organización"],
-        mockup: "/images/story/dashboard-financiero.svg",
-        mockupAlt: "Dashboard financiero",
+        mockup: "/images/story/dashboard-financiero.png",
+        mockupAlt: "Dashboard financiero de LabDen con ingresos, cuentas por cobrar, ticket promedio y tendencia de ingresos",
     },
     {
         number: "5",
