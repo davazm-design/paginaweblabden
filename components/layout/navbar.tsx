@@ -93,7 +93,7 @@ export function Navbar() {
 
             {/* Mobile/Tablet Menu Content */}
             {isOpen && (
-                <div className="lg:hidden absolute top-20 left-0 w-full bg-surface border-b border-border p-6 flex flex-col gap-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-200">
+                <div className="lg:hidden absolute top-20 left-0 w-full max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain bg-surface border-b border-border p-6 flex flex-col gap-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-200">
                     {navLinks.map((link) => (
                         <Link
                             key={link.name}
