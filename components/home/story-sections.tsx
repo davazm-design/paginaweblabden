@@ -17,7 +17,7 @@ const SECTIONS: StorySection[] = [
         description:
             "LabDen entiende el trabajo real del laboratorio dental. Fue creada para ayudarte a organizar órdenes, seguimiento y comunicación sin depender de mensajes dispersos.",
         bullets: ["Menos retrabajos", "Más claridad", "Mejor organización"],
-        mockup: "/images/story/resumen-general.png",
+        mockup: "/images/story/resumen-general.jpg",
         mockupAlt: "Resumen general del laboratorio",
     },
     {
