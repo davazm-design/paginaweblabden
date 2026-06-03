@@ -26,8 +26,8 @@ const SECTIONS: StorySection[] = [
         description:
             "Recibe fotografías, indicaciones y archivos organizados por cada trabajo. Evita información incompleta, cambios perdidos y mensajes mezclados entre conversaciones.",
         bullets: ["Órdenes organizadas", "Menos errores", "Información centralizada"],
-        mockup: "/images/story/ordenes-detalle.svg",
-        mockupAlt: "Vista de órdenes detalladas",
+        mockup: "/images/story/ordenes-detalle.png",
+        mockupAlt: "Panel de órdenes de trabajo de LabDen con tarjetas de estado, distribución de órdenes y lista de trabajos",
     },
     {
         number: "3",
