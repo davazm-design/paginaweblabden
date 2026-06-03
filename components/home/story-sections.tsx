@@ -54,7 +54,7 @@ const SECTIONS: StorySection[] = [
             "Toda la comunicación queda organizada dentro de cada orden de trabajo. Más claridad para el laboratorio y también para el dentista.",
         bullets: ["Comunicación organizada", "Historial completo", "Información siempre disponible"],
         mockup: "/images/story/comunicacion.png",
-        mockupAlt: "Vista de comunicación y archivos",
+        mockupAlt: "Técnico de laboratorio dental abrumado por mensajes de WhatsApp dispersos, correos y notas adhesivas",
     },
 ];
 
