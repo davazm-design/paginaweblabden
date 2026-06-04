@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 3 ✅ implementada (landing-engineer, 2026-06-03) → **siguiente: Fase 4 (schemas Organization/SoftwareApplication/Breadcrumb — landing-seo-specialist + gate SEC).**
+**Fase actual:** Fase 3 ✅ cerrada (commit `8cb7330`, gate SEC PASS) → **siguiente: Fase 4 (schemas Organization/SoftwareApplication/Breadcrumb — landing-seo-specialist + gate SEC).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -148,3 +148,10 @@
 - **Commit `1e700e9`** `feat(seo): Fase 1 — metadata + canonical www for home`. David ya fijó la env var en Vercel.
 - **Acción Vercel pendiente (no bloqueante):** confirmar que el endpoint WP es `WORDPRESS_API_URL` (SIN prefijo `NEXT_PUBLIC_`).
 - **Próximo paso:** Fase 2 (landing-engineer: reescritura H1/H2/H3 + copy del home usando COPY.md).
+
+### Sesión 2026-06-03 (Fase 3 — verificación + cierre)
+- **Verificado en prod build local:** FAQPage JSON-LD presente en el HTML del home (`"@type":"FAQPage"`), las 10 preguntas en el DOM (visibles a crawlers), acordeón funcional (chevrons rotan). Screenshot OK.
+- **Hardening de seguridad (recomendación del auditor):** `components/blog/faq-schema.tsx` ahora escapa `<` como `<` en el JSON-LD → cierra el vector de breakout `</script>` para el call site del blog (FAQ desde WordPress). Endurece ambos usos de un solo cambio.
+- **Gate landing-security-auditor = PASS.** lint/typecheck/build limpios.
+- **Commit `8cb7330`** `feat(seo): Fase 3 — visible FAQ accordion + FAQPage schema on home`.
+- **Próximo paso:** Fase 4 (Organization + SoftwareApplication `areaServed: México` + BreadcrumbList home) — landing-seo-specialist + gate SEC (toca schemas en `app/layout.tsx`). Recordatorio: resolver **D5** (mantener precios en SoftwareApplication, recomendado sí) antes/junto a F4-T2.
