@@ -222,3 +222,15 @@
 - **Solución:** (1) fix de código `lib/site.ts` (commit `d9e7795`) que fuerza www sin depender del env; (2) deploy directo con Vercel CLI al proyecto correcto: `vercel link --project paginaweblabden` + `vercel --prod`.
 - **VERIFICADO en producción:** canonical, og:url, og:image, robots Host/Sitemap y sitemap `<loc>` TODOS con `https://www.labden.com.mx`. ✅ Fase 1 (dominio) cerrada al 100%.
 - Nota operativa: para futuros deploys, el proyecto correcto es **paginaweblabden** (ya linkeado vía `.vercel/`). Conviene revisar/arreglar el auto-deploy git de ese proyecto, o desplegar con `vercel --prod`.
+
+### Sesión 2026-06-03 (Punto 1 — limpieza de infraestructura, cerrado)
+Revisado y arreglado todo lo pendiente del dominio/deploy:
+1. ✅ Dominio www en canonical/og/robots/sitemap (vía `lib/site.ts`, deploy vivo `b65e8c9`).
+2. ✅ Redirect apex→www correcto (labden.com.mx 307 → www.labden.com.mx) y www responde 200 directo.
+3. ✅ `NEXT_PUBLIC_SITE_URL` en el proyecto REAL `paginaweblabden`: se eliminó la vieja (sin www, 9d) y se recreó como `https://www.labden.com.mx` en Production + Preview. (El código ya forzaba www; ahora la fuente también es correcta.)
+4. ✅ `WORDPRESS_API_URL`: NO existe en `paginaweblabden` → blog WP deshabilitado (usa datos locales), sin fuga del endpoint. Resuelve la observación del auditor de Fase 1.
+5. ✅ Auto-deploy de Git: NO estaba roto, solo retrasado ~30-60 min (cola de Vercel GitHub App). Se puso al día (d9e7795, 6a5b157, b65e8c9 desplegados). Para deploy inmediato cuando se necesite: `vercel --prod` (proyecto ya linkeado en `.vercel/`).
+
+**Nota para David:** el proyecto `web-labden` (donde editabas el env por error) NO sirve el dominio — es otro proyecto Vercel. Puedes ignorarlo o borrarlo para evitar confusión futura. El proyecto correcto es **`paginaweblabden`**.
+
+**Fase 1 + infraestructura del dominio: CERRADA 100%.** Próximo: Fase 7 (GA4); F7-T3 WhatsApp pendiente del número (D3).
