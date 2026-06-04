@@ -165,3 +165,13 @@
   - `components/ui/breadcrumbs.tsx` — SIN cambios; uso en `/blog/[slug]` intacto.
 - **Nota para gate SEC:** cambio toca `app/layout.tsx` (schemas JSON-LD) y `app/page.tsx` (inyección `<script>`). No toca `middleware.ts`, env vars, `lib/wordpress*.ts`, `package.json`, `next.config.ts`, ni deploy config. Sin secretos. Sin inputs externos en los schemas (todo es constante controlada). El `<` escape aplica pero los valores son literales internos — riesgo XSS = 0. Queda en tu criterio.
 - **Próximo paso:** gate landing-security-auditor (Fase 4) → si PASS, commit + Fase 5 (imágenes — landing-engineer).
+
+### Sesión 2026-06-03 (Fase 4 — schemas)
+- **F4-T1/T2/T3** en `app/layout.tsx` (Organization + SoftwareApplication) y `app/page.tsx` (BreadcrumbList Inicio).
+- areaServed México en Organization y SoftwareApplication; AggregateOffer 550–850 MXN **mantenido** (D5 ✅).
+- Escape `\u003c` aplicado a los 3 sinks JSON-LD del layout/home (consistencia con faq-schema).
+- **Verificado en build local:** el home emite los **4 schemas** (Organization, SoftwareApplication, FAQPage, BreadcrumbList) con areaServed y AggregateOffer presentes.
+- **Gate landing-security-auditor = PASS.** lint/typecheck/build limpios. **Commit `44e1a22`**.
+- Observación del auditor (no bloquea): `SITE_URL` está duplicado en `app/layout.tsx` y `app/page.tsx` → candidato a centralizar en `lib/site.ts` en un cleanup (Fase 8/9).
+- **PENDIENTE DOMINIO (Fase 1):** producción aún sirve **sin www** pese a que la env var ya es www y hay deploy fresco. Causa = caché de build de Vercel hornea el valor viejo de NEXT_PUBLIC_*. **Acción David:** Redeploy SIN "Use existing Build Cache". Reverificar canonical/og/robots/sitemap tras eso.
+- **Próximo paso:** Fase 5 (imágenes SEO — landing-engineer): nombres descriptivos WebP, alt único, hero `sistema-para-laboratorios-dentales-labden.webp` (D4 = resumen-general), lazy salvo hero.
