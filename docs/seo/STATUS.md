@@ -216,3 +216,9 @@
 - **Fix (commit `d9e7795`):** creado `lib/site.ts` que normaliza el dominio a `https://www.labden.com.mx` SIEMPRE (apex→www, http→https, sin slash final), independiente del env. Centralizado el SITE_URL antes duplicado en 6 archivos (layout, robots, sitemap, page, breadcrumbs, share-box).
 - Verificado local con env=non-www → output www en los 4 lugares. Gate SEC = PASS. lint/typecheck/build OK.
 - ⚠️ **BLOQUEO DE DEPLOY:** Vercel dejó de auto-desplegar los pushes después de `846331c` (02:34Z). `d9e7795` está en GitHub (HEAD remoto) pero Vercel no crea el build. **Acción David:** revisar Vercel → Deployments; si `d9e7795` no aparece building/queued, disparar deploy manual del último commit (o revisar la conexión Git del proyecto). Hasta que despliegue, producción sigue sirviendo `846331c` (sin el fix www).
+
+### Sesión 2026-06-03 (RESUELTO dominio www — causa raíz)
+- **Causa raíz encontrada:** existen DOS proyectos Vercel: `paginaweblabden` (sirve www.labden.com.mx, conectado al repo) y `web-labden` (otro, *.vercel.app). David editaba `NEXT_PUBLIC_SITE_URL` en **web-labden**, pero producción la sirve **paginaweblabden**, que tenía su propia env vieja sin www (9d). Por eso nada surtía efecto. Además el auto-deploy git de paginaweblabden estaba rezagado.
+- **Solución:** (1) fix de código `lib/site.ts` (commit `d9e7795`) que fuerza www sin depender del env; (2) deploy directo con Vercel CLI al proyecto correcto: `vercel link --project paginaweblabden` + `vercel --prod`.
+- **VERIFICADO en producción:** canonical, og:url, og:image, robots Host/Sitemap y sitemap `<loc>` TODOS con `https://www.labden.com.mx`. ✅ Fase 1 (dominio) cerrada al 100%.
+- Nota operativa: para futuros deploys, el proyecto correcto es **paginaweblabden** (ya linkeado vía `.vercel/`). Conviene revisar/arreglar el auto-deploy git de ese proyecto, o desplegar con `vercel --prod`.
