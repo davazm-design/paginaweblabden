@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 0 cerrada → **siguiente: Fase 1 (metadata) tras resolver D1.**
+**Fase actual:** Fase 0 cerrada · D1/D2/D4 resueltas → **Fase 1 (metadata) DESBLOQUEADA, lista para ejecutar.**
 **Última actualización:** 2026-06-03
 
 ---
@@ -15,7 +15,7 @@
 - [x] F0-T2 Recon del estado del repo — *documentado en PLAN.md*
 
 ### Fase 1 — Metadata & técnico
-- [!] F1-T1 Dominio canónico www + env Vercel — **bloqueado por D1**
+- [ ] F1-T1 Dominio canónico www (D1 ✅) + fijar env en Vercel (acción David)
 - [ ] F1-T2 Meta title
 - [ ] F1-T3 Meta description
 - [ ] F1-T4 keywords
@@ -50,11 +50,11 @@
 
 ### Fase 5 — Imágenes
 - [ ] F5-T1 Set final + specs (ASSETS.md)
-- [!] F5-T2 Imagen hero real — **bloqueado por D4**
+- [ ] F5-T2 Imagen hero real (D4 ✅ → `story/resumen-general.jpg`)
 - [ ] F5-T3 Renombrar story a nombres SEO
 
 ### Fase 6 — Nav & footer
-- [!] F6-T1 Menú (Aliados→Comunidad) — **bloqueado por D2**
+- [x] F6-T1 Menú — **D2 ✅ sin cambios** (se mantiene "Aliados")
 - [ ] F6-T2 Footer SEO
 
 ### Fase 7 — GA4
@@ -81,13 +81,13 @@
 
 ## Decisiones pendientes de David
 
-| # | Decisión | Recomendación | Estado |
+| # | Decisión | Resolución | Estado |
 |---|---|---|---|
-| **D1** | Dominio canónico: ¿`www.labden.com.mx` o `labden.com.mx`? Hoy el env default es **sin www** pero producción redirige a **www**. | **www** (coincide con el plan y con el 200 actual). Fijar `NEXT_PUBLIC_SITE_URL=https://www.labden.com.mx` en Vercel. | ⏳ |
-| **D2** | ¿Renombrar el menú `Aliados` → `Comunidad`? | Sí, si Comunidad será pieza central. | ⏳ |
+| **D1** | Dominio canónico: ¿`www` o sin www? | ✅ **www** → `https://www.labden.com.mx/`. Fijar `NEXT_PUBLIC_SITE_URL=https://www.labden.com.mx` en Vercel. | ✅ 2026-06-03 |
+| **D2** | ¿Renombrar el menú `Aliados` → `Comunidad`? | ✅ **Mantener "Aliados"** sin cambios. Comunidad será solo sección del home; `/comunidad` queda diferida. | ✅ 2026-06-03 |
 | **D3** | Número de WhatsApp para el CTA "Hablar por WhatsApp". | Pendiente número. | ⏳ |
-| **D4** | Qué captura usar como **imagen hero** (debe ser pantalla real de la plataforma). | Reusar/recortar la del dashboard "Resumen general" o el panel de órdenes. | ⏳ |
-| **D5** | SoftwareApplication: ¿mantener precios (AggregateOffer 550–850)? | Sí, da rich result más completo. | ⏳ |
+| **D4** | Qué captura usar como **imagen hero**. | ✅ **"Resumen general"** (foto técnico + monitor, `story/resumen-general.jpg`). Optimizar a `sistema-para-laboratorios-dentales-labden.webp`. | ✅ 2026-06-03 |
+| **D5** | SoftwareApplication: ¿mantener precios (AggregateOffer 550–850)? | Recomendado: sí. | ⏳ |
 
 ---
 
@@ -99,3 +99,8 @@
 - Definidas 10 fases + 2 epics + 5 decisiones (D1–D5).
 - **Pendiente:** que David resuelva D1–D5 para desbloquear Fase 1 y arrancar implementación.
 - **Próximo paso sugerido:** resolver D1 (www) y ejecutar Fase 1 completa (metadata) en una sola sesión, con gate SEC al final.
+
+### Sesión 2026-06-03 (decisiones)
+- David resolvió **D1 = www**, **D2 = mantener "Aliados"**, **D4 = hero "Resumen general"**. Pendientes solo D3 (WhatsApp) y D5 (precios en schema, recomendado sí).
+- Fase 1 desbloqueada. F6-T1 cerrada (menú sin cambios).
+- **Próximo paso:** ejecutar Fase 1 (metadata: title, description, canonical www, OG/Twitter, keywords, robots host www) vía landing-seo-specialist + gate landing-security-auditor; en paralelo, David fija `NEXT_PUBLIC_SITE_URL=https://www.labden.com.mx` en Vercel.
