@@ -234,3 +234,11 @@ Revisado y arreglado todo lo pendiente del dominio/deploy:
 **Nota para David:** el proyecto `web-labden` (donde editabas el env por error) NO sirve el dominio — es otro proyecto Vercel. Puedes ignorarlo o borrarlo para evitar confusión futura. El proyecto correcto es **`paginaweblabden`**.
 
 **Fase 1 + infraestructura del dominio: CERRADA 100%.** Próximo: Fase 7 (GA4); F7-T3 WhatsApp pendiente del número (D3).
+
+### Sesión 2026-06-03 (limpieza de código/assets muertos — commit `ebeae67`)
+Eliminado todo lo huérfano que dejó la reescritura de la home:
+- **9 componentes** sin uso: communication-section, features-grid, features-overview, problem, product-showcase, security-preview, security-section, solution, value-proposition.
+- **22 assets** sin uso: 8 `features/*.svg`, 4 svg/png de story (incl. `hero-dashboard.png` 1.3 MB y `hero-3d.png` 675 KB), SVGs del template create-next-app (file/vercel/next/globe/window), logos viejos (logo.svg, labden-logo.png), noise.svg, dashboard-preview.png, premium-plans-icon.png. (.DS_Store purgado.)
+- Conservados: `labden-icon.png` (logo activo de BrandLogo + schema) e `icon.svg`.
+- Verificado: 0 imágenes huérfanas restantes, build/lint/typecheck limpios.
+- **PENDIENTE confirmación de David:** proyectos Vercel `web-labden` y `crm-nexus` — no los borré (es destructivo/outward-facing y no sé si alguno sirve para otra cosa). Confirmar antes de eliminar.
