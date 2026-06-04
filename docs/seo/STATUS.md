@@ -210,3 +210,9 @@
 - Verificado: frase SEO presente en el HTML, 12 enlaces todos a rutas reales, screenshot OK. lint/typecheck/build limpios. **Commit `4dbcf65`**.
 - Nota: el footer YA tiene un icono de WhatsApp (útil para F7-T3 cuando David dé el número D3).
 - **Próximo:** Fase 7 (GA4): F7-T1 eventos dataLayer (click_prueba_gratis, click_ver_como_funciona, click_login, click_precios, scroll_50, scroll_90); F7-T2 submit_trial_form (documentar límite: el form vive en app.labden.com.mx); F7-T3 WhatsApp + número (D3 ⏳); F7-T4 conversiones GA4 (David).
+
+### Sesión 2026-06-03 (fix dominio www — env-independiente)
+- Diagnóstico: env Vercel = www (confirmado, sin duplicados en Production), build actualizado (prod ya tenía Fase 1–6), PERO canonical/og/robots/sitemap seguían sin www = bug de propagación de NEXT_PUBLIC_* de Vercel.
+- **Fix (commit `d9e7795`):** creado `lib/site.ts` que normaliza el dominio a `https://www.labden.com.mx` SIEMPRE (apex→www, http→https, sin slash final), independiente del env. Centralizado el SITE_URL antes duplicado en 6 archivos (layout, robots, sitemap, page, breadcrumbs, share-box).
+- Verificado local con env=non-www → output www en los 4 lugares. Gate SEC = PASS. lint/typecheck/build OK.
+- ⚠️ **BLOQUEO DE DEPLOY:** Vercel dejó de auto-desplegar los pushes después de `846331c` (02:34Z). `d9e7795` está en GitHub (HEAD remoto) pero Vercel no crea el build. **Acción David:** revisar Vercel → Deployments; si `d9e7795` no aparece building/queued, disparar deploy manual del último commit (o revisar la conexión Git del proyecto). Hasta que despliegue, producción sigue sirviendo `846331c` (sin el fix www).
