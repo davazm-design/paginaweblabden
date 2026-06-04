@@ -247,3 +247,7 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - ✅ Eliminado `crm-nexus` (beta sin dominio, David lo reinicia de cero).
 - 🛑 **NO eliminado `web-labden`**: al inspeccionarlo, sirve **`https://app.labden.com.mx`** = la APP SaaS (destino de TODOS los CTAs de la landing). Borrarlo habría tumbado el SaaS y el funnel. Conservado. El "ruido" fue solo haber editado el env ahí por error; el proyecto es esencial.
 - Proyectos Vercel finales: `paginaweblabden` (landing → www.labden.com.mx) y `web-labden` (SaaS → app.labden.com.mx).
+
+### Sesión 2026-06-03 (rename proyecto Vercel)
+- Renombrado `web-labden` → **`app-labden`** (vía API Vercel) para evitar confusión futura. Sirve `app.labden.com.mx` (SaaS), dominio intacto. Verificado: app.labden.com.mx y www.labden.com.mx ambos HTTP 200.
+- Nombres finales: `paginaweblabden` (landing, www) · `app-labden` (SaaS, app). Para editar env del SaaS, ahora es obvio cuál es.
