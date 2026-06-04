@@ -14,6 +14,7 @@ import { AcademyTeaser } from "@/components/home/academy-teaser";
 import { CommunitySection } from "@/components/home/community-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { FinalCta } from "@/components/home/final-cta";
+import { ScrollTracker } from "@/components/analytics/scroll-tracker";
 import { SITE_URL } from "@/lib/site";
 
 // F4-T3: BreadcrumbList del home — un solo item "Inicio" apuntando a la URL canónica.
@@ -39,6 +40,8 @@ export default function Home() {
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumbJsonLd).replace(/</g, "\\u003c") }}
             />
+            {/* F7-T1: scroll_50 / scroll_90 — fires once per depth threshold. */}
+            <ScrollTracker />
             <Navbar />
             {/* 1. Hero */}
             <HeroSection />

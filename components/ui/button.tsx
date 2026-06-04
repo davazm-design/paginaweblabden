@@ -30,10 +30,17 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
         const classes = cn(baseStyles, variants[variant], sizes[size], className)
 
         if (href) {
+            // onClick typed for <button> but safe to call on any element event
+            const handleClick = props.onClick
+                ? (e: React.MouseEvent<HTMLAnchorElement>) => {
+                      props.onClick?.(e as unknown as React.MouseEvent<HTMLButtonElement>)
+                  }
+                : undefined
+
             // Use regular anchor for hash links (smooth scroll)
             if (href.startsWith('#') || href.startsWith('/#')) {
                 return (
-                    <a href={href} className={classes}>
+                    <a href={href} className={classes} onClick={handleClick}>
                         {children}
                     </a>
                 )
@@ -41,7 +48,7 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 
             // Use Next.js Link for regular navigation
             return (
-                <Link href={href} className={classes}>
+                <Link href={href} className={classes} onClick={handleClick}>
                     {children}
                 </Link>
             )

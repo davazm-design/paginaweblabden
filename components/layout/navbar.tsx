@@ -6,6 +6,7 @@ import { Menu, X } from "lucide-react"
 import { usePathname } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle"
 import { BrandLogo } from "@/components/ui/brand-logo"
+import { analytics } from "@/lib/analytics"
 
 export function Navbar() {
     const [isOpen, setIsOpen] = useState(false)
@@ -50,6 +51,7 @@ export function Navbar() {
                             <Link
                                 key={link.name}
                                 href={link.href}
+                                onClick={link.href === '/precios' ? () => analytics.clickPrecios() : undefined}
                                 className={`relative text-sm font-medium transition-colors hover:text-primary ${isActive ? "text-foreground" : "text-muted"
                                     }`}
                             >
@@ -65,10 +67,20 @@ export function Navbar() {
                 {/* CTA */}
                 <div className="hidden lg:flex items-center gap-4">
                     <ModeToggle />
-                    <Link href="https://app.labden.com.mx" className="text-sm font-medium text-muted hover:text-foreground transition-colors">
+                    <Link
+                        href="https://app.labden.com.mx"
+                        onClick={() => analytics.clickLogin()}
+                        className="text-sm font-medium text-muted hover:text-foreground transition-colors"
+                    >
                         Entrar
                     </Link>
-                    <Button variant="primary" size="sm" href="https://app.labden.com.mx/auth/register" className="h-10 px-6">
+                    <Button
+                        variant="primary"
+                        size="sm"
+                        href="https://app.labden.com.mx/auth/register"
+                        className="h-10 px-6"
+                        onClick={() => analytics.clickPruebaGratis('navbar')}
+                    >
                         Prueba gratis 30 días
                     </Button>
                 </div>
@@ -98,7 +110,10 @@ export function Navbar() {
                         <Link
                             key={link.name}
                             href={link.href}
-                            onClick={() => setIsOpen(false)}
+                            onClick={() => {
+                                setIsOpen(false)
+                                if (link.href === '/precios') analytics.clickPrecios()
+                            }}
                             className="text-lg font-medium text-muted hover:text-primary active:bg-accent/5 p-4 rounded-xl transition-colors"
                         >
                             {link.name}
@@ -107,12 +122,18 @@ export function Navbar() {
                     <div className="h-px bg-border my-4" />
                     <Link
                         href="https://app.labden.com.mx"
-                        onClick={() => setIsOpen(false)}
+                        onClick={() => { setIsOpen(false); analytics.clickLogin() }}
                         className="block text-center py-4 text-foreground font-medium active:bg-accent/5 rounded-xl transition-colors"
                     >
                         Entrar
                     </Link>
-                    <Button variant="primary" size="lg" className="w-full active:scale-[0.98]" href="https://app.labden.com.mx/auth/register" onClick={() => setIsOpen(false)}>
+                    <Button
+                        variant="primary"
+                        size="lg"
+                        className="w-full active:scale-[0.98]"
+                        href="https://app.labden.com.mx/auth/register"
+                        onClick={() => { setIsOpen(false); analytics.clickPruebaGratis('navbar_mobile') }}
+                    >
                         Comenzar ahora
                     </Button>
                 </div>

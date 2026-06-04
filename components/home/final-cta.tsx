@@ -1,4 +1,7 @@
+"use client"
+
 import { Button } from "@/components/ui/button"
+import { analytics } from "@/lib/analytics"
 
 export function FinalCta() {
     return (
@@ -11,7 +14,13 @@ export function FinalCta() {
                     LabDen es un sistema para laboratorios dentales en México. Ayuda a controlar órdenes de trabajo, dentistas, producción, entregas, ingresos y cuentas por cobrar desde una sola plataforma.
                 </p>
 
-                <Button variant="primary" size="lg" className="h-14 px-10 text-base" href="https://app.labden.com.mx/auth/register">
+                <Button
+                    variant="primary"
+                    size="lg"
+                    className="h-14 px-10 text-base"
+                    href="https://app.labden.com.mx/auth/register"
+                    onClick={() => analytics.clickPruebaGratis('final_cta')}
+                >
                     Prueba gratis 30 días
                 </Button>
 

@@ -2,6 +2,7 @@
 
 import { Check, Zap, Headset } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { analytics } from "@/lib/analytics"
 
 export function PricingSection() {
     return (
@@ -110,7 +111,13 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <Button variant="primary" size="lg" className="w-full h-12" href="https://app.labden.com.mx/auth/register">
+                        <Button
+                            variant="primary"
+                            size="lg"
+                            className="w-full h-12"
+                            href="https://app.labden.com.mx/auth/register"
+                            onClick={() => analytics.clickPruebaGratis('pricing_base')}
+                        >
                             Probar gratis 30 días
                         </Button>
                     </div>
@@ -161,7 +168,13 @@ export function PricingSection() {
                             </li>
                         </ul>
 
-                        <Button variant="primary" size="lg" className="w-full h-14 text-lg" href="https://app.labden.com.mx/auth/register">
+                        <Button
+                            variant="primary"
+                            size="lg"
+                            className="w-full h-14 text-lg"
+                            href="https://app.labden.com.mx/auth/register"
+                            onClick={() => analytics.clickPruebaGratis('pricing_pro')}
+                        >
                             Probar gratis 30 días
                         </Button>
                     </div>

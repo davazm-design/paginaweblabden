@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 6 ✅ cerrada (commit `4dbcf65`) → **siguiente: Fase 7 (GA4 eventos); F7-T3 WhatsApp bloqueado por D3.**
+**Fase actual:** Fase 7 ✅ cerrada → **siguiente: Fase 8 (Performance / Core Web Vitals).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -58,9 +58,9 @@
 - [x] F6-T2 Footer SEO — texto SEO exacto de COPY.md + CTA "Prueba gratis 30 días" en columna de marca; anchors descriptivos confirmados; TODO Epic B comentado
 
 ### Fase 7 — GA4
-- [ ] F7-T1 Eventos dataLayer
-- [ ] F7-T2 submit_trial_form (límite documentado)
-- [!] F7-T3 WhatsApp CTA — **bloqueado por D3**
+- [x] F7-T1 Eventos dataLayer — 7 eventos canónicos en `lib/analytics.ts`; conectados en hero, final-cta, pricing (Base+Pro), navbar (desktop+mobile), footer
+- [x] F7-T2 submit_trial_form — límite documentado con comentario en `lib/analytics.ts` (form vive en app-labden, no instrumentable desde aquí)
+- [x] F7-T3 WhatsApp CTA — D3 resuelto (5664015780); icono footer conectado a `https://wa.me/525664015780` + evento `click_whatsapp` — *commit pendiente*
 - [ ] F7-T4 Conversiones GA4 (David)
 
 ### Fase 8 — Performance
@@ -85,7 +85,7 @@
 |---|---|---|---|
 | **D1** | Dominio canónico: ¿`www` o sin www? | ✅ **www** → `https://www.labden.com.mx/`. Fijar `NEXT_PUBLIC_SITE_URL=https://www.labden.com.mx` en Vercel. | ✅ 2026-06-03 |
 | **D2** | ¿Renombrar el menú `Aliados` → `Comunidad`? | ✅ **Mantener "Aliados"** sin cambios. Comunidad será solo sección del home; `/comunidad` queda diferida. | ✅ 2026-06-03 |
-| **D3** | Número de WhatsApp para el CTA "Hablar por WhatsApp". | Pendiente número. | ⏳ |
+| **D3** | Número de WhatsApp para el CTA "Hablar por WhatsApp". | ✅ **5664015780** → `https://wa.me/525664015780`. Icono footer conectado + evento `click_whatsapp`. | ✅ 2026-06-03 |
 | **D4** | Qué captura usar como **imagen hero**. | ✅ **"Resumen general"** (foto técnico + monitor, `story/resumen-general.jpg`). Optimizar a `sistema-para-laboratorios-dentales-labden.webp`. | ✅ 2026-06-03 |
 | **D5** | SoftwareApplication: ¿mantener precios (AggregateOffer 550–850)? | ✅ **MANTENER** (decisión David). | ✅ 2026-06-03 |
 
@@ -251,3 +251,18 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 ### Sesión 2026-06-03 (rename proyecto Vercel)
 - Renombrado `web-labden` → **`app-labden`** (vía API Vercel) para evitar confusión futura. Sirve `app.labden.com.mx` (SaaS), dominio intacto. Verificado: app.labden.com.mx y www.labden.com.mx ambos HTTP 200.
 - Nombres finales: `paginaweblabden` (landing, www) · `app-labden` (SaaS, app). Para editar env del SaaS, ahora es obvio cuál es.
+
+### Sesión 2026-06-03 (landing-engineer — Fase 7 GA4 eventos)
+- **F7-T1/T2/T3 implementadas.**
+  - `lib/analytics.ts`: 7 eventos canónicos nuevos: `clickPruebaGratis(source?)`, `clickVerComoFunciona`, `clickLogin`, `clickPrecios`, `clickWhatsapp`, `scroll50`, `scroll90`. Eventos legacy conservados como aliases (no borrar hasta que David actualice GTM).
+  - Comentario F7-T2: `submit_trial_form` no implementable desde esta landing (form en app-labden).
+  - `components/home/hero.tsx`: CTA primario → `clickPruebaGratis('hero')`; CTA secundario → `clickVerComoFunciona`.
+  - `components/home/final-cta.tsx`: convertido a `"use client"` + `clickPruebaGratis('final_cta')`.
+  - `components/home/pricing-section.tsx`: Plan Base → `clickPruebaGratis('pricing_base')`; Plan Pro → `clickPruebaGratis('pricing_pro')`.
+  - `components/layout/navbar.tsx`: "Entrar" desktop+mobile → `clickLogin`; "Precios" nav → `clickPrecios`; botón registro desktop → `clickPruebaGratis('navbar')`; móvil → `clickPruebaGratis('navbar_mobile')`.
+  - `components/layout/footer.tsx`: convertido a `"use client"` + `clickPruebaGratis('footer')` en CTA; `clickWhatsapp` en icono WhatsApp. Icono ya apuntaba a `https://wa.me/525664015780` (D3 ✅).
+  - `components/analytics/scroll-tracker.tsx` (nuevo): client component, rAF-throttled, `scroll_50` + `scroll_90` una sola vez por carga. Montado en `app/page.tsx` (home only).
+  - `components/ui/button.tsx`: corregido para pasar `onClick` cuando renderiza como `<a>` o `<Link>` (antes se perdía).
+  - Verificado: los 7 eventos y sus 6 variantes de `source` presentes en `.next/static/chunks/`. lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
+- **D3 ✅ cerrada** con el número 5664015780.
+- **Próximo:** Fase 8 (Performance / Core Web Vitals).

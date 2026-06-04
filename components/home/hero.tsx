@@ -39,11 +39,17 @@ export function HeroSection() {
                             size="lg"
                             className="w-full sm:w-auto h-12 px-8 text-base font-medium"
                             href="https://app.labden.com.mx/auth/register"
-                            onClick={() => analytics.ctaHomeHeroClick()}
+                            onClick={() => analytics.clickPruebaGratis('hero')}
                         >
                             Prueba gratis 30 días
                         </Button>
-                        <Button size="lg" variant="ghost" className="w-full sm:w-auto h-12 px-8 text-base text-muted hover:text-foreground" href="#como-funciona">
+                        <Button
+                            size="lg"
+                            variant="ghost"
+                            className="w-full sm:w-auto h-12 px-8 text-base text-muted hover:text-foreground"
+                            href="#como-funciona"
+                            onClick={() => analytics.clickVerComoFunciona()}
+                        >
                             Ver cómo funciona
                         </Button>
                     </div>
