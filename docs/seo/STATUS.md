@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 4 ✅ implementada (pendiente commit + gate SEC) → **siguiente: Fase 5 (imágenes SEO — landing-engineer).**
+**Fase actual:** Fase 5 ✅ implementada (pendiente commit David) → **siguiente: Fase 6-T2 (footer SEO).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -48,10 +48,10 @@
 - [x] F4-T2 SoftwareApplication — `areaServed: México` + description nueva; AggregateOffer intacto (D5=MANTENER) — `app/layout.tsx:125-143`
 - [x] F4-T3 BreadcrumbList home — JSON-LD en `app/page.tsx:21-32`; sin UI visible (home es root)
 
-### Fase 5 — Imágenes
-- [ ] F5-T1 Set final + specs (ASSETS.md)
-- [ ] F5-T2 Imagen hero real (D4 ✅ → `story/resumen-general.jpg`)
-- [ ] F5-T3 Renombrar story a nombres SEO
+### Fase 5 — Imágenes ✅
+- [x] F5-T1 Set final + specs (ASSETS.md) — especificado en sesión anterior
+- [x] F5-T2 Imagen hero real → `sistema-para-laboratorios-dentales-labden.webp` (108 KB, desde `resumen-general.jpg` 163 KB)
+- [x] F5-T3 Renombrar story a nombres SEO — 5 archivos convertidos a WebP, referencias actualizadas, originales eliminados con `git rm`
 
 ### Fase 6 — Nav & footer
 - [x] F6-T1 Menú — **D2 ✅ sin cambios** (se mantiene "Aliados")
@@ -165,6 +165,14 @@
   - `components/ui/breadcrumbs.tsx` — SIN cambios; uso en `/blog/[slug]` intacto.
 - **Nota para gate SEC:** cambio toca `app/layout.tsx` (schemas JSON-LD) y `app/page.tsx` (inyección `<script>`). No toca `middleware.ts`, env vars, `lib/wordpress*.ts`, `package.json`, `next.config.ts`, ni deploy config. Sin secretos. Sin inputs externos en los schemas (todo es constante controlada). El `<` escape aplica pero los valores son literales internos — riesgo XSS = 0. Queda en tu criterio.
 - **Próximo paso:** gate landing-security-auditor (Fase 4) → si PASS, commit + Fase 5 (imágenes — landing-engineer).
+
+### Sesión 2026-06-03 (landing-engineer — Fase 5)
+- **F5-T1/T2/T3 implementadas.** 5 imágenes story convertidas a WebP con nombres descriptivos SEO, alts únicos, dimensiones explícitas, `loading="lazy"` en todas.
+- Conversión vía Python/PIL (quality=80–82, method=6). Pesos finales: ordenes 30 KB · seguimiento 27 KB · comunicacion 27 KB · financiero 29 KB · resumen-general/hero 108 KB — todas bajo límite.
+- Tarjeta 6 (Reportes): reutiliza `control-financiero-laboratorio-dental.webp` (el dashboard financiero contiene datos de reportes por dentista); alt distinto al de tarjeta 5.
+- `git rm` de los 5 originales (PNG/JPG). `grep` confirmó 0 referencias viejas en `app/` y `components/`.
+- lint (0 errores, 7 warnings preexistentes) + typecheck (limpio) + build (31 páginas) ✅. Pendiente commit David.
+- **Próximo paso:** Fase 6-T2 (footer SEO) — landing-engineer.
 
 ### Sesión 2026-06-03 (Fase 4 — schemas)
 - **F4-T1/T2/T3** en `app/layout.tsx` (Organization + SoftwareApplication) y `app/page.tsx` (BreadcrumbList Inicio).
