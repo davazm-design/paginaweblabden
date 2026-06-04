@@ -123,7 +123,8 @@
 - Un solo H1 visible por viewport (2 nodos DOM mutuamente excluyentes vía breakpoint).
 - CRM: 0 menciones en home; `/empresa:33` conservado como diferenciador negativo.
 - lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
-- **Sin commit** — David revisa con screenshots.
+- **Verificado con screenshots** (prod build local, desktop+mobile): H1 correcto por viewport, 11 H2 en orden, tabla comparativa OK, secciones financiero/comunidad/CTA con copy canónico y frase citable. **Commit `d2563cb`**.
+- **Observación menor (no bloquea):** el hero tiene 2 nodos `<h1>` (responsive, uno `display:none` por viewport). Google lo tolera, pero para cumplir "un solo H1" al 100% se podría consolidar en un único `<h1>` con texto responsive vía spans. Candidato a pulir en Fase 8/9.
 - **Próximo paso:** Fase 3 (FAQ acordeón + FAQPage schema — landing-seo-specialist).
 
 ### Sesión 2026-06-03 (landing-seo-specialist — Fase 1)
