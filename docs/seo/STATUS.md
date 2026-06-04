@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 1 ejecutada por landing-seo-specialist → **pendiente gate SEC + commit David.**
+**Fase actual:** Fase 1 ✅ cerrada (commit `1e700e9`, gate SEC PASS) → **siguiente: Fase 2 (contenido home, landing-engineer).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -113,6 +113,8 @@
 - Keywords: 14 términos del mapa semántico de COPY.md.
 - OG images apuntan a `/opengraph-image` (generador dinámico existente). TODO F5 para imagen hero.
 - Canonical `/`, robots index/follow confirmado.
-- lint + typecheck + build: pendiente correr (ver instrucciones al final del bloque).
-- **Pendiente:** gate landing-security-auditor (toca metadataBase, robots, sitemap, env). Luego commit David.
-- **Próximo paso desbloqueado:** Fase 2 (landing-engineer: H1/H2/copy home).
+- lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
+- **Gate landing-security-auditor = PASS** (sin secretos, WP server-only, sin open-redirect, /auth/ disallow intacto). 2 observaciones no bloqueantes de config Vercel.
+- **Commit `1e700e9`** `feat(seo): Fase 1 — metadata + canonical www for home`. David ya fijó la env var en Vercel.
+- **Acción Vercel pendiente (no bloqueante):** confirmar que el endpoint WP es `WORDPRESS_API_URL` (SIN prefijo `NEXT_PUBLIC_`).
+- **Próximo paso:** Fase 2 (landing-engineer: reescritura H1/H2/H3 + copy del home usando COPY.md).
