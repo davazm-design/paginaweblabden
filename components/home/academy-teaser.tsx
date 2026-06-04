@@ -1,46 +1,36 @@
-import { GraduationCap, BookOpen, Users, Lightbulb, RefreshCw } from "lucide-react"
+import { GraduationCap } from "lucide-react"
 import { Button } from "@/components/ui/button"
-
-const PILLARS = [
-    { icon: BookOpen, label: "Cursos especializados" },
-    { icon: Users, label: "Expertos del sector" },
-    { icon: Lightbulb, label: "Técnicas y mejores prácticas" },
-    { icon: RefreshCw, label: "Contenido siempre actualizado" },
-];
 
 export function AcademyTeaser() {
     return (
         <section className="py-20 md:py-24 bg-gradient-to-br from-accent/5 via-background to-blue-500/5">
             <div className="container mx-auto px-4 max-w-5xl">
                 <div className="rounded-3xl border border-accent/15 bg-surface/80 backdrop-blur-sm p-8 md:p-12">
-                    <div className="flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12">
+                    <div className="flex flex-col lg:flex-row lg:items-start gap-8 lg:gap-12">
                         <div className="flex-1">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent/10 text-accent text-xs font-bold uppercase tracking-wider mb-4">
                                 Muy pronto
                             </div>
                             <div className="flex items-center gap-3 mb-4">
-                                <GraduationCap className="w-8 h-8 text-accent" />
+                                <GraduationCap className="w-8 h-8 text-accent flex-shrink-0" />
                                 <h2 className="text-2xl md:text-3xl font-bold text-foreground">
-                                    LabDen Academy
+                                    LabDen Academy: capacitación para técnicos y laboratorios dentales
                                 </h2>
                             </div>
-                            <p className="text-muted leading-relaxed mb-6 max-w-md">
-                                Educación especializada para laboratorios que quieren crecer, profesionalizarse y destacar.
+                            <p className="text-muted leading-relaxed mb-4 max-w-xl">
+                                Además del sistema, LabDen impulsa una academia pensada para técnicos y laboratorios dentales. Los cursos se nutren de las necesidades reales de la comunidad, para que la capacitación responda a los temas que más se viven dentro del laboratorio.
                             </p>
+                            <div className="mb-6">
+                                <h3 className="text-sm font-semibold text-foreground mb-2">
+                                    Cursos creados a partir de necesidades reales del sector
+                                </h3>
+                                <p className="text-sm text-muted leading-relaxed">
+                                    Cada módulo parte de los problemas y preguntas que los propios laboratorios comparten. No es educación genérica: es formación específica para quienes trabajan en laboratorios dentales.
+                                </p>
+                            </div>
                             <Button variant="primary" href="/academy">
                                 Quiero saber más
                             </Button>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4 lg:w-[340px] flex-shrink-0">
-                            {PILLARS.map((p) => (
-                                <div key={p.label} className="flex flex-col items-center text-center p-4 rounded-xl bg-background/60 border border-border/50">
-                                    <span className="w-10 h-10 rounded-lg bg-accent/10 text-accent flex items-center justify-center mb-2">
-                                        <p.icon className="w-5 h-5" />
-                                    </span>
-                                    <p className="text-sm font-semibold text-foreground leading-tight">{p.label}</p>
-                                </div>
-                            ))}
                         </div>
                     </div>
                 </div>

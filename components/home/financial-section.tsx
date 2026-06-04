@@ -1,42 +1,52 @@
-import { Wallet, TrendingUp, PieChart } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { Wallet, TrendingUp, Clock } from "lucide-react"
 
 const HIGHLIGHTS = [
-    { icon: Wallet, label: "Cuentas por cobrar", description: "Visualiza lo que te deben por clínica." },
-    { icon: TrendingUp, label: "Ingresos al día", description: "Sabe cuánto has cobrado y cuánto falta." },
-    { icon: PieChart, label: "Actividad por dentista", description: "Identifica a tus mejores clientes." },
+    {
+        icon: Wallet,
+        title: "Cuentas por cobrar",
+        description: "Ten visibilidad sobre ingresos, pagos pendientes y trabajos por cobrar.",
+    },
+    {
+        icon: TrendingUp,
+        title: "Ingresos por dentista",
+        description: "Identifica qué dentistas generan más trabajos y cuánto representan para tu laboratorio.",
+    },
+    {
+        icon: Clock,
+        title: "Historial de trabajos y pagos",
+        description: "Consulta el registro de cada trabajo y su estado de pago sin depender de registros dispersos.",
+    },
 ];
 
 export function FinancialSection() {
     return (
-        <section className="py-20 md:py-28 bg-background">
+        <section className="py-16 md:py-24 bg-background">
             <div className="container mx-auto px-4 max-w-5xl">
                 <div className="grid lg:grid-cols-2 gap-12 items-center">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-foreground mb-4">
-                            Control financiero al día, sin complicaciones
+                        <h2 className="text-2xl md:text-3xl font-bold tracking-tight text-foreground mb-4">
+                            Control financiero para saber qué entra, qué falta cobrar y quién te pide más trabajos
                         </h2>
+                        <p className="text-muted mb-4 max-w-lg leading-relaxed">
+                            LabDen te ayuda a tener más visibilidad sobre los ingresos de tu laboratorio dental, las cuentas por cobrar y los dentistas que más trabajos generan.
+                        </p>
                         <p className="text-muted mb-8 max-w-lg leading-relaxed">
-                            Visualiza tus pendientes, ingresos y cuentas por cobrar por clínica. Menos incertidumbre, más control.
+                            Así puedes tomar mejores decisiones, detectar pendientes y dejar de depender de registros dispersos.
                         </p>
 
-                        <div className="space-y-4 mb-8">
+                        <div className="space-y-4">
                             {HIGHLIGHTS.map((h) => (
-                                <div key={h.label} className="flex items-start gap-3">
+                                <div key={h.title} className="flex items-start gap-3">
                                     <span className="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center flex-shrink-0">
                                         <h.icon className="w-4 h-4" />
                                     </span>
                                     <div>
-                                        <p className="text-base font-semibold text-foreground">{h.label}</p>
+                                        <h3 className="text-base font-semibold text-foreground">{h.title}</h3>
                                         <p className="text-sm text-muted">{h.description}</p>
                                     </div>
                                 </div>
                             ))}
                         </div>
-
-                        <Button variant="outline" href="/plataforma">
-                            Conoce la plataforma
-                        </Button>
                     </div>
 
                     <div className="relative">
@@ -73,7 +83,7 @@ export function FinancialSection() {
                                     </div>
                                 ))}
                             </div>
-                            <p className="mt-4 text-xs text-muted/50 text-center">Datos de ejemplo. Se reemplazarán con capturas reales.</p>
+                            <p className="mt-4 text-xs text-muted/50 text-center">Datos de ejemplo.</p>
                         </div>
                     </div>
                 </div>

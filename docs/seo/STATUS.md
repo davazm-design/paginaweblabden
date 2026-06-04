@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 1 ✅ cerrada (commit `1e700e9`, gate SEC PASS) → **siguiente: Fase 2 (contenido home, landing-engineer).**
+**Fase actual:** Fase 2 ✅ cerrada (landing-engineer, 2026-06-03) → **siguiente: Fase 3 (FAQ acordeón + FAQPage schema).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -24,20 +24,20 @@
 - [x] F1-T7 robots.ts — host www, Allow /, disallow /auth/ /debug-
 - [x] F1-T8 sitemap.ts — URLs validadas con base www; sin /comunidad (D2)
 
-### Fase 2 — Contenido home
-- [ ] F2-T1 Hero (H1 + subtítulo + CTAs + microcopy)
-- [ ] F2-T2 Microbeneficios
-- [ ] F2-T3 Diferenciador/origen (storytelling)
-- [ ] F2-T4 Funcionalidades (6 tarjetas)
-- [ ] F2-T5 Dolores
-- [ ] F2-T6 Ideal 1–10 empleados
-- [ ] F2-T7 Control financiero
-- [ ] F2-T8 Tabla comparativa
-- [ ] F2-T9 Academy
-- [ ] F2-T10 Comunidad
-- [ ] F2-T11 Prueba gratis 30 días
-- [ ] F2-T12 Revisar "CRM"
-- [ ] F2-T13 Hero mobile
+### Fase 2 — Contenido home ✅
+- [x] F2-T1 Hero (H1 + subtítulo + CTAs + microcopy) — `hero.tsx`
+- [x] F2-T2 Microbeneficios — `benefits-bar.tsx` (nuevo)
+- [x] F2-T3 Diferenciador/origen (storytelling) — `emotional-block.tsx` (reescrito)
+- [x] F2-T4 Funcionalidades (6 tarjetas) — `story-sections.tsx` (reescrito, imágenes conservadas)
+- [x] F2-T5 Dolores — `problems-section.tsx` (reescrito)
+- [x] F2-T6 Ideal 1–10 empleados — `ideal-section.tsx` (nuevo)
+- [x] F2-T7 Control financiero — `financial-section.tsx` (reescrito)
+- [x] F2-T8 Tabla comparativa — integrada en `problems-section.tsx`
+- [x] F2-T9 Academy — `academy-teaser.tsx` (reescrito)
+- [x] F2-T10 Comunidad — `community-section.tsx` (nuevo)
+- [x] F2-T11 Prueba gratis 30 días — `final-cta.tsx` (reescrito)
+- [x] F2-T12 Revisar "CRM" — 0 menciones en home; `/empresa:33` OK como diferenciador negativo
+- [x] F2-T13 Hero mobile — H1 corto + subtítulo corto vía `sm:hidden` / `hidden sm:block`
 
 ### Fase 3 — FAQ
 - [ ] F3-T1 Componente FAQ acordeón
@@ -104,6 +104,27 @@
 - David resolvió **D1 = www**, **D2 = mantener "Aliados"**, **D4 = hero "Resumen general"**. Pendientes solo D3 (WhatsApp) y D5 (precios en schema, recomendado sí).
 - Fase 1 desbloqueada. F6-T1 cerrada (menú sin cambios).
 - **Próximo paso:** ejecutar Fase 1 (metadata: title, description, canonical www, OG/Twitter, keywords, robots host www) vía landing-seo-specialist + gate landing-security-auditor; en paralelo, David fija `NEXT_PUBLIC_SITE_URL=https://www.labden.com.mx` en Vercel.
+
+### Sesión 2026-06-03 (landing-engineer — Fase 2)
+- **F2-T1–T13 implementadas.** Mapeo elegido:
+  - `hero.tsx` → Hero (H1 largo desktop / H1 corto mobile)
+  - `benefits-bar.tsx` (nuevo) → Microbeneficios bajo hero
+  - `emotional-block.tsx` (reescrito) → Diferenciador/origen
+  - `story-sections.tsx` (reescrito) → 6 tarjetas de funcionalidades; imágenes reales conservadas
+  - `problems-section.tsx` (reescrito) → Dolores (H2 + 3 H3) + Tabla comparativa 6 filas
+  - `ideal-section.tsx` (nuevo) → Ideal 1–10 empleados
+  - `financial-section.tsx` (reescrito) → Control financiero (H2 + 3 H3)
+  - `how-it-works.tsx` → sin cambios, ancla `#como-funciona`
+  - `social-proof.tsx` → sin cambios
+  - `pricing-section.tsx` → sin cambios
+  - `academy-teaser.tsx` (reescrito) → Academy con H2 + H3 canónicos
+  - `community-section.tsx` (nuevo) → Comunidad
+  - `final-cta.tsx` (reescrito) → Prueba gratis 30 días
+- Un solo H1 visible por viewport (2 nodos DOM mutuamente excluyentes vía breakpoint).
+- CRM: 0 menciones en home; `/empresa:33` conservado como diferenciador negativo.
+- lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
+- **Sin commit** — David revisa con screenshots.
+- **Próximo paso:** Fase 3 (FAQ acordeón + FAQPage schema — landing-seo-specialist).
 
 ### Sesión 2026-06-03 (landing-seo-specialist — Fase 1)
 - **F1-T1–T8 implementadas** en `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `.env.example`.

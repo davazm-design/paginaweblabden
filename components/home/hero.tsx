@@ -2,14 +2,6 @@
 
 import { Button } from "@/components/ui/button"
 import { analytics } from "@/lib/analytics"
-import { Check } from "lucide-react"
-
-const BENEFITS = [
-    "Menos retrabajos",
-    "Más control",
-    "Mejor comunicación",
-    "Más rentabilidad",
-];
 
 export function HeroSection() {
     return (
@@ -22,22 +14,25 @@ export function HeroSection() {
                         Hecho para laboratorios dentales
                     </div>
 
-                    <h1 className="text-[28px] sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5 md:mb-6">
-                        Recupera el control de tu laboratorio.
+                    {/* Desktop H1 */}
+                    <h1 className="hidden sm:block text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5 md:mb-6">
+                        Sistema para laboratorios dentales que ordena tus trabajos, dentistas y cobros
                     </h1>
 
-                    <p className="text-base md:text-lg text-muted leading-relaxed mb-7 md:mb-8 max-w-xl mx-auto">
-                        Centraliza órdenes, seguimiento y comunicación en un solo lugar para trabajar con más claridad y menos desgaste.
+                    {/* Mobile H1 — versión corta */}
+                    <h1 className="sm:hidden text-[28px] font-bold tracking-tight text-foreground leading-[1.1] mb-5">
+                        Sistema para laboratorios dentales
+                    </h1>
+
+                    {/* Desktop subtitle */}
+                    <p className="hidden sm:block text-base md:text-lg text-muted leading-relaxed mb-7 md:mb-8 max-w-xl mx-auto">
+                        LabDen ayuda a laboratorios dentales a recibir órdenes completas, dar seguimiento a cada trabajo, mejorar la comunicación con dentistas y controlar ingresos desde una sola plataforma.
                     </p>
 
-                    <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-x-5 gap-y-2 mb-8 md:mb-10 max-w-md mx-auto">
-                        {BENEFITS.map((b) => (
-                            <div key={b} className="flex items-center gap-1.5 text-sm text-muted">
-                                <Check className="w-4 h-4 text-accent flex-shrink-0" />
-                                {b}
-                            </div>
-                        ))}
-                    </div>
+                    {/* Mobile subtitle — versión corta */}
+                    <p className="sm:hidden text-base text-muted leading-relaxed mb-7 max-w-xl mx-auto">
+                        Controla órdenes, dentistas, producción y cobros desde una sola plataforma.
+                    </p>
 
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
                         <Button
@@ -54,7 +49,7 @@ export function HeroSection() {
                     </div>
 
                     <p className="mt-5 text-xs text-muted/60">
-                        Sin tarjeta de crédito · Sin compromiso · Cancela cuando quieras
+                        Sin tarjeta de crédito. Sin compromiso. Diseñado para laboratorios dentales.
                     </p>
                 </div>
             </div>
