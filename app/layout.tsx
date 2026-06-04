@@ -9,25 +9,36 @@ import { AssistantWidget } from "@/components/chat/assistant-widget";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
+// F1-T1: default actualizado a www; env var NEXT_PUBLIC_SITE_URL toma precedencia en producción.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.labden.com.mx";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),
+    // F1-T2: title con keyword principal + brand (~56 car.)
     title: {
-        default: "LabDen | Gestión para Laboratorios Dentales Modernos",
+        default: "Sistema para Laboratorios Dentales en México | LabDen",
         template: "%s | LabDen",
     },
+    // F1-T3: description global (~155 car.)
     description:
-        "La plataforma todo-en-uno para controlar tu producción, finanzas y crecimiento. Diseñado para laboratorios dentales en Latinoamérica.",
+        "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen, el sistema para laboratorios dentales. Prueba gratis 30 días.",
     applicationName: "LabDen",
+    // F1-T4: mapa semántico (~14 keywords)
     keywords: [
-        "laboratorio dental",
-        "software laboratorio dental",
-        "gestión de órdenes",
-        "SaaS dental",
+        "sistema para laboratorios dentales",
+        "software para laboratorios dentales",
+        "sistema para laboratorio dental",
+        "programa para laboratorio dental",
+        "plataforma para laboratorios dentales",
+        "sistema de gestión para laboratorio dental",
+        "software para laboratorio dental en México",
+        "control de órdenes para laboratorio dental",
+        "control de trabajos dentales",
+        "gestión de laboratorio dental",
+        "administración de laboratorio dental",
+        "software para órdenes de trabajo dental",
+        "sistema para cuentas por cobrar en laboratorio dental",
         "LabDen",
-        "México",
-        "Latinoamérica",
     ],
     authors: [{ name: "LabDen" }],
     creator: "LabDen",
@@ -39,22 +50,38 @@ export const metadata: Metadata = {
         ],
         // TODO: añadir apple-icon.png (180×180, optimizado) cuando el equipo de diseño lo provea.
     },
+    // F1-T6: canonical "/" resuelto contra metadataBase www.
     alternates: { canonical: "/" },
+    // F1-T5: OG con nuevo title/description/url/image.
     openGraph: {
         type: "website",
         siteName: "LabDen",
         locale: "es_MX",
         url: "/",
-        title: "LabDen | Gestión para Laboratorios Dentales Modernos",
+        title: "Sistema para Laboratorios Dentales en México | LabDen",
         description:
-            "La plataforma todo-en-uno para controlar tu producción, finanzas y crecimiento.",
+            "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen. Prueba gratis 30 días.",
+        // TODO F5: cambiar a /images/sistema-para-laboratorios-dentales-labden.webp cuando exista (F5-T2).
+        images: [
+            {
+                url: "/opengraph-image",
+                width: 1200,
+                height: 630,
+                alt: "Sistema para Laboratorios Dentales en México — LabDen",
+            },
+        ],
     },
+    // F1-T5: Twitter card.
     twitter: {
         card: "summary_large_image",
-        title: "LabDen | Gestión para Laboratorios Dentales Modernos",
+        title: "Sistema para Laboratorios Dentales en México | LabDen",
+        // F1-T3: twitter description (versión corta)
         description:
-            "La plataforma todo-en-uno para controlar tu producción, finanzas y crecimiento.",
+            "Controla órdenes, dentistas, producción y cuentas por cobrar con LabDen.",
+        // TODO F5: cambiar a /images/sistema-para-laboratorios-dentales-labden.webp cuando exista (F5-T2).
+        images: ["/opengraph-image"],
     },
+    // F1-T6: index/follow confirmado.
     robots: {
         index: true,
         follow: true,

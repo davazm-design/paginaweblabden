@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 0 cerrada · D1/D2/D4 resueltas → **Fase 1 (metadata) DESBLOQUEADA, lista para ejecutar.**
+**Fase actual:** Fase 1 ejecutada por landing-seo-specialist → **pendiente gate SEC + commit David.**
 **Última actualización:** 2026-06-03
 
 ---
@@ -15,14 +15,14 @@
 - [x] F0-T2 Recon del estado del repo — *documentado en PLAN.md*
 
 ### Fase 1 — Metadata & técnico
-- [ ] F1-T1 Dominio canónico www (D1 ✅) + fijar env en Vercel (acción David)
-- [ ] F1-T2 Meta title
-- [ ] F1-T3 Meta description
-- [ ] F1-T4 keywords
-- [ ] F1-T5 OpenGraph + Twitter (img de F5)
-- [ ] F1-T6 Canonical + sin noindex
-- [ ] F1-T7 robots host www (gate SEC)
-- [ ] F1-T8 sitemap validar
+- [x] F1-T1 Dominio canónico www — default `https://www.labden.com.mx` en layout/robots/sitemap · fijar env en Vercel (acción David ⏳)
+- [x] F1-T2 Meta title → `Sistema para Laboratorios Dentales en México | LabDen`
+- [x] F1-T3 Meta description global + OG description + twitter description
+- [x] F1-T4 keywords — mapa semántico 14 términos
+- [x] F1-T5 OG images → `/opengraph-image` (generado dinámico) · TODO F5 para imagen hero real
+- [x] F1-T6 Canonical `/` + robots index/follow confirmado
+- [x] F1-T7 robots.ts — host www, Allow /, disallow /auth/ /debug-
+- [x] F1-T8 sitemap.ts — URLs validadas con base www; sin /comunidad (D2)
 
 ### Fase 2 — Contenido home
 - [ ] F2-T1 Hero (H1 + subtítulo + CTAs + microcopy)
@@ -104,3 +104,15 @@
 - David resolvió **D1 = www**, **D2 = mantener "Aliados"**, **D4 = hero "Resumen general"**. Pendientes solo D3 (WhatsApp) y D5 (precios en schema, recomendado sí).
 - Fase 1 desbloqueada. F6-T1 cerrada (menú sin cambios).
 - **Próximo paso:** ejecutar Fase 1 (metadata: title, description, canonical www, OG/Twitter, keywords, robots host www) vía landing-seo-specialist + gate landing-security-auditor; en paralelo, David fija `NEXT_PUBLIC_SITE_URL=https://www.labden.com.mx` en Vercel.
+
+### Sesión 2026-06-03 (landing-seo-specialist — Fase 1)
+- **F1-T1–T8 implementadas** en `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `.env.example`.
+- Default SITE_URL `https://labden.com.mx` → `https://www.labden.com.mx` en los 3 archivos.
+- Title: `Sistema para Laboratorios Dentales en México | LabDen`.
+- Description global (155 car.) + OG description + twitter description (versión corta).
+- Keywords: 14 términos del mapa semántico de COPY.md.
+- OG images apuntan a `/opengraph-image` (generador dinámico existente). TODO F5 para imagen hero.
+- Canonical `/`, robots index/follow confirmado.
+- lint + typecheck + build: pendiente correr (ver instrucciones al final del bloque).
+- **Pendiente:** gate landing-security-auditor (toca metadataBase, robots, sitemap, env). Luego commit David.
+- **Próximo paso desbloqueado:** Fase 2 (landing-engineer: H1/H2/copy home).

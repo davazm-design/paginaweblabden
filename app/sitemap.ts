@@ -2,7 +2,8 @@ import type { MetadataRoute } from "next";
 import { blogPosts } from "@/lib/blog-data";
 import { getBlogPosts } from "@/lib/wordpress-blog";
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
+// F1-T8: default actualizado a www; env var NEXT_PUBLIC_SITE_URL toma precedencia en producción.
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.labden.com.mx";
 
 const STATIC_ROUTES: { path: string; priority: number; changeFrequency: MetadataRoute.Sitemap[number]["changeFrequency"] }[] = [
     { path: "/", priority: 1.0, changeFrequency: "weekly" },
