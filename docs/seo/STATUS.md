@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 2 ✅ cerrada (landing-engineer, 2026-06-03) → **siguiente: Fase 3 (FAQ acordeón + FAQPage schema).**
+**Fase actual:** Fase 3 ✅ implementada (landing-engineer, 2026-06-03) → **siguiente: Fase 4 (schemas Organization/SoftwareApplication/Breadcrumb — landing-seo-specialist + gate SEC).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -39,9 +39,9 @@
 - [x] F2-T12 Revisar "CRM" — 0 menciones en home; `/empresa:33` OK como diferenciador negativo
 - [x] F2-T13 Hero mobile — H1 corto + subtítulo corto vía `sm:hidden` / `hidden sm:block`
 
-### Fase 3 — FAQ
-- [ ] F3-T1 Componente FAQ acordeón
-- [ ] F3-T2 FAQPage schema en home
+### Fase 3 — FAQ ✅
+- [x] F3-T1 Componente FAQ acordeón — `components/home/faq-section.tsx` (details/summary nativo) — *pendiente commit*
+- [x] F3-T2 FAQPage schema en home — reusar `FAQSchema` de `components/blog/faq-schema.tsx` desde `FaqSection` — *pendiente commit*
 
 ### Fase 4 — Schemas
 - [ ] F4-T1 Organization (areaServed)
@@ -126,6 +126,14 @@
 - **Verificado con screenshots** (prod build local, desktop+mobile): H1 correcto por viewport, 11 H2 en orden, tabla comparativa OK, secciones financiero/comunidad/CTA con copy canónico y frase citable. **Commit `d2563cb`**.
 - **Observación menor (no bloquea):** el hero tiene 2 nodos `<h1>` (responsive, uno `display:none` por viewport). Google lo tolera, pero para cumplir "un solo H1" al 100% se podría consolidar en un único `<h1>` con texto responsive vía spans. Candidato a pulir en Fase 8/9.
 - **Próximo paso:** Fase 3 (FAQ acordeón + FAQPage schema — landing-seo-specialist).
+
+### Sesión 2026-06-03 (landing-engineer — Fase 3)
+- **F3-T1 + F3-T2 implementadas.**
+  - `components/home/faq-section.tsx` (nuevo): acordeón `<details>/<summary>` nativo con las 10 Q&A literales de COPY.md. H2 `Preguntas frecuentes sobre LabDen` + H3 por pregunta. Texto siempre en DOM (accesible a crawlers). Chevron SVG con rotación CSS vía `group-open:rotate-180`.
+  - `FAQSchema` de `components/blog/faq-schema.tsx` reutilizado directamente desde `FaqSection`; `FAQ_ITEMS` exportado como fuente única — el schema y el acordeón comparten el mismo array, sin duplicación.
+  - `app/page.tsx`: `FaqSection` importada y ubicada en posición 11 (tras Comunidad, antes de FinalCta). Números de comentarios ajustados.
+  - lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅. Pendiente commit de David.
+- **Próximo paso:** Fase 4 (landing-seo-specialist + gate landing-security-auditor).
 
 ### Sesión 2026-06-03 (landing-seo-specialist — Fase 1)
 - **F1-T1–T8 implementadas** en `app/layout.tsx`, `app/robots.ts`, `app/sitemap.ts`, `.env.example`.

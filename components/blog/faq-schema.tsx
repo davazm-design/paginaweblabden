@@ -26,10 +26,14 @@ export function FAQSchema({ faqs }: FAQSchemaProps) {
         }))
     }
 
+    // Escape `<` as < so a "</script>" inside WP-sourced FAQ text (blog call site)
+    // cannot break out of the JSON-LD <script> block. Standard JSON-LD hardening.
+    const json = JSON.stringify(schema).replace(/</g, "\\u003c")
+
     return (
         <script
             type="application/ld+json"
-            dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
+            dangerouslySetInnerHTML={{ __html: json }}
         />
     )
 }

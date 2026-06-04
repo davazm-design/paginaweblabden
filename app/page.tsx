@@ -12,6 +12,7 @@ import { SocialProof } from "@/components/home/social-proof";
 import { PricingSection } from "@/components/home/pricing-section";
 import { AcademyTeaser } from "@/components/home/academy-teaser";
 import { CommunitySection } from "@/components/home/community-section";
+import { FaqSection } from "@/components/home/faq-section";
 import { FinalCta } from "@/components/home/final-cta";
 
 export default function Home() {
@@ -42,7 +43,9 @@ export default function Home() {
             <AcademyTeaser />
             {/* 10. Comunidad */}
             <CommunitySection />
-            {/* 11. Prueba gratis 30 días */}
+            {/* 11. FAQ visible + FAQPage schema */}
+            <FaqSection />
+            {/* 12. Prueba gratis 30 días */}
             <FinalCta />
             <Footer />
         </main>
