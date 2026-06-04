@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 5 ✅ cerrada (commit `90317e3`) → **siguiente: Fase 6-T2 (footer SEO) y/o Fase 7 (GA4).**
+**Fase actual:** Fase 6 ✅ cerrada (pendiente commit David) → **siguiente: Fase 7 (GA4 eventos).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -55,7 +55,7 @@
 
 ### Fase 6 — Nav & footer
 - [x] F6-T1 Menú — **D2 ✅ sin cambios** (se mantiene "Aliados")
-- [ ] F6-T2 Footer SEO
+- [x] F6-T2 Footer SEO — texto SEO exacto de COPY.md + CTA "Prueba gratis 30 días" en columna de marca; anchors descriptivos confirmados; TODO Epic B comentado
 
 ### Fase 7 — GA4
 - [ ] F7-T1 Eventos dataLayer
@@ -183,6 +183,15 @@
 - Observación del auditor (no bloquea): `SITE_URL` está duplicado en `app/layout.tsx` y `app/page.tsx` → candidato a centralizar en `lib/site.ts` en un cleanup (Fase 8/9).
 - **PENDIENTE DOMINIO (Fase 1):** producción aún sirve **sin www** pese a que la env var ya es www y hay deploy fresco. Causa = caché de build de Vercel hornea el valor viejo de NEXT_PUBLIC_*. **Acción David:** Redeploy SIN "Use existing Build Cache". Reverificar canonical/og/robots/sitemap tras eso.
 - **Próximo paso:** Fase 5 (imágenes SEO — landing-engineer): nombres descriptivos WebP, alt único, hero `sistema-para-laboratorios-dentales-labden.webp` (D4 = resumen-general), lazy salvo hero.
+
+### Sesión 2026-06-03 (landing-engineer — Fase 6-T2 footer SEO)
+- **F6-T2 implementada.** Un solo cambio en `components/layout/footer.tsx` (columna de marca, líneas 55-70):
+  - `<p>` genérico anterior reemplazado por el texto SEO exacto de COPY.md: "LabDen es un sistema para laboratorios dentales en México. Ayuda a controlar…".
+  - CTA "Prueba gratis 30 días" añadido bajo el texto SEO → `https://app.labden.com.mx/auth/register`.
+  - Anchors de las columnas existentes revisados: todos descriptivos (Funciones, Precios, Seguridad, Cursos, LabDen Talks, Blog, Contacto, Aliados, Nosotros, Términos y condiciones, Aviso de privacidad). Ningún anchor genérico.
+  - Comentario `// TODO Epic B` para los 4 enlaces a páginas futuras — no se crearon rutas inexistentes.
+- lint (0 errores, 7 warnings preexistentes) + typecheck (limpio) + build (31 páginas) ✅. Pendiente commit David.
+- **Próximo paso:** Fase 7-T1 (eventos GA4: dataLayer clicks + scroll).
 
 ### Sesión 2026-06-03 (Fase 5 — imágenes SEO)
 - 6 imágenes de las tarjetas de funcionalidad convertidas a **WebP** con nombres keyword-rich (señal Google Imágenes; next/image conserva el nombre en la URL optimizada):

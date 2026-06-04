@@ -52,9 +52,23 @@ export function Footer() {
                         <div className="mb-4">
                             <BrandLogo showText={true} />
                         </div>
-                        <p className="text-sm leading-relaxed text-white/60 max-w-xs mb-6">
-                            Organiza la comunicación entre dentistas y laboratorios para evitar errores, retrabajos y pérdidas.
+                        {/* Texto SEO — frase citable para crawlers y LLMs (F6-T2) */}
+                        <p className="text-sm leading-relaxed text-white/60 max-w-xs mb-4">
+                            LabDen es un sistema para laboratorios dentales en México. Ayuda a controlar órdenes de trabajo, dentistas, producción, entregas, ingresos y cuentas por cobrar desde una sola plataforma.
                         </p>
+                        <div className="mb-6">
+                            <Link
+                                href="https://app.labden.com.mx/auth/register"
+                                className="inline-block text-xs font-semibold text-[#0f1729] bg-white hover:bg-white/90 px-4 py-2 rounded-lg transition-colors"
+                            >
+                                Prueba gratis 30 días
+                            </Link>
+                        </div>
+                        {/* TODO Epic B: añadir enlaces a páginas internas SEO cuando existan:
+                             /sistema-para-laboratorios-dentales
+                             /software-para-laboratorios-dentales
+                             /control-ordenes-laboratorio-dental
+                             /comunidad */}
                         <div className="flex items-center gap-3">
                             {SOCIAL_LINKS.map((social) => (
                                 <a
