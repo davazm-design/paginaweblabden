@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 6 ✅ cerrada (pendiente commit David) → **siguiente: Fase 7 (GA4 eventos).**
+**Fase actual:** Fase 6 ✅ cerrada (commit `4dbcf65`) → **siguiente: Fase 7 (GA4 eventos); F7-T3 WhatsApp bloqueado por D3.**
 **Última actualización:** 2026-06-03
 
 ---
@@ -204,3 +204,9 @@
 - **Verificado:** 0 imágenes rotas, 0 respuestas 4xx en /_next/image, screenshot OK. lint/typecheck/build limpios. **Commit `90317e3`**.
 - Notas: how-it-works (`paso-*`) quedó fuera de alcance (ya tiene nombres semánticos). OG sigue siendo el generador dinámico `/opengraph-image` (no se tocó layout.tsx → sin gate). El hero visual sigue text-only por decisión (limpio/profesional); agregar imagen de producto al hero es enhancement opcional si David lo pide.
 - **Próximo:** Fase 6-T2 footer SEO (texto + enlaces internos) y Fase 7 GA4 (eventos; F7-T3 WhatsApp sigue bloqueado por D3).
+
+### Sesión 2026-06-03 (Fase 6 — footer SEO)
+- `components/layout/footer.tsx`: añadida la frase citable de COPY.md a la columna de marca + CTA `Prueba gratis 30 días`. Enlaces del footer verificados (todos a páginas existentes, anchors descriptivos). Enlaces futuros (Epic B) dejados como comentario TODO, sin linkear (evita 404s).
+- Verificado: frase SEO presente en el HTML, 12 enlaces todos a rutas reales, screenshot OK. lint/typecheck/build limpios. **Commit `4dbcf65`**.
+- Nota: el footer YA tiene un icono de WhatsApp (útil para F7-T3 cuando David dé el número D3).
+- **Próximo:** Fase 7 (GA4): F7-T1 eventos dataLayer (click_prueba_gratis, click_ver_como_funciona, click_login, click_precios, scroll_50, scroll_90); F7-T2 submit_trial_form (documentar límite: el form vive en app.labden.com.mx); F7-T3 WhatsApp + número (D3 ⏳); F7-T4 conversiones GA4 (David).
