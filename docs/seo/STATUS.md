@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 3 ✅ cerrada (commit `8cb7330`, gate SEC PASS) → **siguiente: Fase 4 (schemas Organization/SoftwareApplication/Breadcrumb — landing-seo-specialist + gate SEC).**
+**Fase actual:** Fase 4 ✅ implementada (pendiente commit + gate SEC) → **siguiente: Fase 5 (imágenes SEO — landing-engineer).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -43,10 +43,10 @@
 - [x] F3-T1 Componente FAQ acordeón — `components/home/faq-section.tsx` (details/summary nativo) — *pendiente commit*
 - [x] F3-T2 FAQPage schema en home — reusar `FAQSchema` de `components/blog/faq-schema.tsx` desde `FaqSection` — *pendiente commit*
 
-### Fase 4 — Schemas
-- [ ] F4-T1 Organization (areaServed)
-- [ ] F4-T2 SoftwareApplication (areaServed)
-- [ ] F4-T3 BreadcrumbList home
+### Fase 4 — Schemas ✅ (pendiente commit + gate SEC)
+- [x] F4-T1 Organization — `areaServed: México` + description canónica — `app/layout.tsx:101-123`
+- [x] F4-T2 SoftwareApplication — `areaServed: México` + description nueva; AggregateOffer intacto (D5=MANTENER) — `app/layout.tsx:125-143`
+- [x] F4-T3 BreadcrumbList home — JSON-LD en `app/page.tsx:21-32`; sin UI visible (home es root)
 
 ### Fase 5 — Imágenes
 - [ ] F5-T1 Set final + specs (ASSETS.md)
@@ -87,7 +87,7 @@
 | **D2** | ¿Renombrar el menú `Aliados` → `Comunidad`? | ✅ **Mantener "Aliados"** sin cambios. Comunidad será solo sección del home; `/comunidad` queda diferida. | ✅ 2026-06-03 |
 | **D3** | Número de WhatsApp para el CTA "Hablar por WhatsApp". | Pendiente número. | ⏳ |
 | **D4** | Qué captura usar como **imagen hero**. | ✅ **"Resumen general"** (foto técnico + monitor, `story/resumen-general.jpg`). Optimizar a `sistema-para-laboratorios-dentales-labden.webp`. | ✅ 2026-06-03 |
-| **D5** | SoftwareApplication: ¿mantener precios (AggregateOffer 550–850)? | Recomendado: sí. | ⏳ |
+| **D5** | SoftwareApplication: ¿mantener precios (AggregateOffer 550–850)? | ✅ **MANTENER** (decisión David). | ✅ 2026-06-03 |
 
 ---
 
@@ -155,3 +155,13 @@
 - **Gate landing-security-auditor = PASS.** lint/typecheck/build limpios.
 - **Commit `8cb7330`** `feat(seo): Fase 3 — visible FAQ accordion + FAQPage schema on home`.
 - **Próximo paso:** Fase 4 (Organization + SoftwareApplication `areaServed: México` + BreadcrumbList home) — landing-seo-specialist + gate SEC (toca schemas en `app/layout.tsx`). Recordatorio: resolver **D5** (mantener precios en SoftwareApplication, recomendado sí) antes/junto a F4-T2.
+
+### Sesión 2026-06-03 (landing-seo-specialist — Fase 4)
+- **F4-T1–T3 implementadas.** lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
+  - `app/layout.tsx:101-123` — Organization: `areaServed: { "@type": "Country", name: "México" }` + `description` alineada a COPY.md frase citable.
+  - `app/layout.tsx:125-143` — SoftwareApplication: `areaServed` ídem + `description` nueva; AggregateOffer 550–850 MXN intacto (D5=MANTENER).
+  - `app/layout.tsx:154-162` — Escape `<` aplicado a ambos schemas (misma técnica que `faq-schema.tsx`). Cierra vector `</script>` breakout en JSON-LD del layout.
+  - `app/page.tsx:18-41` — BreadcrumbList home: JSON-LD puro (sin UI visible), item "Inicio" item=`SITE_URL` (www canónico). Usa `NEXT_PUBLIC_SITE_URL` con fallback www; escape `<` aplicado.
+  - `components/ui/breadcrumbs.tsx` — SIN cambios; uso en `/blog/[slug]` intacto.
+- **Nota para gate SEC:** cambio toca `app/layout.tsx` (schemas JSON-LD) y `app/page.tsx` (inyección `<script>`). No toca `middleware.ts`, env vars, `lib/wordpress*.ts`, `package.json`, `next.config.ts`, ni deploy config. Sin secretos. Sin inputs externos en los schemas (todo es constante controlada). El `<` escape aplica pero los valores son literales internos — riesgo XSS = 0. Queda en tu criterio.
+- **Próximo paso:** gate landing-security-auditor (Fase 4) → si PASS, commit + Fase 5 (imágenes — landing-engineer).

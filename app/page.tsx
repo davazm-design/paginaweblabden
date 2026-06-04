@@ -15,9 +15,30 @@ import { CommunitySection } from "@/components/home/community-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { FinalCta } from "@/components/home/final-cta";
 
+// F4-T3: BreadcrumbList del home — un solo item "Inicio" apuntando a la URL canónica.
+// No se usa el componente <Breadcrumbs> (solo emite JSON-LD; sin nav visible en home).
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.labden.com.mx";
+const homeBreadcrumbJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+        {
+            "@type": "ListItem",
+            position: 1,
+            name: "Inicio",
+            item: SITE_URL,
+        },
+    ],
+};
+
 export default function Home() {
     return (
         <main className="min-h-screen bg-background text-foreground">
+            {/* F4-T3: BreadcrumbList JSON-LD — home canónico (no visible UI). */}
+            <script
+                type="application/ld+json"
+                dangerouslySetInnerHTML={{ __html: JSON.stringify(homeBreadcrumbJsonLd).replace(/</g, "\\u003c") }}
+            />
             <Navbar />
             {/* 1. Hero */}
             <HeroSection />

@@ -98,6 +98,7 @@ export const viewport: Viewport = {
     ],
 };
 
+// F4-T1: Organization — areaServed México + description alineada a copy canónico (COPY.md).
 const organizationJsonLd = {
     "@context": "https://schema.org",
     "@type": "Organization",
@@ -105,7 +106,8 @@ const organizationJsonLd = {
     url: SITE_URL,
     logo: `${SITE_URL}/labden-icon.png`,
     description:
-        "Plataforma para organizar la comunicación entre dentistas y laboratorios dentales en Latinoamérica.",
+        "LabDen es un sistema para laboratorios dentales que ayuda a controlar órdenes de trabajo, dentistas, producción, entregas, ingresos y cuentas por cobrar.",
+    areaServed: { "@type": "Country", "name": "México" },
     sameAs: [
         "https://www.facebook.com/profile.php?id=61588445277715",
         "https://www.instagram.com/labden.mx/",
@@ -120,6 +122,7 @@ const organizationJsonLd = {
     },
 };
 
+// F4-T2: SoftwareApplication — areaServed México + description nueva; AggregateOffer intacto (D5 = MANTENER).
 const softwareJsonLd = {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -128,7 +131,8 @@ const softwareJsonLd = {
     operatingSystem: "Web",
     url: SITE_URL,
     description:
-        "Plataforma que centraliza órdenes, seguimiento y comunicación entre dentistas y laboratorios dentales.",
+        "Sistema para laboratorios dentales que permite controlar órdenes, dentistas, producción, entregas, ingresos y cuentas por cobrar.",
+    areaServed: { "@type": "Country", "name": "México" },
     offers: {
         "@type": "AggregateOffer",
         priceCurrency: "MXN",
@@ -147,13 +151,14 @@ export default function RootLayout({
         <html lang="es" suppressHydrationWarning className="scroll-smooth">
             <head>
                 <GoogleTagManager />
+                {/* Escape < as < to prevent </script> breakout in JSON-LD (same pattern as faq-schema.tsx). */}
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(organizationJsonLd).replace(/</g, "\\u003c") }}
                 />
                 <script
                     type="application/ld+json"
-                    dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd) }}
+                    dangerouslySetInnerHTML={{ __html: JSON.stringify(softwareJsonLd).replace(/</g, "\\u003c") }}
                 />
             </head>
             <body className={clsx(inter.variable, "antialiased bg-background text-foreground font-sans min-h-screen flex flex-col")}>
