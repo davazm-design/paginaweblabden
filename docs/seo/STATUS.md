@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 5 ✅ implementada (pendiente commit David) → **siguiente: Fase 6-T2 (footer SEO).**
+**Fase actual:** Fase 5 ✅ cerrada (commit `90317e3`) → **siguiente: Fase 6-T2 (footer SEO) y/o Fase 7 (GA4).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -183,3 +183,15 @@
 - Observación del auditor (no bloquea): `SITE_URL` está duplicado en `app/layout.tsx` y `app/page.tsx` → candidato a centralizar en `lib/site.ts` en un cleanup (Fase 8/9).
 - **PENDIENTE DOMINIO (Fase 1):** producción aún sirve **sin www** pese a que la env var ya es www y hay deploy fresco. Causa = caché de build de Vercel hornea el valor viejo de NEXT_PUBLIC_*. **Acción David:** Redeploy SIN "Use existing Build Cache". Reverificar canonical/og/robots/sitemap tras eso.
 - **Próximo paso:** Fase 5 (imágenes SEO — landing-engineer): nombres descriptivos WebP, alt único, hero `sistema-para-laboratorios-dentales-labden.webp` (D4 = resumen-general), lazy salvo hero.
+
+### Sesión 2026-06-03 (Fase 5 — imágenes SEO)
+- 6 imágenes de las tarjetas de funcionalidad convertidas a **WebP** con nombres keyword-rich (señal Google Imágenes; next/image conserva el nombre en la URL optimizada):
+  - ordenes-detalle.png → control-ordenes-trabajo-laboratorio-dental.webp (142→30 KB)
+  - seguimiento-orden.png → seguimiento-produccion-laboratorio-dental.webp (126→27 KB)
+  - comunicacion.png → comunicacion-dentistas-laboratorio-dental.webp (266→27 KB)
+  - dashboard-financiero.png → control-financiero-laboratorio-dental.webp (145→29 KB)
+  - resumen-general.jpg → sistema-para-laboratorios-dentales-labden.webp (163→108 KB)
+- Alt único por tarjeta, width/height + loading=lazy conservados. Originales eliminados con git rm.
+- **Verificado:** 0 imágenes rotas, 0 respuestas 4xx en /_next/image, screenshot OK. lint/typecheck/build limpios. **Commit `90317e3`**.
+- Notas: how-it-works (`paso-*`) quedó fuera de alcance (ya tiene nombres semánticos). OG sigue siendo el generador dinámico `/opengraph-image` (no se tocó layout.tsx → sin gate). El hero visual sigue text-only por decisión (limpio/profesional); agregar imagen de producto al hero es enhancement opcional si David lo pide.
+- **Próximo:** Fase 6-T2 footer SEO (texto + enlaces internos) y Fase 7 GA4 (eventos; F7-T3 WhatsApp sigue bloqueado por D3).
