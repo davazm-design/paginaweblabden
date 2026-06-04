@@ -242,3 +242,8 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - Conservados: `labden-icon.png` (logo activo de BrandLogo + schema) e `icon.svg`.
 - Verificado: 0 imágenes huérfanas restantes, build/lint/typecheck limpios.
 - **PENDIENTE confirmación de David:** proyectos Vercel `web-labden` y `crm-nexus` — no los borré (es destructivo/outward-facing y no sé si alguno sirve para otra cosa). Confirmar antes de eliminar.
+
+### Sesión 2026-06-03 (limpieza de proyectos Vercel)
+- ✅ Eliminado `crm-nexus` (beta sin dominio, David lo reinicia de cero).
+- 🛑 **NO eliminado `web-labden`**: al inspeccionarlo, sirve **`https://app.labden.com.mx`** = la APP SaaS (destino de TODOS los CTAs de la landing). Borrarlo habría tumbado el SaaS y el funnel. Conservado. El "ruido" fue solo haber editado el env ahí por error; el proyecto es esencial.
+- Proyectos Vercel finales: `paginaweblabden` (landing → www.labden.com.mx) y `web-labden` (SaaS → app.labden.com.mx).
