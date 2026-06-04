@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 7 ✅ cerrada → **siguiente: Fase 8 (Performance / Core Web Vitals).**
+**Fase actual:** Fase 7 ✅ cerrada (commit `842bf0c`) → **siguiente: Fase 8 (Performance/CWV).**
 **Última actualización:** 2026-06-03
 
 ---
@@ -61,7 +61,7 @@
 - [x] F7-T1 Eventos dataLayer — 7 eventos canónicos en `lib/analytics.ts`; conectados en hero, final-cta, pricing (Base+Pro), navbar (desktop+mobile), footer
 - [x] F7-T2 submit_trial_form — límite documentado con comentario en `lib/analytics.ts` (form vive en app-labden, no instrumentable desde aquí)
 - [x] F7-T3 WhatsApp CTA — D3 resuelto (5664015780); icono footer conectado a `https://wa.me/525664015780` + evento `click_whatsapp` — *commit pendiente*
-- [ ] F7-T4 Conversiones GA4 (David)
+- [ ] F7-T4 Conversiones GA4 — marcar `click_prueba_gratis`/`submit_trial_form` como conversión (ACCIÓN DAVID, en consola GA4)
 
 ### Fase 8 — Performance
 - [ ] F8-T1 Hero LCP
@@ -266,3 +266,11 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
   - Verificado: los 7 eventos y sus 6 variantes de `source` presentes en `.next/static/chunks/`. lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
 - **D3 ✅ cerrada** con el número 5664015780.
 - **Próximo:** Fase 8 (Performance / Core Web Vitals).
+
+### Sesión 2026-06-03 (Fase 7 — eventos GA4)
+- 7 eventos canónicos en `lib/analytics.ts` + wiring: click_prueba_gratis (con source hero/final_cta/pricing_base/pricing_pro/navbar/navbar_mobile/footer), click_ver_como_funciona, click_login, click_precios, click_whatsapp (wa.me/525664015780), scroll_50, scroll_90.
+- `components/analytics/scroll-tracker.tsx` (nuevo, solo home; dispara una vez cada uno, rAF-throttled).
+- submit_trial_form: documentado fuera de alcance (form en app.labden.com.mx). Proxy de conversión = click_prueba_gratis.
+- **Fix de bug:** `components/ui/button.tsx` no pasaba onClick al renderizar como `<a>`/`<Link>` → los eventos se perdían silenciosamente. Corregido.
+- **Verificado con Playwright:** los 7 eventos llegan a window.dataLayer (clicks + scroll); scroll_50/90 una sola vez. lint/typecheck/build OK. **Commit `842bf0c`**.
+- **ACCIÓN DAVID (F7-T4):** en GA4 marcar `click_prueba_gratis` (y `submit_trial_form` cuando se instrumente en el SaaS) como conversión. Requiere `NEXT_PUBLIC_GTM_ID` configurado en Vercel + GA4 enlazado en GTM.
