@@ -8,13 +8,12 @@ import {
     Mail,
     MessageCircle
 } from "lucide-react";
+import { SITE_URL } from "@/lib/site";
 
 interface ShareBoxProps {
     title: string;
     slug: string;
 }
-
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx";
 
 export function ShareBox({ title, slug }: ShareBoxProps) {
     // URL canónica construida sin window.location (evita hydration mismatch + setState-in-effect).

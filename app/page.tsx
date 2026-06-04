@@ -14,10 +14,10 @@ import { AcademyTeaser } from "@/components/home/academy-teaser";
 import { CommunitySection } from "@/components/home/community-section";
 import { FaqSection } from "@/components/home/faq-section";
 import { FinalCta } from "@/components/home/final-cta";
+import { SITE_URL } from "@/lib/site";
 
 // F4-T3: BreadcrumbList del home — un solo item "Inicio" apuntando a la URL canónica.
 // No se usa el componente <Breadcrumbs> (solo emite JSON-LD; sin nav visible en home).
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.labden.com.mx";
 const homeBreadcrumbJsonLd = {
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",

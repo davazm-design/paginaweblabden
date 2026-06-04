@@ -6,11 +6,9 @@ import { clsx } from "clsx";
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/google-tag-manager";
 import { AssistantWidget } from "@/components/chat/assistant-widget";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
-
-// F1-T1: default actualizado a www; env var NEXT_PUBLIC_SITE_URL toma precedencia en producción.
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || "https://www.labden.com.mx";
 
 export const metadata: Metadata = {
     metadataBase: new URL(SITE_URL),

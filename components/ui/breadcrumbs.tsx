@@ -1,6 +1,7 @@
 
 import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
+import { SITE_URL } from "@/lib/site";
 
 interface BreadcrumbsProps {
     items: { label: string; href: string }[];
@@ -15,7 +16,7 @@ export function Breadcrumbs({ items }: BreadcrumbsProps) {
             "@type": "ListItem",
             "position": index + 1,
             "name": item.label,
-            "item": `${process.env.NEXT_PUBLIC_SITE_URL || "https://labden.com.mx"}${item.href}`
+            "item": `${SITE_URL}${item.href}`
         }))
     };
 
