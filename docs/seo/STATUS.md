@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 8 ✅ lista para commit → **siguiente: Fase 9 (QA & checklist, gate SEC).**
+**Fase actual:** Fase 8 ✅ cerrada (commit `f22f285`) → **siguiente: Fase 9 (QA & checklist 26 ítems + gate SEC del diff acumulado).**
 **Última actualización:** 2026-06-04
 
 ---
@@ -282,3 +282,11 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - **Fix de bug:** `components/ui/button.tsx` no pasaba onClick al renderizar como `<a>`/`<Link>` → los eventos se perdían silenciosamente. Corregido.
 - **Verificado con Playwright:** los 7 eventos llegan a window.dataLayer (clicks + scroll); scroll_50/90 una sola vez. lint/typecheck/build OK. **Commit `842bf0c`**.
 - **ACCIÓN DAVID (F7-T4):** en GA4 marcar `click_prueba_gratis` (y `submit_trial_form` cuando se instrumente en el SaaS) como conversión. Requiere `NEXT_PUBLIC_GTM_ID` configurado en Vercel + GA4 enlazado en GTM.
+
+### Sesión 2026-06-04 (Fase 8 — Performance/CWV)
+- Medido mobile (local): **LCP ~104ms** (hero es texto, sin imagen above-the-fold), **CLS 0**, sin errores de consola.
+- Fixes: `sizes` responsive en story-sections/how-it-works/brand-logo (el navegador pedía w=3840 para slots de 40-45vw → sobre-fetch corregido); `loading="lazy"` en how-it-works + imagen del chat; **AssistantWidget diferido** con next/dynamic (+ `assistant-widget-loader.tsx`) → el bundle del chat ya no va en el JS inicial. GTM ya era afterInteractive.
+- NO se tocó next.config/middleware/metadata/schema → sin gate.
+- lint/typecheck/build limpios. **Commit `f22f285`**.
+- Nota para Fase 9: 2 tests Playwright de blog FAQ fallan (esperan `aria-expanded`, el componente usa `<details>` nativo) — preexistente, revisar/actualizar test en QA. Además, el H1 doble responsive del hero (observación Fase 2) sigue pendiente de pulir si se quiere "un solo H1" estricto.
+- **Próximo:** Fase 9 (QA: checklist 26 ítems + gate SEC del diff acumulado de fases 1-8 + lint/typecheck/build/playwright).
