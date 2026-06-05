@@ -307,3 +307,8 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - Nota: GTM component queda como no-op (NEXT_PUBLIC_GTM_ID sin setear) → no hay doble conteo. NO setear GTM_ID.
 - Nota menor: el "URL del flujo" en GA4 se ve como `wwwlabden.com.mx` (sin punto) — cosmético, no bloquea datos; David puede corregirlo en GA4 → Flujo de datos.
 - **PENDIENTE David (clicks en consolas):** (1) GA4 → marcar `click_prueba_gratis` como conversión/evento clave; (2) Search Console: agregar propiedad www + verificar + enviar sitemap. Guía en `docs/seo/FASE-10-GUIA.md` (ahora la verificación GSC por "Etiqueta de Google/gtag" ya es posible porque GA4 está en el sitio).
+
+### Sesión 2026-06-04 (Fase 10 — seed conversión + GSC en marcha)
+- **Seed de conversión:** disparados 6/6 eventos `click_prueba_gratis` reales a GA4 desde producción (confirmados por beacon /g/collect). Para que aparezca antes en GA4 → Eventos → Eventos recientes y David lo estrelle (⭐ = evento clave/conversión).
+- **GSC listo del lado técnico:** sitemap HTTP 200 con 22 URLs (12 páginas + 10 blog, todas www); robots.txt correcto (Allow /, disallow /auth/ /debug-, Sitemap www). Pasos entregados a David (agregar propiedad prefijo URL www → verificar por método "Google Analytics" → enviar `sitemap.xml`). Alternativa de respaldo: si pide etiqueta HTML, añadir el `<meta google-site-verification>` por código.
+- **Pendiente David:** completar verificación GSC + enviar sitemap + (cuando aparezca) estrellar `click_prueba_gratis` en GA4.
