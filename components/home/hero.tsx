@@ -14,14 +14,11 @@ export function HeroSection() {
                         Hecho para laboratorios dentales
                     </div>
 
-                    {/* Desktop H1 */}
-                    <h1 className="hidden sm:block text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5 md:mb-6">
-                        Sistema para laboratorios dentales que ordena tus trabajos, dentistas y cobros
-                    </h1>
-
-                    {/* Mobile H1 — versión corta */}
-                    <h1 className="sm:hidden text-[28px] font-bold tracking-tight text-foreground leading-[1.1] mb-5">
-                        Sistema para laboratorios dentales
+                    {/* H1 único — texto largo en desktop, corto en mobile (un solo nodo <h1>;
+                        el span oculto vía display:none no entra al nombre accesible ni al conteo). */}
+                    <h1 className="text-[28px] sm:text-4xl md:text-5xl font-bold tracking-tight text-foreground leading-[1.1] mb-5 md:mb-6">
+                        <span className="hidden sm:inline">Sistema para laboratorios dentales que ordena tus trabajos, dentistas y cobros</span>
+                        <span className="sm:hidden">Sistema para laboratorios dentales</span>
                     </h1>
 
                     {/* Desktop subtitle */}
