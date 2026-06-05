@@ -5,6 +5,7 @@ import { clsx } from "clsx";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/google-tag-manager";
+import { GoogleAnalytics } from "@/components/analytics/google-analytics";
 // Deferred via Client Component wrapper — ssr:false is valid only in client components.
 import { AssistantWidgetLoader } from "@/components/chat/assistant-widget-loader";
 import { SITE_URL } from "@/lib/site";
@@ -150,6 +151,7 @@ export default function RootLayout({
         <html lang="es" suppressHydrationWarning className="scroll-smooth">
             <head>
                 <GoogleTagManager />
+                <GoogleAnalytics />
                 {/* Escape < as < to prevent </script> breakout in JSON-LD (same pattern as faq-schema.tsx). */}
                 <script
                     type="application/ld+json"

@@ -1,21 +1,31 @@
 /**
  * Analytics utility for LABDEN conversion tracking
- * Pushes events to dataLayer for GTM consumption
+ * Primary path: GA4 via window.gtag (loaded by GoogleAnalytics component).
+ * Fallback path: dataLayer push (inert without GTM, kept for forward compat).
  */
 
-// Extend Window interface for dataLayer
+// Extend Window interface for dataLayer and gtag
 declare global {
     interface Window {
         dataLayer: Record<string, unknown>[];
+        // gtag signature matches the official @types/gtag.js shape but avoids
+        // adding an external @types package. 'unknown[]' satisfies strict mode.
+        gtag: (...args: unknown[]) => void;
     }
 }
 
 /**
- * Track an event by pushing to dataLayer
- * GTM will pick up these events and forward to GA4
+ * Send an event to GA4 (via window.gtag) and to dataLayer (GTM fallback).
+ * Safe to call server-side — guarded by typeof window check.
  */
 export function trackEvent(eventName: string, data?: Record<string, unknown>) {
     if (typeof window !== 'undefined') {
+        // Primary: GA4 direct via gtag
+        if (typeof window.gtag === 'function') {
+            window.gtag('event', eventName, data || {});
+        }
+
+        // Fallback / GTM compatibility: dataLayer push
         window.dataLayer = window.dataLayer || [];
         window.dataLayer.push({
             event: eventName,
