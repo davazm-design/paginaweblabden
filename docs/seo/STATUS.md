@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 9 ✅ cerrada → **solo queda Fase 10 (Search Console + conversiones GA4 = acción David).**
+**Fase actual:** Fase 10 casi cerrada — GSC verificado + sitemap enviado ✅. Solo falta el ⭐ de la conversión en GA4 (esperando a que el evento migre a 'Eventos recientes', sembrado).
 **Última actualización:** 2026-06-04
 
 ---
@@ -74,8 +74,8 @@
 - [x] F9-T3 lint 0 err · typecheck limpio · build OK · Playwright 30 passed/2 skip (WP)
 
 ### Fase 10 — GSC (David)
-- [ ] F10-T1 Verificar www + sitemap
-- [ ] F10-T2 Conversiones + revisión semanal
+- [x] F10-T1 GSC verificado (meta por código) + sitemap.xml enviado correctamente (2026-06-04)
+- [~] F10-T2 Conversión: `click_prueba_gratis` sembrado (6 hits); falta que David le ponga ⭐ en GA4 cuando aparezca en 'Eventos recientes' (lag de GA4)
 
 ---
 
@@ -316,3 +316,8 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 ### Sesión 2026-06-04 (GSC verificación por código)
 - Añadido el meta de verificación de Search Console vía `verification.google` en `app/layout.tsx` (token público `PaPtou6R-...`). Commit `6859b59`, desplegado, verificado en producción (`<meta name="google-site-verification">` presente).
 - **Pendiente David (2 clicks):** en GSC darle "Verificar" (método Etiqueta HTML) → luego Sitemaps → enviar `sitemap.xml`. Y el ⭐ en GA4 cuando `click_prueba_gratis` aparezca en Eventos recientes (sembrado 6 hits).
+
+### Sesión 2026-06-04 (GSC completo)
+- **Search Console: VERIFICADO + sitemap.xml ENVIADO correctamente** (David confirmó "Se ha enviado el sitemap correctamente"). 22 URLs en descubrimiento.
+- GA4: la conversión queda a falta del ⭐ de David sobre `click_prueba_gratis` cuando GA4 lo muestre en 'Eventos recientes' (procesamiento interno, hasta ~24h; sembrado 6 hits para acelerar).
+- **Proyecto SEO: 10/10 fases ejecutadas.** Único pendiente humano time-gated: estrellar la conversión en GA4.
