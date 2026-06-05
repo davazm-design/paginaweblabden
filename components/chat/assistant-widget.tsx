@@ -104,6 +104,7 @@ export function AssistantWidget() {
                             alt="LabDen"
                             width={32}
                             height={32}
+                            loading="lazy"
                             className="rounded-lg"
                         />
                         <div className="flex-1">

@@ -3,8 +3,8 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 7 ✅ cerrada (commit `842bf0c`) → **siguiente: Fase 8 (Performance/CWV).**
-**Última actualización:** 2026-06-03
+**Fase actual:** Fase 8 ✅ lista para commit → **siguiente: Fase 9 (QA & checklist, gate SEC).**
+**Última actualización:** 2026-06-04
 
 ---
 
@@ -63,10 +63,10 @@
 - [x] F7-T3 WhatsApp CTA — D3 resuelto (5664015780); icono footer conectado a `https://wa.me/525664015780` + evento `click_whatsapp` — *commit pendiente*
 - [ ] F7-T4 Conversiones GA4 — marcar `click_prueba_gratis`/`submit_trial_form` como conversión (ACCIÓN DAVID, en consola GA4)
 
-### Fase 8 — Performance
-- [ ] F8-T1 Hero LCP
-- [ ] F8-T2 lazy + dimensiones
-- [ ] F8-T3 qa-seo + Lighthouse
+### Fase 8 — Performance ✅
+- [x] F8-T1 Hero LCP — text-only (H1), LCP real = H2 de EmotionalBlock a 124–300ms. Font Inter self-hosted vía next/font (font-display swap). Sin bloqueo de render. Sin imagen above-the-fold → nada que optimizar acá.
+- [x] F8-T2 lazy + dimensiones — `how-it-works.tsx`: `loading="lazy"` + `sizes="(max-width: 768px) 90vw, 45vw"` en 4 imágenes fill. `brand-logo.tsx`: `sizes="64px"` en fill con priority. `story-sections.tsx`: `sizes="(max-width: 1024px) 90vw, 45vw"`. `assistant-widget.tsx`: `loading="lazy"` en imagen del header del chat. CLS = 0.0000 confirmado.
+- [x] F8-T3 Medición real + build — LCP 124ms · CLS 0.0000 · TTFB 27ms · Load 116ms (mobile, local). AssistantWidget diferido con `next/dynamic` + `ssr:false` vía client wrapper `assistant-widget-loader.tsx` (reduce TBT). lint 0 errores · tsc limpio · build 31 páginas ✅. Playwright: 6 passed / 2 failed preexistentes (blog FAQ con details/summary nativo).
 
 ### Fase 9 — QA
 - [ ] F9-T1 Checklist 26 ítems
@@ -266,6 +266,14 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
   - Verificado: los 7 eventos y sus 6 variantes de `source` presentes en `.next/static/chunks/`. lint (0 errores) + typecheck (limpio) + build (31 páginas) ✅.
 - **D3 ✅ cerrada** con el número 5664015780.
 - **Próximo:** Fase 8 (Performance / Core Web Vitals).
+
+### Sesión 2026-06-04 (landing-engineer — Fase 8 Performance/CWV)
+- **F8-T1 LCP:** Hero es text-only; LCP real = H2 de EmotionalBlock ("Hecho para laboratorios dentales..."), 124–300ms. Fuente Inter self-hosted con next/font (font-display swap automático). Sin imagen above-the-fold. Sin acción requerida.
+- **F8-T2 Imágenes/CLS:** CLS = 0.0000 confirmado (todas las imágenes tienen `aspect-ratio` o contenedor dimensionado). Fixes aplicados: `how-it-works.tsx` → `loading="lazy"` + `sizes` en 4 imágenes `fill`; `brand-logo.tsx` → `sizes="64px"` en fill+priority; `story-sections.tsx` → `sizes` descriptivos en 6 tarjetas. `assistant-widget.tsx` → `loading="lazy"` en imagen del chat (solo visible tras click).
+- **F8-T3 Medición + TBT:** `AssistantWidget` diferido con `next/dynamic` + `ssr:false` en Client Component wrapper `components/chat/assistant-widget-loader.tsx`. Layout root usa `AssistantWidgetLoader` (Server Component compatible). GTM ya era `strategy="afterInteractive"` → correcto. Métricas finales: LCP 124ms · CLS 0.0000 · TTFB 27ms · DOMContentLoaded 114ms · Load 116ms (mobile). lint 0 errores · tsc limpio · build 31 páginas ✅. Playwright: 6/8 passed, 2 fallos preexistentes (blog FAQ test espera `aria-expanded` pero el componente usa `<details>` nativo — no regresión).
+- **NO se tocaron:** `next.config.ts`, `middleware.ts`, metadata/schema, eventos de Fase 7.
+- **Pendiente commit David.**
+- **Próximo:** Fase 9 (QA & checklist 26 ítems + gate SEC del diff acumulado).
 
 ### Sesión 2026-06-03 (Fase 7 — eventos GA4)
 - 7 eventos canónicos en `lib/analytics.ts` + wiring: click_prueba_gratis (con source hero/final_cta/pricing_base/pricing_pro/navbar/navbar_mobile/footer), click_ver_como_funciona, click_login, click_precios, click_whatsapp (wa.me/525664015780), scroll_50, scroll_90.

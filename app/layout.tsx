@@ -5,7 +5,8 @@ import { clsx } from "clsx";
 
 import { ThemeProvider } from "@/components/theme-provider";
 import { GoogleTagManager, GoogleTagManagerNoscript } from "@/components/google-tag-manager";
-import { AssistantWidget } from "@/components/chat/assistant-widget";
+// Deferred via Client Component wrapper — ssr:false is valid only in client components.
+import { AssistantWidgetLoader } from "@/components/chat/assistant-widget-loader";
 import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-inter" });
@@ -168,7 +169,7 @@ export default function RootLayout({
                     disableTransitionOnChange
                 >
                     {children}
-                    <AssistantWidget />
+                    <AssistantWidgetLoader />
                 </ThemeProvider>
             </body>
         </html>

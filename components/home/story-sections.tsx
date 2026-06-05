@@ -87,6 +87,7 @@ export function StorySections() {
                                         height={600}
                                         className="w-full h-full object-cover"
                                         loading="lazy"
+                                        sizes="(max-width: 1024px) 90vw, 45vw"
                                     />
                                 </div>
 

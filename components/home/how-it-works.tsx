@@ -81,6 +81,8 @@ export function HowItWorks() {
                                             src={step.mockup}
                                             alt={step.title}
                                             fill
+                                            loading="lazy"
+                                            sizes="(max-width: 768px) 90vw, 45vw"
                                             className="object-contain p-3"
                                         />
                                     </div>

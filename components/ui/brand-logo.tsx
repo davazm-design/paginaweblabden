@@ -17,6 +17,7 @@ export function BrandLogo({ className = "", textClassName = "", imageClassName =
                     fill
                     className="object-contain rounded-lg"
                     priority
+                    sizes="64px"
                 />
             </div>
 
