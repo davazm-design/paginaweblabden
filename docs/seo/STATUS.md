@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 10 casi cerrada — GSC verificado + sitemap enviado ✅. Solo falta el ⭐ de la conversión en GA4 (esperando a que el evento migre a 'Eventos recientes', sembrado).
+**Fase actual:** ✅✅ PROYECTO SEO COMPLETO (10/10 fases). Conversión `click_prueba_gratis` marcada en GA4 + GSC verificado + sitemap enviado. Pendiente solo continuo: revisión semanal de GSC + Epic B/C cuando David decida.
 **Última actualización:** 2026-06-04
 
 ---
@@ -75,7 +75,7 @@
 
 ### Fase 10 — GSC (David)
 - [x] F10-T1 GSC verificado (meta por código) + sitemap.xml enviado correctamente (2026-06-04)
-- [~] F10-T2 Conversión: `click_prueba_gratis` sembrado (6 hits); falta que David le ponga ⭐ en GA4 cuando aparezca en 'Eventos recientes' (lag de GA4)
+- [x] F10-T2 Conversión `click_prueba_gratis` MARCADA como evento clave en GA4 (David, 2026-06-04). Revisión semanal de GSC = continuo.
 
 ---
 
@@ -321,3 +321,10 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - **Search Console: VERIFICADO + sitemap.xml ENVIADO correctamente** (David confirmó "Se ha enviado el sitemap correctamente"). 22 URLs en descubrimiento.
 - GA4: la conversión queda a falta del ⭐ de David sobre `click_prueba_gratis` cuando GA4 lo muestre en 'Eventos recientes' (procesamiento interno, hasta ~24h; sembrado 6 hits para acelerar).
 - **Proyecto SEO: 10/10 fases ejecutadas.** Único pendiente humano time-gated: estrellar la conversión en GA4.
+
+### Sesión 2026-06-04 (PROYECTO COMPLETO)
+- David marcó `click_prueba_gratis` como **evento clave / conversión** en GA4 (apareció rápido gracias al seed). ✅
+- **TODAS las 10 fases cerradas.** Resumen final:
+  - F1 metadata + dominio www (forzado por código, lib/site.ts) · F2 contenido home reposicionado · F3 FAQ + FAQPage · F4 schemas (Org/SoftwareApp/Breadcrumb) · F5 imágenes WebP SEO · F6 footer SEO · F7 GA4 7 eventos · F8 CWV (LCP ~104ms, CLS 0) · F9 QA (tests verdes, gate PASS, 1 H1) · F10 GA4 conversión + GSC verificado + sitemap enviado.
+  - Infra: Vercel ordenado (paginaweblabden=web, app-labden=SaaS, crm-nexus borrado), 31 archivos muertos eliminados, GA4 directo (G-DDXF85BV5T) en vez de GTM.
+- **Continuo / futuro (cuando David decida):** revisión semanal de Search Console (indexación + posición de "sistema para laboratorios dentales"); Epic B (páginas internas) y Epic C (5 artículos de blog) documentados en PLAN.md/COPY.md.
