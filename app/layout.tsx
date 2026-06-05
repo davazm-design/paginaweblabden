@@ -152,6 +152,11 @@ export default function RootLayout({
     return (
         <html lang="es" suppressHydrationWarning className="scroll-smooth">
             <head>
+                {/* Warm-up de conexión a los orígenes de analytics — los scripts cargan
+                    afterInteractive, así el DNS+TLS ya está resuelto cuando arrancan. */}
+                <link rel="preconnect" href="https://www.googletagmanager.com" />
+                <link rel="preconnect" href="https://www.google-analytics.com" />
+                <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
                 <GoogleTagManager />
                 <GoogleAnalytics />
                 {/* Escape < as < to prevent </script> breakout in JSON-LD (same pattern as faq-schema.tsx). */}

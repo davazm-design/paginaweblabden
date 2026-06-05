@@ -6,7 +6,16 @@ import { analytics } from "@/lib/analytics"
 export function HeroSection() {
     return (
         <section className="relative pt-24 pb-12 md:pt-36 md:pb-16 overflow-hidden">
-            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-accent/8 rounded-full blur-[120px] -z-10" />
+            {/* Glow del hero — radial-gradient en lugar de blur-[120px] sobre un div grande:
+                mismo efecto visual, pero sin el filtro blur que es costosísimo de pintar en CPU móvil. */}
+            <div
+                aria-hidden="true"
+                className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] -z-10"
+                style={{
+                    background: "radial-gradient(50% 50% at 50% 30%, var(--accent) 0%, transparent 70%)",
+                    opacity: 0.08,
+                }}
+            />
 
             <div className="container mx-auto px-4">
                 <div className="max-w-2xl mx-auto text-center">
