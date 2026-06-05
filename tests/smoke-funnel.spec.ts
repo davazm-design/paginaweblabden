@@ -13,9 +13,11 @@ test.describe("Funnel home → precios", () => {
         const title = await page.title();
         expect(title.toLowerCase()).toContain("labden");
 
+        // Navbar visible + enlace de Precios presente (en mobile vive dentro del menú)
+        await expect(page.locator("nav").first()).toBeVisible();
         await expect(
-            page.getByRole("link", { name: /planes/i }).first()
-        ).toBeVisible();
+            page.getByRole("link", { name: /precios/i }).first()
+        ).toBeAttached();
     });
 
     test("CTA principal lleva a /precios con planes visibles", async ({ page }) => {
@@ -28,10 +30,11 @@ test.describe("Funnel home → precios", () => {
         await expect(page.getByText(/\$850/)).toBeVisible();
     });
 
-    test("/login redirige a /auth/login", async ({ page }) => {
+    test("/login encadena al portal de auth del SaaS", async ({ page }) => {
+        // /login → /auth/login → app.labden.com.mx (la auth vive en el SaaS)
         const response = await page.goto("/login");
         expect(response?.ok()).toBeTruthy();
-        await expect(page).toHaveURL(/\/auth\/login$/);
+        await expect(page).toHaveURL(/app\.labden\.com\.mx/);
     });
 
     test("rutas placeholder reemplazadas (no 'Próximamente')", async ({ page }) => {
@@ -63,7 +66,7 @@ test.describe("SEO técnico básico", () => {
         const res = await request.get("/sitemap.xml");
         expect(res.ok()).toBeTruthy();
         const body = await res.text();
-        for (const path of ["/precios", "/producto", "/blog", "/empresa", "/contacto", "/seguridad"]) {
+        for (const path of ["/precios", "/plataforma", "/blog", "/empresa", "/contacto", "/seguridad"]) {
             expect(body).toContain(path);
         }
     });
@@ -78,14 +81,17 @@ test.describe("SEO técnico básico", () => {
 
     test("home tiene JSON-LD Organization", async ({ page }) => {
         await page.goto("/");
-        const ldJson = await page
+        // Buscar el schema Organization entre todos los bloques JSON-LD (hay varios:
+        // Organization, SoftwareApplication, BreadcrumbList, FAQPage).
+        const scripts = await page
             .locator('script[type="application/ld+json"]')
-            .first()
-            .textContent();
-        expect(ldJson).toBeTruthy();
-        const parsed = JSON.parse(ldJson!);
-        expect(parsed["@type"]).toBe("Organization");
-        expect(parsed.name).toBe("LABDEN");
+            .allTextContents();
+        const org = scripts
+            .map((s) => { try { return JSON.parse(s); } catch { return null; } })
+            .filter(Boolean)
+            .find((o) => o["@type"] === "Organization");
+        expect(org).toBeTruthy();
+        expect(org.name).toBe("LabDen");
     });
 
     test("404 page renderiza y es noindex", async ({ page, request }) => {
@@ -93,7 +99,9 @@ test.describe("SEO técnico básico", () => {
         expect(res.status()).toBe(404);
 
         await page.goto("/ruta-que-no-existe-jamas-12345");
-        const robots = await page.locator('meta[name="robots"]').getAttribute("content");
+        // El not-found emite la meta robots noindex (puede haber más de una por el
+        // boundary de Next); basta con que la primera sea noindex.
+        const robots = await page.locator('meta[name="robots"]').first().getAttribute("content");
         expect(robots?.toLowerCase()).toContain("noindex");
     });
 });
