@@ -312,3 +312,7 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - **Seed de conversión:** disparados 6/6 eventos `click_prueba_gratis` reales a GA4 desde producción (confirmados por beacon /g/collect). Para que aparezca antes en GA4 → Eventos → Eventos recientes y David lo estrelle (⭐ = evento clave/conversión).
 - **GSC listo del lado técnico:** sitemap HTTP 200 con 22 URLs (12 páginas + 10 blog, todas www); robots.txt correcto (Allow /, disallow /auth/ /debug-, Sitemap www). Pasos entregados a David (agregar propiedad prefijo URL www → verificar por método "Google Analytics" → enviar `sitemap.xml`). Alternativa de respaldo: si pide etiqueta HTML, añadir el `<meta google-site-verification>` por código.
 - **Pendiente David:** completar verificación GSC + enviar sitemap + (cuando aparezca) estrellar `click_prueba_gratis` en GA4.
+
+### Sesión 2026-06-04 (GSC verificación por código)
+- Añadido el meta de verificación de Search Console vía `verification.google` en `app/layout.tsx` (token público `PaPtou6R-...`). Commit `6859b59`, desplegado, verificado en producción (`<meta name="google-site-verification">` presente).
+- **Pendiente David (2 clicks):** en GSC darle "Verificar" (método Etiqueta HTML) → luego Sitemaps → enviar `sitemap.xml`. Y el ⭐ en GA4 cuando `click_prueba_gratis` aparezca en Eventos recientes (sembrado 6 hits).
