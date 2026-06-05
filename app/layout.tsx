@@ -52,6 +52,8 @@ export const metadata: Metadata = {
     },
     // F1-T6: canonical "/" resuelto contra metadataBase www.
     alternates: { canonical: "/" },
+    // Verificación de Google Search Console (token público, no es secreto).
+    verification: { google: "PaPtou6R-mkv4KGrt3FTsc_ZH46Mpw3DSZW8-bBf5U4" },
     // F1-T5: OG con nuevo title/description/url/image.
     openGraph: {
         type: "website",
