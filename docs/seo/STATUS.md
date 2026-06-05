@@ -3,7 +3,7 @@
 > **Empieza cada sesión leyendo este archivo.** Marca `[x]` al cerrar una tarea, anota el commit
 > y agrega una línea a la bitácora. Leyenda: `[ ]` pendiente · `[~]` en progreso · `[x]` hecho · `[!]` bloqueado.
 
-**Fase actual:** Fase 8 ✅ cerrada (commit `f22f285`) → **siguiente: Fase 9 (QA & checklist 26 ítems + gate SEC del diff acumulado).**
+**Fase actual:** Fase 9 ✅ cerrada → **solo queda Fase 10 (Search Console + conversiones GA4 = acción David).**
 **Última actualización:** 2026-06-04
 
 ---
@@ -69,9 +69,9 @@
 - [x] F8-T3 Medición real + build — LCP 124ms · CLS 0.0000 · TTFB 27ms · Load 116ms (mobile, local). AssistantWidget diferido con `next/dynamic` + `ssr:false` vía client wrapper `assistant-widget-loader.tsx` (reduce TBT). lint 0 errores · tsc limpio · build 31 páginas ✅. Playwright: 6 passed / 2 failed preexistentes (blog FAQ con details/summary nativo).
 
 ### Fase 9 — QA
-- [ ] F9-T1 Checklist 26 ítems
-- [ ] F9-T2 Gate SEC
-- [ ] F9-T3 lint+typecheck+build+playwright+lighthouse
+- [x] F9-T1 Checklist 26 ítems — 100% en lo verificable por código (resto = acción David: GSC, conversiones GA4)
+- [x] F9-T2 Gate SEC acumulado (3cabb02..HEAD) = PASS
+- [x] F9-T3 lint 0 err · typecheck limpio · build OK · Playwright 30 passed/2 skip (WP)
 
 ### Fase 10 — GSC (David)
 - [ ] F10-T1 Verificar www + sitemap
@@ -290,3 +290,11 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - lint/typecheck/build limpios. **Commit `f22f285`**.
 - Nota para Fase 9: 2 tests Playwright de blog FAQ fallan (esperan `aria-expanded`, el componente usa `<details>` nativo) — preexistente, revisar/actualizar test en QA. Además, el H1 doble responsive del hero (observación Fase 2) sigue pendiente de pulir si se quiere "un solo H1" estricto.
 - **Próximo:** Fase 9 (QA: checklist 26 ítems + gate SEC del diff acumulado de fases 1-8 + lint/typecheck/build/playwright).
+
+### Sesión 2026-06-04 (Fase 9 — QA final)
+- **Tests smoke reconciliados:** los 5 fallos eran tests obsoletos (estado pre-SEO), no regresiones. Actualizados a la realidad: nav "Precios" (no "planes"), /login encadena al SaaS, Organization name "LabDen", sitemap sin /producto (307→/plataforma), 404 robots locator `.first()`. Suite verde: **30 passed, 2 skipped** (wp-contract sin WP env). Commit `372b382`.
+- **H1 único:** consolidados los 2 `<h1>` responsive del hero en uno solo con spans (display:none excluye el oculto del nombre accesible y del conteo). Verificado: **1 nodo `<h1>`** en producción. Commit `3f58b2e`.
+- **Checklist 26 ítems:** 100% en lo verificable. Nota: "CRM" en el home solo aparece en la FAQ #10 ("por qué NO somos un CRM") — no lidera, correcto.
+- **Gate SEC acumulado (3cabb02..HEAD) = PASS:** middleware/next.config intactos, sin secretos, 4 JSON-LD escapados con datos estáticos, WP server-only, sin open-redirect, analytics sin PII.
+- **Deploy a producción** vía `vercel --prod` (proyecto paginaweblabden).
+- **Solo queda Fase 10 (acción David):** Search Console (verificar www + enviar sitemap) y marcar conversiones en GA4 (`click_prueba_gratis`). Requiere `NEXT_PUBLIC_GTM_ID` en Vercel.
