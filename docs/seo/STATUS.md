@@ -298,3 +298,12 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - **Gate SEC acumulado (3cabb02..HEAD) = PASS:** middleware/next.config intactos, sin secretos, 4 JSON-LD escapados con datos estáticos, WP server-only, sin open-redirect, analytics sin PII.
 - **Deploy a producción** vía `vercel --prod` (proyecto paginaweblabden).
 - **Solo queda Fase 10 (acción David):** Search Console (verificar www + enviar sitemap) y marcar conversiones en GA4 (`click_prueba_gratis`). Requiere `NEXT_PUBLIC_GTM_ID` en Vercel.
+
+### Sesión 2026-06-04 (Fase 10 parcial — GA4 conectado)
+- David creó propiedad GA4, Measurement ID **`G-DDXF85BV5T`**. Decidido: **GA4 directo (gtag.js)**, NO GTM (más simple para un solo destino).
+- Cambio de código (commit `460592f`): `components/analytics/google-analytics.tsx` (loader gtag con guard `G-[A-Z0-9]+`), `lib/analytics.ts` (`trackEvent` → `window.gtag('event', ...)` + fallback dataLayer), `<GoogleAnalytics/>` en layout. CSP/middleware NO tocados (orígenes ya permitidos). Gate SEC = PASS.
+- **`NEXT_PUBLIC_GA_ID=G-DDXF85BV5T`** seteado en Vercel `paginaweblabden` (Production+Preview). Deploy vía `vercel --prod`.
+- **VERIFICADO en producción:** gtag.js carga con el ID real, `window.gtag` global, `page_view` + evento personalizado llegan a GA4 (beacon /g/collect con en=manual_test_event). Funciona end-to-end.
+- Nota: GTM component queda como no-op (NEXT_PUBLIC_GTM_ID sin setear) → no hay doble conteo. NO setear GTM_ID.
+- Nota menor: el "URL del flujo" en GA4 se ve como `wwwlabden.com.mx` (sin punto) — cosmético, no bloquea datos; David puede corregirlo en GA4 → Flujo de datos.
+- **PENDIENTE David (clicks en consolas):** (1) GA4 → marcar `click_prueba_gratis` como conversión/evento clave; (2) Search Console: agregar propiedad www + verificar + enviar sitemap. Guía en `docs/seo/FASE-10-GUIA.md` (ahora la verificación GSC por "Etiqueta de Google/gtag" ya es posible porque GA4 está en el sitio).
