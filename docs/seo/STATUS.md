@@ -328,3 +328,12 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
   - F1 metadata + dominio www (forzado por código, lib/site.ts) · F2 contenido home reposicionado · F3 FAQ + FAQPage · F4 schemas (Org/SoftwareApp/Breadcrumb) · F5 imágenes WebP SEO · F6 footer SEO · F7 GA4 7 eventos · F8 CWV (LCP ~104ms, CLS 0) · F9 QA (tests verdes, gate PASS, 1 H1) · F10 GA4 conversión + GSC verificado + sitemap enviado.
   - Infra: Vercel ordenado (paginaweblabden=web, app-labden=SaaS, crm-nexus borrado), 31 archivos muertos eliminados, GA4 directo (G-DDXF85BV5T) en vez de GTM.
 - **Continuo / futuro (cuando David decida):** revisión semanal de Search Console (indexación + posición de "sistema para laboratorios dentales"); Epic B (páginas internas) y Epic C (5 artículos de blog) documentados en PLAN.md/COPY.md.
+
+### Sesión 2026-06-05 (post-auditoría externa — pulido final)
+- Una auditoría externa reportó 35% técnico, pero al verificar el HTML en vivo TODO el técnico ya estaba implementado (14/15). La auditoría estaba desactualizada (miró el render visible, no el <head> SSR / o crawleó pre-deploy).
+- Aplicados los 3 ítems reales que sí rescataba:
+  1. **Imagen OG (tarjeta social) actualizada** al posicionamiento nuevo: "Sistema para laboratorios dentales / Ordena tus trabajos, dentistas y cobros. Prueba gratis 30 días" (antes decía el tagline viejo "Gestión para Laboratorios Dentales Modernos"). alt + título + subtítulo en `app/opengraph-image.tsx`.
+  2. **Meta description + "en México"** (keyword local).
+  3. **paso-1..4 → WebP con nombres SEO** (`paso-1-envio-orden-laboratorio-dental.webp`, etc.).
+- Gate SEC = PASS. Commit `b56a4f7`, desplegado, verificado en producción.
+- Por diseño (no son gaps): OG sigue siendo generador dinámico branded (mejor que screenshot crudo); `submit_trial_form` no se mide aquí porque el form vive en el SaaS; Academy/Comunidad son secciones de texto (sin imagen dedicada).
