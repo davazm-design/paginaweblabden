@@ -7,7 +7,10 @@ export function GoogleTagManager() {
     return (
         <Script
             id="gtm-script"
-            strategy="afterInteractive"
+            // lazyOnload: el contenedor GTM (lo más pesado) carga en idle, fuera de la
+            // ventana interactiva → baja TBT y "JS sin usar". Los eventos disparados antes
+            // se encolan en dataLayer (ver lib/analytics.ts) y GTM los procesa al cargar.
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
                 __html: `
                     (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':

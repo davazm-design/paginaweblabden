@@ -16,10 +16,15 @@ export function GoogleAnalytics() {
 
     return (
         <>
+            {/* Librería gtag.js (~el grueso del peso) diferida a idle. Al cargar procesa
+                la cola de dataLayer, así no se pierden los comandos js/config ni eventos. */}
             <Script
                 src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
-                strategy="afterInteractive"
+                strategy="lazyOnload"
             />
+            {/* Bootstrap mínimo (~4 líneas, no impacta TBT): define window.gtag y encola
+                js + config de inmediato. Garantiza que un clic temprano se encole en
+                dataLayer aunque la librería aún no haya cargado. */}
             <Script
                 id="ga4-init"
                 strategy="afterInteractive"
@@ -27,6 +32,7 @@ export function GoogleAnalytics() {
                     __html: `
 window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
+window.gtag = gtag;
 gtag('js', new Date());
 gtag('config', '${GA_ID}');
 `,
