@@ -8,28 +8,28 @@ const STEPS = [
         number: "1",
         title: "El dentista envía la orden completa",
         description: "Con fotos, indicaciones y archivos organizados desde el inicio.",
-        mockup: "/images/story/paso-1-orden.png",
+        mockup: "/images/story/paso-1-envio-orden-laboratorio-dental.webp",
     },
     {
         icon: ClipboardList,
         number: "2",
         title: "El laboratorio recibe y organiza",
         description: "La información queda organizada automáticamente en un solo lugar.",
-        mockup: "/images/story/paso-2-organiza.png",
+        mockup: "/images/story/paso-2-organizacion-laboratorio-dental.webp",
     },
     {
         icon: Wrench,
         number: "3",
         title: "Das seguimiento en tiempo real",
         description: "Visualiza el estatus de cada trabajo y evita pérdidas de información.",
-        mockup: "/images/story/paso-3-seguimiento.png",
+        mockup: "/images/story/paso-3-seguimiento-produccion-dental.webp",
     },
     {
         icon: PackageCheck,
         number: "4",
         title: "Entregas con más control",
         description: "Todo queda registrado para el laboratorio y el dentista.",
-        mockup: "/images/story/paso-4-entrega.png",
+        mockup: "/images/story/paso-4-entrega-trabajo-dental.webp",
     },
 ];
 

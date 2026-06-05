@@ -1,6 +1,6 @@
 import { ImageResponse } from "next/og";
 
-export const alt = "LabDen — Gestión para Laboratorios Dentales Modernos";
+export const alt = "LabDen — Sistema para laboratorios dentales en México";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -51,7 +51,7 @@ export default async function OpengraphImage() {
                         maxWidth: 980,
                     }}
                 >
-                    Gestión para laboratorios dentales modernos
+                    Sistema para laboratorios dentales
                 </div>
                 <div
                     style={{
@@ -62,7 +62,7 @@ export default async function OpengraphImage() {
                         color: "#cbd5e1",
                     }}
                 >
-                    Órdenes, finanzas y crecimiento en una sola plataforma.
+                    Ordena tus trabajos, dentistas y cobros. Prueba gratis 30 días.
                 </div>
             </div>
         ),

@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
     // F1-T3: description global (~155 car.)
     description:
-        "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen, el sistema para laboratorios dentales. Prueba gratis 30 días.",
+        "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen, el sistema para laboratorios dentales en México. Prueba gratis 30 días.",
     applicationName: "LabDen",
     // F1-T4: mapa semántico (~14 keywords)
     keywords: [
