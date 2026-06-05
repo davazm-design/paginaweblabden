@@ -83,7 +83,7 @@ export function FinancialSection() {
                                     </div>
                                 ))}
                             </div>
-                            <p className="mt-4 text-xs text-muted/50 text-center">Datos de ejemplo.</p>
+                            <p className="mt-4 text-xs text-muted text-center">Datos de ejemplo.</p>
                         </div>
                     </div>
                 </div>

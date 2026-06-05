@@ -56,7 +56,7 @@ export function Footer() {
                             <BrandLogo showText={true} />
                         </div>
                         {/* Texto SEO — frase citable para crawlers y LLMs (F6-T2) */}
-                        <p className="text-sm leading-relaxed text-white/60 max-w-xs mb-4">
+                        <p className="text-sm leading-relaxed text-white/75 max-w-xs mb-4">
                             LabDen es un sistema para laboratorios dentales en México. Ayuda a controlar órdenes de trabajo, dentistas, producción, entregas, ingresos y cuentas por cobrar desde una sola plataforma.
                         </p>
                         <div className="mb-6">
@@ -101,11 +101,11 @@ export function Footer() {
 
                     {FOOTER_COLUMNS.map((column) => (
                         <nav key={column.title} aria-label={column.title}>
-                            <h4 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">{column.title}</h4>
+                            <h3 className="font-semibold text-white mb-4 text-sm uppercase tracking-wider">{column.title}</h3>
                             <ul className="space-y-2.5">
                                 {column.links.map((link) => (
                                     <li key={link.name}>
-                                        <Link href={link.href} className="text-sm text-white/50 hover:text-white transition-colors">
+                                        <Link href={link.href} className="text-sm text-white/70 hover:text-white transition-colors">
                                             {link.name}
                                         </Link>
                                     </li>
@@ -116,7 +116,7 @@ export function Footer() {
                 </div>
 
                 <div className="border-t border-white/10 pt-8">
-                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/40">
+                    <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs text-white/60">
                         <p>&copy; {new Date().getFullYear()} LabDen. Todos los derechos reservados.</p>
                         <p className="italic">La calidad no falla. La información sí.</p>
                     </div>

@@ -14,7 +14,7 @@ export function EmotionalBlock() {
                     <p>
                         Por eso cada función está pensada para la operación real de un laboratorio dental: desde que el dentista solicita un trabajo hasta que el laboratorio lo produce, lo entrega y lo cobra.
                     </p>
-                    <p className="text-sm text-muted/70 italic">
+                    <p className="text-sm text-muted italic">
                         LabDen fue construido con la guía directa de un laboratorio dental real.
                     </p>
                 </div>

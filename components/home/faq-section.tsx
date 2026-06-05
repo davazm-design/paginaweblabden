@@ -70,7 +70,7 @@ export function FaqSection() {
                     Preguntas frecuentes sobre LabDen
                 </h2>
 
-                <dl className="space-y-3">
+                <div className="space-y-3">
                     {FAQ_ITEMS.map((item) => (
                         <details
                             key={item.pregunta}
@@ -104,7 +104,7 @@ export function FaqSection() {
                             </div>
                         </details>
                     ))}
-                </dl>
+                </div>
             </div>
         </section>
     );

@@ -51,7 +51,7 @@ export function HeroSection() {
                         </Button>
                     </div>
 
-                    <p className="mt-5 text-xs text-muted/60">
+                    <p className="mt-5 text-xs text-muted">
                         Sin tarjeta de crédito. Sin compromiso. Diseñado para laboratorios dentales.
                     </p>
                 </div>

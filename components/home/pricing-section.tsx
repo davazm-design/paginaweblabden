@@ -198,19 +198,19 @@ export function PricingSection() {
                         </div>
 
                         <ul className="space-y-4 mb-8 flex-1">
-                            <li className="flex items-start gap-3 text-sm text-muted/60">
+                            <li className="flex items-start gap-3 text-sm text-muted">
                                 <Check className="w-5 h-5 text-muted/40 flex-shrink-0 mt-0.5" />
                                 <span>Archivos 3D / STL</span>
                             </li>
-                            <li className="flex items-start gap-3 text-sm text-muted/60">
+                            <li className="flex items-start gap-3 text-sm text-muted">
                                 <Check className="w-5 h-5 text-muted/40 flex-shrink-0 mt-0.5" />
                                 <span>Auditoría avanzada</span>
                             </li>
-                            <li className="flex items-start gap-3 text-sm text-muted/60">
+                            <li className="flex items-start gap-3 text-sm text-muted">
                                 <Check className="w-5 h-5 text-muted/40 flex-shrink-0 mt-0.5" />
                                 <span>Integraciones personalizadas</span>
                             </li>
-                            <li className="flex items-start gap-3 text-sm text-muted/60">
+                            <li className="flex items-start gap-3 text-sm text-muted">
                                 <Check className="w-5 h-5 text-muted/40 flex-shrink-0 mt-0.5" />
                                 <span>Soporte dedicado</span>
                             </li>

@@ -66,7 +66,7 @@ export function SocialProof() {
                     ))}
                 </div>
 
-                <p className="text-center text-xs text-muted/60 mt-6">
+                <p className="text-center text-xs text-muted mt-6">
                     Resultados estimados basados en operación promedio de laboratorios dentales.
                 </p>
             </div>
