@@ -106,20 +106,7 @@ export function Navbar() {
             {/* Mobile/Tablet Menu Content */}
             {isOpen && (
                 <div className="lg:hidden absolute top-20 left-0 w-full max-h-[calc(100dvh-5rem)] overflow-y-auto overscroll-contain bg-surface border-b border-border p-6 flex flex-col gap-2 shadow-2xl z-50 animate-in fade-in slide-in-from-top-4 duration-200">
-                    {navLinks.map((link) => (
-                        <Link
-                            key={link.name}
-                            href={link.href}
-                            onClick={() => {
-                                setIsOpen(false)
-                                if (link.href === '/precios') analytics.clickPrecios()
-                            }}
-                            className="text-lg font-medium text-muted hover:text-primary active:bg-accent/5 p-4 rounded-xl transition-colors"
-                        >
-                            {link.name}
-                        </Link>
-                    ))}
-                    <div className="h-px bg-border my-4" />
+                    {/* Acciones primero: acceso para recurrentes + CTA de trial */}
                     <Link
                         href="https://app.labden.com.mx"
                         onClick={() => { setIsOpen(false); analytics.clickLogin() }}
@@ -134,8 +121,22 @@ export function Navbar() {
                         href="https://app.labden.com.mx/auth/register"
                         onClick={() => { setIsOpen(false); analytics.clickPruebaGratis('navbar_mobile') }}
                     >
-                        Comenzar ahora
+                        Prueba gratis 30 días
                     </Button>
+                    <div className="h-px bg-border my-4" />
+                    {navLinks.map((link) => (
+                        <Link
+                            key={link.name}
+                            href={link.href}
+                            onClick={() => {
+                                setIsOpen(false)
+                                if (link.href === '/precios') analytics.clickPrecios()
+                            }}
+                            className="text-lg font-medium text-muted hover:text-primary active:bg-accent/5 p-4 rounded-xl transition-colors"
+                        >
+                            {link.name}
+                        </Link>
+                    ))}
                 </div>
             )}
         </nav>
