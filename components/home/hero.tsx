@@ -1,5 +1,6 @@
 "use client"
 
+import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { analytics } from "@/lib/analytics"
 
@@ -60,7 +61,20 @@ export function HeroSection() {
                         </Button>
                     </div>
 
-                    <p className="mt-5 text-xs text-muted">
+                    {/* Acceso para usuarios recurrentes — link discreto; el CTA primario
+                        sigue siendo "Prueba gratis". Va al login del SaaS. */}
+                    <p className="mt-4 text-sm text-muted">
+                        ¿Ya tienes cuenta?{" "}
+                        <Link
+                            href="https://app.labden.com.mx"
+                            onClick={() => analytics.clickLogin()}
+                            className="font-semibold text-accent hover:underline underline-offset-4"
+                        >
+                            Entrar →
+                        </Link>
+                    </p>
+
+                    <p className="mt-3 text-xs text-muted">
                         Sin tarjeta de crédito. Sin compromiso. Diseñado para laboratorios dentales.
                     </p>
                 </div>
