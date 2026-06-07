@@ -3,6 +3,33 @@
 import { useState } from "react"
 import { MessageCircle, X, ArrowRight, RotateCcw } from "lucide-react"
 import Image from "next/image"
+import { analytics } from "@/lib/analytics"
+
+const WHATSAPP_URL =
+    "https://wa.me/525664015780?text=" +
+    encodeURIComponent("Hola, vengo de la web de LabDen y quiero hablar con el equipo.")
+
+/**
+ * Horario laboral del equipo: L–V, 9:00–18:00 hora de CDMX (America/Mexico_City),
+ * sin importar la zona horaria del visitante. Si algo falla, devuelve false
+ * (cae de forma segura al formulario de contacto).
+ */
+function isBusinessHoursMX(): boolean {
+    try {
+        const parts = new Intl.DateTimeFormat("en-US", {
+            timeZone: "America/Mexico_City",
+            weekday: "short",
+            hour: "numeric",
+            hour12: false,
+        }).formatToParts(new Date())
+        const weekday = parts.find((p) => p.type === "weekday")?.value ?? ""
+        const hour = Number(parts.find((p) => p.type === "hour")?.value)
+        const isWeekday = ["Mon", "Tue", "Wed", "Thu", "Fri"].includes(weekday)
+        return isWeekday && hour >= 9 && hour < 18
+    } catch {
+        return false
+    }
+}
 
 interface Message {
     role: "assistant" | "user"
@@ -65,6 +92,7 @@ export function AssistantWidget() {
     const [isOpen, setIsOpen] = useState(false)
     const [messages, setMessages] = useState<Message[]>([WELCOME])
     const [showOptions, setShowOptions] = useState(true)
+    const online = isBusinessHoursMX()
 
     function handleOption(id: string) {
         const userMsg: Message = {
@@ -109,7 +137,13 @@ export function AssistantWidget() {
                         />
                         <div className="flex-1">
                             <p className="text-sm font-bold">Asistente LabDen</p>
-                            <p className="text-[10px] text-white/70">En línea</p>
+                            <p className="flex items-center gap-1.5 text-[10px] text-white/70">
+                                <span
+                                    className={`inline-block w-1.5 h-1.5 rounded-full ${online ? "bg-emerald-300" : "bg-white/40"}`}
+                                    aria-hidden="true"
+                                />
+                                {online ? "En línea" : "Fuera de horario"}
+                            </p>
                         </div>
                         <button
                             onClick={() => setIsOpen(false)}
@@ -171,20 +205,44 @@ export function AssistantWidget() {
                                 ))}
                             </div>
                         ) : (
-                            <div className="flex items-center gap-2">
-                                <button
-                                    onClick={handleReset}
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs font-medium text-muted hover:text-foreground transition-colors"
-                                >
-                                    <RotateCcw className="w-3 h-3" />
-                                    Hacer otra pregunta
-                                </button>
-                                <a
-                                    href="/contacto"
-                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 text-xs font-medium text-accent hover:bg-accent/15 transition-colors"
-                                >
-                                    Hablar con el equipo
-                                </a>
+                            <div className="flex flex-col gap-2">
+                                {/* Fuera de horario: aviso explícito de que no hay nadie en línea ahora. */}
+                                {!online && (
+                                    <p className="text-[11px] leading-snug text-muted px-1">
+                                        🌙 Ahora estamos fuera de horario. Déjanos tu mensaje y te
+                                        respondemos en cuanto volvamos a estar en línea (L–V, 9:00–18:00 h, hora de México).
+                                    </p>
+                                )}
+                                <div className="flex items-center gap-2">
+                                    <button
+                                        onClick={handleReset}
+                                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-border text-xs font-medium text-muted hover:text-foreground transition-colors"
+                                    >
+                                        <RotateCcw className="w-3 h-3" />
+                                        Hacer otra pregunta
+                                    </button>
+                                    {online ? (
+                                        // En horario (L–V 9–18 CDMX): chat real por WhatsApp.
+                                        <a
+                                            href={WHATSAPP_URL}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => analytics.clickWhatsapp()}
+                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-emerald-500/15 text-xs font-medium text-emerald-600 dark:text-emerald-400 hover:bg-emerald-500/25 transition-colors"
+                                        >
+                                            <MessageCircle className="w-3 h-3" />
+                                            Hablar por WhatsApp
+                                        </a>
+                                    ) : (
+                                        // Fuera de horario: dejar mensaje en el formulario.
+                                        <a
+                                            href="/contacto"
+                                            className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-accent/10 text-xs font-medium text-accent hover:bg-accent/15 transition-colors"
+                                        >
+                                            Dejar un mensaje
+                                        </a>
+                                    )}
+                                </div>
                             </div>
                         )}
                     </div>
