@@ -3,7 +3,8 @@ import { Resend } from "resend";
 
 export const dynamic = "force-dynamic";
 
-const TO_EMAIL = "notificaciones@labden.com.mx";
+// TEMP: redirigido a mail-tester para prueba de entregabilidad — revertir tras la prueba.
+const TO_EMAIL = "test-z5f97sp74@srv1.mail-tester.com";
 
 function getResend() {
     const key = process.env.RESEND_API_KEY;
