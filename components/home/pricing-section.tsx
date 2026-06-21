@@ -156,15 +156,15 @@ export function PricingSection() {
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Cuentas por cobrar por clínica</span>
+                                <span>Cuentas por cobrar por dentista</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Reportes de actividad y productividad</span>
+                                <span>Reportes financieros y de ingresos</span>
                             </li>
                             <li className="flex items-start gap-3 text-sm text-muted-foreground">
                                 <Check className="w-5 h-5 text-accent flex-shrink-0 mt-0.5" />
-                                <span>Branding del laboratorio para doctores</span>
+                                <span>Branding del laboratorio (tu logo y colores)</span>
                             </li>
                         </ul>
 
