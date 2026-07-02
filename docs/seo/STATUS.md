@@ -87,7 +87,7 @@
 | **D2** | ¿Renombrar el menú `Aliados` → `Comunidad`? | ✅ **Mantener "Aliados"** sin cambios. Comunidad será solo sección del home; `/comunidad` queda diferida. | ✅ 2026-06-03 |
 | **D3** | Número de WhatsApp para el CTA "Hablar por WhatsApp". | ✅ **5664015780** → `https://wa.me/525664015780`. Icono footer conectado + evento `click_whatsapp`. | ✅ 2026-06-03 |
 | **D4** | Qué captura usar como **imagen hero**. | ✅ **"Resumen general"** (foto técnico + monitor, `story/resumen-general.jpg`). Optimizar a `sistema-para-laboratorios-dentales-labden.webp`. | ✅ 2026-06-03 |
-| **D5** | SoftwareApplication: ¿mantener precios (AggregateOffer 550–850)? | ✅ **MANTENER** (decisión David). | ✅ 2026-06-03 |
+| **D5** | SoftwareApplication: ¿mantener precios en AggregateOffer? | ✅ **MANTENER** el AggregateOffer (decisión David 2026-06-03). **Precios refrescados 2026-07-01**: `lowPrice` 550→699, `highPrice` 850→1099 (nuevo empaquetado Starter/Profesional). | ✅ 2026-06-03 · act. 2026-07-01 |
 
 ---
 
@@ -282,6 +282,16 @@ Eliminado todo lo huérfano que dejó la reescritura de la home:
 - **Fix de bug:** `components/ui/button.tsx` no pasaba onClick al renderizar como `<a>`/`<Link>` → los eventos se perdían silenciosamente. Corregido.
 - **Verificado con Playwright:** los 7 eventos llegan a window.dataLayer (clicks + scroll); scroll_50/90 una sola vez. lint/typecheck/build OK. **Commit `842bf0c`**.
 - **ACCIÓN DAVID (F7-T4):** en GA4 marcar `click_prueba_gratis` (y `submit_trial_form` cuando se instrumente en el SaaS) como conversión. Requiere `NEXT_PUBLIC_GTM_ID` configurado en Vercel + GA4 enlazado en GTM.
+
+### Sesión 2026-07-01 (landing-engineer — nuevo empaquetado de precios)
+- **Cambio de copy + precios** aprobado por David: renombre de planes y precios nuevos MXN, sincronizado en **todas** las superficies (antes desincronizadas).
+  - Planes: **PLAN BASE → PLAN STARTER**, **PLAN PRO → PLAN PROFESIONAL**, Enterprise → **PLAN ENTERPRISE** ("A medida").
+  - Precios: Starter **$699**/mes ($6,291/año, antes $550/$4,950) · Profesional **$1,099**/mes ($9,891/año, antes $850/$7,650) · Enterprise "A medida" (CTA "Solicitar cotización").
+  - Superficies tocadas: `components/home/pricing-section.tsx`, `app/precios/page.tsx` (metadata + FAQ JSON-LD), `app/layout.tsx` (AggregateOffer), `components/chat/assistant-widget.tsx`, `tests/smoke-funnel.spec.ts`.
+- **D5 revisado:** el AggregateOffer se **mantiene** (decisión original), pero se refrescan sus cifras: `lowPrice` 550→699, `highPrice` 850→1099 en `app/layout.tsx`. Aplicado por orden explícita de David; queda a criterio pasarlo por `landing-seo-specialist` para validación formal.
+- **Decisiones de David en esta pasada:** Enterprise conserva su tratamiento "Próximamente"/grayscale (no se activó visualmente); los slugs de analytics `pricing_base`/`pricing_pro` se **mantienen** sin renombrar (continuidad del histórico GTM/GA4).
+- **Verificado:** lint (0 errores, 7 warnings preexistentes) · `tsc --noEmit` limpio · build 31/31 páginas · `playwright test tests/smoke-funnel.spec.ts` 22/22 ✅. **Commit `0c2d489`** (`feat(pricing): nuevo empaquetado Starter/Profesional/Enterprise + precios MXN`), pusheado a `main`.
+- **Nota de nomenclatura:** en el código los eventos de analytics siguen usando los slugs `pricing_base`/`pricing_pro` aunque los planes ahora se llamen Starter/Profesional — es intencional para no partir el histórico. Si en el futuro se quiere alinear, coordinar con el owner de GA4.
 
 ### Sesión 2026-06-04 (Fase 8 — Performance/CWV)
 - Medido mobile (local): **LCP ~104ms** (hero es texto, sin imagen above-the-fold), **CLS 0**, sin errores de consola.

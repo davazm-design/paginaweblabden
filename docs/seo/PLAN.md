@@ -10,7 +10,7 @@
 - H1 actual: `Recupera el control de tu laboratorio.` (`components/home/hero.tsx:25`).
 - `NEXT_PUBLIC_SITE_URL` default = `https://labden.com.mx` (**sin www**) → el plan exige **www**.
 - "CRM": 1 sola aparición, como diferenciador negativo en `app/empresa/page.tsx:33` (alineado, no urge).
-- Schemas existentes: Organization + SoftwareApplication (AggregateOffer 550–850 MXN) en `app/layout.tsx:74-112`; BreadcrumbList en `components/ui/breadcrumbs.tsx`; FAQPage en `components/blog/faq-schema.tsx` (usado en /precios y blog, **no en home**).
+- Schemas existentes: Organization + SoftwareApplication (AggregateOffer 550–850 MXN — *refrescado a 699–1099 MXN el 2026-07-01, ver STATUS.md*) en `app/layout.tsx:74-112`; BreadcrumbList en `components/ui/breadcrumbs.tsx`; FAQPage en `components/blog/faq-schema.tsx` (usado en /precios y blog, **no en home**).
 - Sitemap (`app/sitemap.ts`) y robots (`app/robots.ts`) existen; host sale de `SITE_URL`. No hay ruta `/comunidad`.
 - Analytics: `lib/analytics.ts` → `trackEvent(name, data)` + objeto `analytics` con 5 eventos (nombres `cta_home_hero_click`, etc.). GTM vía `NEXT_PUBLIC_GTM_ID`.
 - Home (`app/page.tsx`): Navbar · Hero · StorySections · HowItWorks · SocialProof · PricingSection · AcademyTeaser · EmotionalBlock · FinalCta · Footer.
