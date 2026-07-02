@@ -66,7 +66,7 @@ const RESPONSES: Record<string, Message> = {
     price: {
         role: "assistant",
         content:
-            "Tenemos 2 planes activos:\n\n• Plan Base: desde $550 MXN/mes (hasta 100 órdenes)\n• Plan Pro: $850 MXN/mes (órdenes ilimitadas + control financiero)\n\nAmbos incluyen 30 días de prueba gratis, sin tarjeta de crédito. En pago anual te regalamos 3 meses.",
+            "Tenemos 3 planes:\n\n• Plan Starter: $699 MXN/mes (hasta 100 órdenes)\n• Plan Profesional: $1,099 MXN/mes (órdenes ilimitadas + control financiero y de producción)\n• Plan Enterprise: a medida\n\nLos planes Starter y Profesional incluyen 30 días de prueba gratis, sin tarjeta de crédito. En pago anual te regalamos 3 meses.",
         links: [{ label: "Ver planes completos", href: "/precios" }],
     },
     try: {

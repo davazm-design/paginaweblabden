@@ -24,10 +24,10 @@ test.describe("Funnel home → precios", () => {
         await page.goto("/precios");
         await expect(page).toHaveURL(/\/precios$/);
 
-        await expect(page.getByRole("heading", { name: /plan base/i })).toBeVisible();
-        await expect(page.getByRole("heading", { name: /plan pro/i })).toBeVisible();
-        await expect(page.getByText(/\$550/)).toBeVisible();
-        await expect(page.getByText(/\$850/)).toBeVisible();
+        await expect(page.getByRole("heading", { name: /plan starter/i })).toBeVisible();
+        await expect(page.getByRole("heading", { name: /plan profesional/i })).toBeVisible();
+        await expect(page.getByText(/\$699/)).toBeVisible();
+        await expect(page.getByText(/\$1,099/)).toBeVisible();
     });
 
     test("/login encadena al portal de auth del SaaS", async ({ page }) => {

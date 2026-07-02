@@ -138,8 +138,8 @@ const softwareJsonLd = {
     offers: {
         "@type": "AggregateOffer",
         priceCurrency: "MXN",
-        lowPrice: "550",
-        highPrice: "850",
+        lowPrice: "699",
+        highPrice: "1099",
         offerCount: "2",
     },
 };
