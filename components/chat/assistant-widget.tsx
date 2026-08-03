@@ -66,13 +66,13 @@ const RESPONSES: Record<string, Message> = {
     price: {
         role: "assistant",
         content:
-            "Tenemos 3 planes:\n\n• Plan Starter: $699 MXN/mes (hasta 100 órdenes)\n• Plan Profesional: $1,099 MXN/mes (órdenes ilimitadas + control financiero y de producción)\n• Plan Enterprise: a medida\n\nLos planes Starter y Profesional incluyen 30 días de prueba gratis, sin tarjeta de crédito. En pago anual te regalamos 3 meses.",
+            "Tenemos 3 planes:\n\n• Plan Starter: $699 MXN/mes + IVA (hasta 100 órdenes)\n• Plan Profesional: $1,099 MXN/mes + IVA (órdenes ilimitadas + control financiero y de producción)\n• Plan Enterprise: a medida\n\nLos planes Starter y Profesional incluyen 15 días de prueba gratis, sin tarjeta de crédito. En pago anual te regalamos 3 meses.",
         links: [{ label: "Ver planes completos", href: "/precios" }],
     },
     try: {
         role: "assistant",
         content:
-            "Puedes empezar tu prueba gratis ahora mismo. Son 30 días sin tarjeta de crédito y sin compromiso. Configura tu laboratorio en minutos.",
+            "Puedes empezar tu prueba gratis ahora mismo. Son 15 días sin tarjeta de crédito y sin compromiso. Configura tu laboratorio en minutos.",
         links: [
             { label: "Registrarme gratis", href: "https://app.labden.com.mx/auth/register" },
         ],

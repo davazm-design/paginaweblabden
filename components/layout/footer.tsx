@@ -65,7 +65,7 @@ export function Footer() {
                                 onClick={() => analytics.clickPruebaGratis('footer')}
                                 className="inline-block text-xs font-semibold text-[#0f1729] bg-white hover:bg-white/90 px-4 py-2 rounded-lg transition-colors"
                             >
-                                Prueba gratis 30 días
+                                Prueba gratis 15 días
                             </Link>
                         </div>
                         {/* TODO Epic B: añadir enlaces a páginas internas SEO cuando existan:

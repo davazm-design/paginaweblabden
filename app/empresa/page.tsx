@@ -145,7 +145,7 @@ export default function CompanyPage() {
                         Prueba LabDen sin compromiso y descubre si es la herramienta que tu laboratorio necesita.
                     </p>
                     <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
-                        Prueba gratis 30 días <ArrowRight className="ml-2 w-4 h-4" />
+                        Prueba gratis 15 días <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>
             </section>

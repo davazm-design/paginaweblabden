@@ -69,7 +69,7 @@ export default function Home() {
             <CommunitySection />
             {/* 11. FAQ visible + FAQPage schema */}
             <FaqSection />
-            {/* 12. Prueba gratis 30 días */}
+            {/* 12. Prueba gratis 15 días */}
             <FinalCta />
             <Footer />
         </main>

@@ -39,7 +39,7 @@ export const FAQ_ITEMS = [
     {
         pregunta: "¿La prueba gratis requiere tarjeta de crédito?",
         respuesta:
-            "No. Puedes iniciar la prueba gratis de 30 días sin tarjeta de crédito y sin compromiso.",
+            "No. Puedes iniciar la prueba gratis de 15 días sin tarjeta de crédito y sin compromiso.",
     },
     {
         pregunta: "¿LabDen funciona para laboratorios dentales en México?",

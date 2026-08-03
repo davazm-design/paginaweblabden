@@ -75,12 +75,13 @@ export function PricingSection() {
                             <div className="flex items-baseline gap-1 mb-1">
                                 <span className="text-3xl font-bold text-foreground">$699</span>
                                 <span className="text-muted font-medium">MXN / mes</span>
+                                <span className="text-muted text-sm">+ IVA</span>
                             </div>
                             <p className="text-xs text-muted mt-1 mb-2">
-                                Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$6,291/año</span> <span className="line-through">$8,388</span>
+                                Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$6,291/año</span> <span className="line-through">$8,388</span> + IVA
                             </p>
                             <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 text-xs font-bold">
-                                Prueba gratuita 30 días
+                                Prueba gratuita 15 días
                             </div>
                         </div>
 
@@ -126,7 +127,7 @@ export function PricingSection() {
                             href="https://app.labden.com.mx/auth/register"
                             onClick={() => analytics.clickPruebaGratis('pricing_base')}
                         >
-                            Probar gratis 30 días
+                            Probar gratis 15 días
                         </Button>
                     </div>
 
@@ -146,9 +147,10 @@ export function PricingSection() {
                             <div className="flex items-baseline gap-1 mb-1">
                                 <span className="text-4xl font-bold text-foreground">$1,099</span>
                                 <span className="text-muted font-medium">MXN / mes</span>
+                                <span className="text-muted text-sm">+ IVA</span>
                             </div>
                             <p className="text-xs text-muted mt-1">
-                                Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$9,891/año</span> <span className="line-through">$13,188</span>
+                                Anual: <span className="font-semibold text-emerald-600 dark:text-emerald-400">$9,891/año</span> <span className="line-through">$13,188</span> + IVA
                             </p>
                         </div>
 
@@ -195,7 +197,7 @@ export function PricingSection() {
                             href="https://app.labden.com.mx/auth/register"
                             onClick={() => analytics.clickPruebaGratis('pricing_pro')}
                         >
-                            Probar gratis 30 días
+                            Probar gratis 15 días
                         </Button>
                     </div>
 

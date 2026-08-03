@@ -9,12 +9,12 @@ import { ArrowRight } from "lucide-react";
 export const metadata: Metadata = {
     title: "Planes y precios | LabDen",
     description:
-        "Planes claros desde $699 MXN/mes. Digitaliza tu laboratorio dental con prueba gratis de 30 días, sin tarjeta de crédito.",
+        "Planes claros desde $699 MXN/mes + IVA. Digitaliza tu laboratorio dental con prueba gratis de 15 días, sin tarjeta de crédito.",
     alternates: { canonical: "/precios" },
     openGraph: {
         title: "Planes y precios | LabDen",
         description:
-            "Planes claros desde $699 MXN/mes para laboratorios dentales. Prueba gratis 30 días.",
+            "Planes claros desde $699 MXN/mes + IVA para laboratorios dentales. Prueba gratis 15 días.",
         type: "website",
         url: "/precios",
     },
@@ -29,7 +29,7 @@ const faqJsonLd = {
             name: "¿Cuánto cuesta LabDen?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "LabDen tiene dos planes con precio fijo: Plan Starter a $699 MXN/mes (hasta 100 órdenes) y Plan Profesional a $1,099 MXN/mes (órdenes ilimitadas + control financiero y de producción). Para laboratorios de mayor escala existe el Plan Enterprise a medida. Ambos planes con precio fijo incluyen 30 días de prueba gratis sin tarjeta de crédito.",
+                text: "LabDen tiene dos planes con precio fijo: Plan Starter a $699 MXN/mes + IVA (hasta 100 órdenes) y Plan Profesional a $1,099 MXN/mes + IVA (órdenes ilimitadas + control financiero y de producción). Para laboratorios de mayor escala existe el Plan Enterprise a medida. Ambos planes con precio fijo incluyen 15 días de prueba gratis sin tarjeta de crédito.",
             },
         },
         {
@@ -37,7 +37,7 @@ const faqJsonLd = {
             name: "¿Puedo probar LabDen gratis?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Sí. Ofrecemos 30 días de prueba gratis sin tarjeta de crédito y sin compromiso. Puedes cancelar cuando quieras.",
+                text: "Sí. Ofrecemos 15 días de prueba gratis sin tarjeta de crédito y sin compromiso. Puedes cancelar cuando quieras.",
             },
         },
         {
@@ -45,7 +45,7 @@ const faqJsonLd = {
             name: "¿Qué incluye el pago anual?",
             acceptedAnswer: {
                 "@type": "Answer",
-                text: "Con el pago anual recibes 3 meses gratis, lo que representa un ahorro del 25% respecto al pago mensual.",
+                text: "Con el pago anual recibes 3 meses gratis, lo que representa un ahorro del 25% respecto al pago mensual. Todos los precios publicados son más IVA.",
             },
         },
     ],
@@ -70,7 +70,7 @@ export default function PreciosPage() {
                         Un plan para cada etapa de tu laboratorio
                     </h1>
                     <p className="text-lg text-muted max-w-2xl mx-auto leading-relaxed">
-                        Sin contratos largos, sin sorpresas. Empieza con 30 días gratis y paga solo si te aporta valor.
+                        Sin contratos largos, sin sorpresas. Empieza con 15 días gratis y paga solo si te aporta valor.
                     </p>
                 </div>
             </section>

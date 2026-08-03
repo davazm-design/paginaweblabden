@@ -62,7 +62,7 @@ export default async function OpengraphImage() {
                         color: "#cbd5e1",
                     }}
                 >
-                    Ordena tus trabajos, dentistas y cobros. Prueba gratis 30 días.
+                    Ordena tus trabajos, dentistas y cobros. Prueba gratis 15 días.
                 </div>
             </div>
         ),
