@@ -66,12 +66,12 @@ export default function TerminosPage() {
                                 LabDen ofrece los siguientes planes de suscripción, expresados en pesos mexicanos (MXN):
                             </p>
                             <ul className="list-disc list-inside text-muted space-y-2 mb-4">
-                                <li><strong>Plan Starter:</strong> $699 MXN/mes o $6,291 MXN/año.</li>
-                                <li><strong>Plan Profesional:</strong> $1,099 MXN/mes o $9,891 MXN/año.</li>
+                                <li><strong>Plan Starter:</strong> $699 MXN/mes o $6,291 MXN/año, más IVA.</li>
+                                <li><strong>Plan Profesional:</strong> $1,099 MXN/mes o $9,891 MXN/año, más IVA.</li>
                                 <li><strong>Plan Enterprise:</strong> condiciones a medida, acordadas por escrito.</li>
                             </ul>
                             <p className="text-muted leading-relaxed mb-4">
-                                El pago anual representa un ahorro del 25% respecto al pago mensual equivalente. Los impuestos aplicables se reflejarán en el comprobante fiscal correspondiente.
+                                El pago anual representa un ahorro del 25% respecto al pago mensual equivalente. <strong>Todos los precios publicados no incluyen IVA</strong>; el impuesto se añade al momento del cobro y se refleja en el comprobante fiscal correspondiente.
                             </p>
                             <p className="text-muted leading-relaxed mb-4">
                                 La suscripción se cobra <strong>por adelantado</strong> al inicio de cada periodo de facturación. El procesamiento de pagos se realiza a través de <strong>Stripe</strong>; LabDen no almacena los datos completos de tu tarjeta.
@@ -89,7 +89,7 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">4. Prueba Gratuita</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                LabDen ofrece un periodo de prueba gratuito de <strong>30 días</strong>, sin necesidad de registrar una tarjeta de crédito.
+                                LabDen ofrece un periodo de prueba gratuito de <strong>15 días</strong>, sin necesidad de registrar una tarjeta de crédito.
                             </p>
                             <p className="text-muted leading-relaxed mb-4">
                                 Al no existir un medio de pago registrado, <strong>no se genera ningún cargo automático</strong> al finalizar la prueba. Recibirás avisos por correo electrónico antes del vencimiento.
@@ -120,7 +120,7 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">6. Reembolsos</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                Dado que LabDen ofrece 30 días de prueba gratuita previos a cualquier cobro, <strong>no se realizan reembolsos por periodos de suscripción ya iniciados</strong>.
+                                Dado que LabDen ofrece 15 días de prueba gratuita previos a cualquier cobro, <strong>no se realizan reembolsos por periodos de suscripción ya iniciados</strong>.
                             </p>
                             <p className="text-muted leading-relaxed mb-2">
                                 Sí se reembolsa íntegramente en los siguientes casos:

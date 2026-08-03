@@ -21,7 +21,7 @@ export const metadata: Metadata = {
     },
     // F1-T3: description global (~155 car.)
     description:
-        "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen, el sistema para laboratorios dentales en México. Prueba gratis 30 días.",
+        "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen, el sistema para laboratorios dentales en México. Prueba gratis 15 días.",
     applicationName: "LabDen",
     // F1-T4: mapa semántico (~14 keywords)
     keywords: [
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
         url: "/",
         title: "Sistema para Laboratorios Dentales en México | LabDen",
         description:
-            "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen. Prueba gratis 30 días.",
+            "Organiza órdenes, dentistas, producción, entregas y cuentas por cobrar con LabDen. Prueba gratis 15 días.",
         // TODO F5: cambiar a /images/sistema-para-laboratorios-dentales-labden.webp cuando exista (F5-T2).
         images: [
             {
@@ -141,6 +141,7 @@ const softwareJsonLd = {
         lowPrice: "699",
         highPrice: "1099",
         offerCount: "2",
+        valueAddedTaxIncluded: false,
     },
 };
 
