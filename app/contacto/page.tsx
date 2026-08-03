@@ -3,7 +3,7 @@ import { Navbar } from "@/components/layout/navbar";
 import { Footer } from "@/components/layout/footer";
 import { Button } from "@/components/ui/button";
 import { ContactForm } from "@/components/contact/contact-form";
-import { Mail, MessageSquare, Clock, MapPin } from "lucide-react";
+import { Mail, MessageSquare, Clock, MapPin, Phone } from "lucide-react";
 
 export const metadata: Metadata = {
     title: "Contacto | LabDen",
@@ -20,6 +20,7 @@ export const metadata: Metadata = {
 
 const SUPPORT_EMAIL = "soporte@labden.com.mx";
 const SALES_EMAIL = "ventas@labden.com.mx";
+const SUPPORT_PHONE = "+52 56 6401 5780";
 
 export default function ContactoPage() {
     return (
@@ -91,6 +92,24 @@ export default function ContactoPage() {
                                 </span>
                             </a>
 
+                            <a
+                                href={`tel:${SUPPORT_PHONE.replace(/\s/g, "")}`}
+                                className="group flex flex-col p-6 rounded-2xl bg-surface-elevated border border-border hover:border-accent/30 hover:shadow-lg transition-all"
+                            >
+                                <div className="flex items-center gap-3 mb-3">
+                                    <span className="w-9 h-9 rounded-lg bg-accent/10 text-accent flex items-center justify-center">
+                                        <Phone className="w-4 h-4" />
+                                    </span>
+                                    <h3 className="text-lg font-bold text-foreground">Teléfono</h3>
+                                </div>
+                                <p className="text-sm text-muted mb-4 leading-relaxed">
+                                    Atención directa en horario hábil.
+                                </p>
+                                <span className="text-sm text-accent font-semibold">
+                                    {SUPPORT_PHONE}
+                                </span>
+                            </a>
+
                             <div className="flex items-start gap-4 p-6 rounded-xl bg-surface border border-border">
                                 <span className="w-9 h-9 rounded-lg bg-surface-elevated text-muted flex items-center justify-center flex-shrink-0">
                                     <Clock className="w-4 h-4" />
@@ -98,7 +117,8 @@ export default function ContactoPage() {
                                 <div>
                                     <h3 className="text-sm font-bold text-foreground mb-1">Horario de atención</h3>
                                     <p className="text-sm text-muted leading-relaxed">
-                                        Lunes a viernes, 9:00–18:00 (CDMX).
+                                        Lunes a viernes, 9:00–18:00 (CDMX).<br />
+                                        Respondemos en menos de 24 horas hábiles.
                                     </p>
                                 </div>
                             </div>
