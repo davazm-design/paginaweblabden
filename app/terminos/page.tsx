@@ -38,16 +38,17 @@ export default function TerminosPage() {
                         <section>
                             <h2 className="text-xl font-bold text-foreground mb-4">2. Naturaleza del Servicio</h2>
                             <p className="text-muted leading-relaxed mb-4">
-                                El contenido de este sitio es de carácter informativo y preliminar.
+                                LabDen es una plataforma de software como servicio (SaaS) por suscripción para la gestión de laboratorios dentales. El acceso se contrata mediante los planes publicados en la página de{" "}
+                                <a href="/precios" className="text-accent hover:underline">
+                                    Precios
+                                </a>{" "}
+                                y se factura de forma recurrente.
                             </p>
-                            <div className="bg-surface border border-border rounded-lg p-6 mb-4">
-                                <p className="text-muted leading-relaxed font-medium">
-                                    ⚠️ <strong>Aclaración importante:</strong><br />
-                                    El sitio no constituye aún una oferta contractual del servicio, ni garantiza la disponibilidad comercial inmediata de la plataforma.
-                                </p>
-                            </div>
+                            <p className="text-muted leading-relaxed mb-4">
+                                La contratación de un plan constituye un acuerdo vinculante entre el laboratorio contratante y LabDen, regido por los presentes Términos y Condiciones.
+                            </p>
                             <p className="text-muted leading-relaxed">
-                                LabDen se reserva el derecho de modificar, habilitar o deshabilitar funcionalidades sin previo aviso.
+                                LabDen podrá modificar, habilitar o deshabilitar funcionalidades de la plataforma, procurando no afectar de forma sustancial las funciones esenciales contratadas durante el periodo vigente.
                             </p>
                         </section>
 
