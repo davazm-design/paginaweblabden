@@ -93,7 +93,7 @@ export function HowItWorks() {
                 </div>
 
                 <div className="mt-12 text-center">
-                    <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
+                    <Button variant="primary" size="lg" href="/prueba">
                         Pruébalo gratis 15 días
                     </Button>
                 </div>

@@ -77,7 +77,7 @@ export function Navbar() {
                     <Button
                         variant="primary"
                         size="sm"
-                        href="https://app.labden.com.mx/auth/register"
+                        href="/prueba"
                         className="h-10 px-6"
                         onClick={() => analytics.clickPruebaGratis('navbar')}
                     >
@@ -118,7 +118,7 @@ export function Navbar() {
                         variant="primary"
                         size="lg"
                         className="w-full active:scale-[0.98]"
-                        href="https://app.labden.com.mx/auth/register"
+                        href="/prueba"
                         onClick={() => { setIsOpen(false); analytics.clickPruebaGratis('navbar_mobile') }}
                     >
                         Prueba gratis 15 días

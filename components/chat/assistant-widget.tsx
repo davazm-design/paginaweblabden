@@ -74,7 +74,7 @@ const RESPONSES: Record<string, Message> = {
         content:
             "Puedes empezar tu prueba gratis ahora mismo. Son 15 días sin tarjeta de crédito y sin compromiso. Configura tu laboratorio en minutos.",
         links: [
-            { label: "Registrarme gratis", href: "https://app.labden.com.mx/auth/register" },
+            { label: "Registrarme gratis", href: "/prueba" },
         ],
     },
     help: {

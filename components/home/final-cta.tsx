@@ -18,7 +18,7 @@ export function FinalCta() {
                     variant="primary"
                     size="lg"
                     className="h-14 px-10 text-base"
-                    href="https://app.labden.com.mx/auth/register"
+                    href="/prueba"
                     onClick={() => analytics.clickPruebaGratis('final_cta')}
                 >
                     Prueba gratis 15 días

@@ -124,7 +124,7 @@ export function PricingSection() {
                             variant="primary"
                             size="lg"
                             className="w-full h-12"
-                            href="https://app.labden.com.mx/auth/register"
+                            href="/prueba"
                             onClick={() => analytics.clickPruebaGratis('pricing_base')}
                         >
                             Probar gratis 15 días
@@ -194,7 +194,7 @@ export function PricingSection() {
                             variant="primary"
                             size="lg"
                             className="w-full h-14 text-lg"
-                            href="https://app.labden.com.mx/auth/register"
+                            href="/prueba"
                             onClick={() => analytics.clickPruebaGratis('pricing_pro')}
                         >
                             Probar gratis 15 días

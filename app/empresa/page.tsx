@@ -144,7 +144,7 @@ export default function CompanyPage() {
                     <p className="text-muted mb-8">
                         Prueba LabDen sin compromiso y descubre si es la herramienta que tu laboratorio necesita.
                     </p>
-                    <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
+                    <Button variant="primary" size="lg" href="/prueba">
                         Prueba gratis 15 días <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>

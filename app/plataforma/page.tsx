@@ -90,7 +90,7 @@ export default function PlataformaPage() {
                         Una plataforma diseñada para organizar la comunicación entre dentistas y laboratorios dentales. Centraliza órdenes, seguimiento, estatus e información en un solo lugar.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                        <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
+                        <Button variant="primary" size="lg" href="/prueba">
                             Prueba gratis 15 días
                         </Button>
                         <Button variant="outline" size="lg" href="#funciones">
@@ -135,7 +135,7 @@ export default function PlataformaPage() {
                     <p className="text-muted mb-8">
                         Prueba LabDen sin compromiso. Configura tu laboratorio en minutos.
                     </p>
-                    <Button variant="primary" size="lg" href="https://app.labden.com.mx/auth/register">
+                    <Button variant="primary" size="lg" href="/prueba">
                         Prueba gratis 15 días <ArrowRight className="ml-2 w-4 h-4" />
                     </Button>
                 </div>

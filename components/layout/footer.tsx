@@ -61,7 +61,7 @@ export function Footer() {
                         </p>
                         <div className="mb-6">
                             <Link
-                                href="https://app.labden.com.mx/auth/register"
+                                href="/prueba"
                                 onClick={() => analytics.clickPruebaGratis('footer')}
                                 className="inline-block text-xs font-semibold text-[#0f1729] bg-white hover:bg-white/90 px-4 py-2 rounded-lg transition-colors"
                             >
